@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIOps 智能告警分析系统</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Markdown 渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 导航 -->
+        <nav class="nav">
+            <div class="nav-brand">🛡️ AIOps 智能告警分析</div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="results">📊 告警结果</button>
+                <button class="nav-tab" data-tab="kbchat">💬 AIOps知识库问答</button>
+                <button class="nav-tab" data-tab="knowledge">📚 知识库</button>
+                <button class="nav-tab" data-tab="config">⚙️ 系统配置</button>
+            </div>
+            <div class="nav-status" id="nav-status">● 运行中</div>
+        </nav>
+
+        <!-- 页面1: 告警结果展示 -->
+        <div class="tab-content active" id="tab-results">
+            <div class="panel-layout">
+                <!-- 左侧: 告警列表 -->
+                <div class="panel-left">
+                    <div class="panel-header">
+                        <h3>告警列表</h3>
+                        <div class="filter-bar">
+                            <select id="filter-risk" class="filter-select">
+                                <option value="all">全部风险</option>
+                                <option value="高">🔴 高风险</option>
+                                <option value="中">🟡 中风险</option>
+                                <option value="低">🟢 低风险</option>
+                            </select>
+                            <input type="text" id="filter-search" class="filter-input" placeholder="搜索域名...">
+                            <button id="btn-refresh" class="btn btn-sm">🔄 刷新</button>
+                            <button id="btn-scan-now" class="btn btn-sm btn-primary">⚡ 立即扫描</button>
+                        </div>
+                    </div>
+                    <div class="alert-list" id="alert-list">
+                        <div class="empty-state">暂无告警数据</div>
+                    </div>
+                </div>
+
+                <!-- 右侧: 详情面板 -->
+                <div class="panel-right">
+                    <div class="detail-tabs">
+                        <button class="detail-tab active" data-detail="alert-data">📋 告警数据</button>
+                        <button class="detail-tab" data-detail="analysis">📝 分析报告</button>
+                        <button class="detail-tab" data-detail="suggestion">💡 处理建议</button>
+                        <button class="detail-tab" data-detail="chat">🤖 AI 问答</button>
+                    </div>
+                    <div class="detail-content" id="detail-content">
+                        <div class="empty-state">请选择一条告警查看详情</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页面2: AIOps知识库问答 -->
+        <div class="tab-content" id="tab-kbchat">
+            <div class="kbchat-layout">
+                <div class="kbchat-main">
+                    <div class="panel-header">
+                        <h3>💬 AIOps 知识库问答</h3>
+                        <span id="kb-stats-text" style="color:var(--text-secondary);font-size:0.85rem">
+                            加载中...
+                        </span>
+                    </div>
+                    <div class="chat-container" id="kb-chat-container">
+                        <div class="chat-messages" id="kb-chat-messages">
+                            <div class="chat-msg assistant">
+                                <span class="msg-bubble">
+                                    你好！我是 AIOps 知识库助手，基于已上传的运维文档回答问题。<br><br>
+                                    💡 试试问我：<br>
+                                    • WAF 告警高风险怎么处理？<br>
+                                    • 服务器内存占用过高怎么办？<br>
+                                    • 如何排查 Docker 容器启动失败？
+                                </span>
+                            </div>
+                        </div>
+                        <div class="chat-input-row">
+                            <input type="text" id="kb-chat-input" placeholder="输入你的问题，基于知识库回答..."
+                                   onkeydown="if(event.key==='Enter')sendKBChat()">
+                            <button class="btn btn-primary" onclick="sendKBChat()">发送</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页面3: 知识库 -->
+        <div class="tab-content" id="tab-knowledge">
+            <div class="kb-layout">
+                <div class="kb-card">
+                    <div class="panel-header">
+                        <h3>知识库</h3>
+                        <div class="filter-bar">
+                            <button id="btn-upload-trigger" class="btn btn-sm btn-primary" onclick="document.getElementById('upload-input').click()">📤 上传文件</button>
+                            <button id="docs-refresh" class="btn btn-sm" onclick="loadDocs()">🔄 刷新</button>
+                        </div>
+                    </div>
+                    <div class="kb-body">
+                        <label id="upload-zone" class="upload-zone" for="upload-input">
+                            <input type="file" id="upload-input" accept=".md,.markdown,.txt,.json,.yaml,.yml" style="position:absolute;width:0;height:0;opacity:0">
+                            <div class="upload-hint">点击或拖拽 .md / .txt 文件到此</div>
+                            <div class="upload-subhint">将自动按章节切分并建立索引</div>
+                        </label>
+                        <div id="upload-result" class="upload-result"></div>
+                        <div id="docs-list" class="docs-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页面4: 系统配置 -->
+        <div class="tab-content" id="tab-config">
+            <div class="config-layout">
+                <!-- 定时扫描配置 -->
+                <div class="config-card">
+                    <h3>⏰ 定时扫描配置</h3>
+                    <div class="config-row">
+                        <label>扫描间隔（分钟）</label>
+                        <input type="number" id="cfg-interval" class="config-input" min="1" max="60" value="5">
+                        <button id="btn-save-interval" class="btn btn-primary">应用</button>
+                    </div>
+                    <div class="config-row">
+                        <label>调度器状态</label>
+                        <span id="cfg-scheduler-status" class="status-badge">● 运行中</span>
+                        <button id="btn-pause" class="btn">⏸️ 暂停</button>
+                        <button id="btn-resume" class="btn">▶️ 恢复</button>
+                    </div>
+                    <div class="config-info">
+                        <p>上次扫描: <span id="cfg-last-scan">-</span></p>
+                        <p>下次扫描: <span id="cfg-next-scan">-</span></p>
+                    </div>
+                </div>
+
+                <!-- 风险判定参数 -->
+                <div class="config-card">
+                    <h3>📐 风险判定参数</h3>
+                    <div class="config-row">
+                        <label>数量阈值 - 高</label>
+                        <input type="number" id="cfg-count-high" class="config-input" min="10" value="200">
+                    </div>
+                    <div class="config-row">
+                        <label>数量阈值 - 中</label>
+                        <input type="number" id="cfg-count-medium" class="config-input" min="10" value="100">
+                    </div>
+                    <button id="btn-save-risk" class="btn btn-primary">保存风险参数</button>
+                </div>
+
+                <!-- CMDB 配置 -->
+                <div class="config-card">
+                    <h3>🗄️ CMDB 数据源</h3>
+                    <div class="config-row">
+                        <label>数据源类型</label>
+                        <select id="cfg-cmdb-type" class="config-input">
+                            <option value="xlsx">Excel (xlsx)</option>
+                            <option value="api">API (未来)</option>
+                        </select>
+                    </div>
+                    <div class="config-row">
+                        <label>文件路径</label>
+                        <input type="text" id="cfg-cmdb-path" class="config-input" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "env_scan": {
+    "label": "环境文件扫描",
+    "risk": "中",
+    "patterns": [".env", "env.backup", ".env.local", ".env.production", "env.old", ".env.bak"]
+  },
+  "admin_target": {
+    "label": "管理后台攻击",
+    "risk": "高",
+    "patterns": ["/admin", "/administrator", "/wp-admin", "/manager", "/console", "/backstage"]
+  },
+  "dynamic_page": {
+    "label": "动态页面攻击",
+    "risk": "高",
+    "patterns": [".php", ".asp", ".aspx", ".jsp", ".do", ".action", ".cgi"]
+  },
+  "config_scan": {
+    "label": "配置文件扫描",
+    "risk": "中",
+    "patterns": ["/conf/", "/config/", "/backup/", "/cron/", "/logs/", "/database/"]
+  },
+  "dependency_scan": {
+    "label": "依赖文件扫描",
+    "risk": "低",
+    "patterns": ["/node_modules/", "/vendor/", "/WEB-INF/", "/META-INF/"]
+  },
+  "upload_exploit": {
+    "label": "上传漏洞探测",
+    "risk": "高",
+    "patterns": ["/upload", "/uploads", "/fileupload", ".war", ".jar", "webshell"]
+  },
+  "api_exploit": {
+    "label": "API漏洞探测",
+    "risk": "中",
+    "patterns": ["/api/", "/graphql", "/swagger", "/actuator", "/jmx", "/debug"]
+  },
+  "random_scan": {
+    "label": "随机扫描",
+    "risk": "低",
+    "patterns": []
+  }
+}

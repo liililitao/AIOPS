@@ -1,0 +1,40 @@
+# ==========================================
+# AIOps Alert Agent - Python Dependencies
+# ==========================================
+
+# Web Framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.20
+sse-starlette>=2.0.0
+
+# LLM (OpenAI-compatible)
+openai>=1.50.0
+langchain>=0.3.0
+langchain-openai>=0.2.0
+langgraph>=0.2.0
+
+# Configuration
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+python-dotenv>=1.0.0
+
+# CMDB (Excel reading, future: API)
+openpyxl>=3.1.0
+
+# Scheduling
+apscheduler>=3.10.0
+
+# Vector DB (Milvus)
+pymilvus>=2.4.0
+
+# Embedding (for RAG retrieval)
+# dashscope>=1.20.0  # Uncomment if using DashScope embeddings
+
+# Utilities
+httpx>=0.27.0
+aiofiles>=24.0.0
+
+# Development
+pytest>=8.0.0
+pytest-asyncio>=0.24.0
