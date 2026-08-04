@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Splunk Dashboard: AIOps 告警诊断总览
+  ======================================
+  安装方式:
+    1. 登录 Splunk Web → 设置 → 用户界面 → 视图
+    2. 新建视图 → 粘贴此 XML → 保存
+    3. 或通过 API 导入: curl -k -u admin:12345678 -X POST
+       https://localhost:8089/servicesNS/admin/search/data/ui/views
+       -d "name=aiops_overview" -d "eai:data=<此XML>"
+
+  数据源: index="aiops_results" (由 aiops_agent 写入)
+-->
+<form version="1.1" theme="light">
+  <label>AIOps 告警诊断总览</label>
+  <description>
+    实时监控 AIOps Agent 处理的告警: 优先级分布、告警趋势、业务影响、诊断详情
+  </description>
+
+  <!-- ===== 时间选择器 ===== -->
+  <fieldset submitButton="false">
+    <input type="time" token="time_range" searchWhenChanged="true">
+      <label>时间范围</label>
+      <default>Last 60 minutes</default>
+    </input>
+  </fieldset>
+
+  <!-- ===== 第一行: 概览统计 ===== -->
+  <row>
+    <panel>
+      <title>告警总数</title>
+      <single>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | stats count</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+    <panel>
+      <title>紧急告警 (风险≥4)</title>
+      <single>
+        <search>
+          <query>index="aiops_results" sourcetype="_json" risk_level>=4
+          | stats count</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+    <panel>
+      <title>受影响应用数</title>
+      <single>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | stats dc(app_name) as app_count</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+    <panel>
+      <title>平均风险等级</title>
+      <single>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | stats avg(risk_level) as avg_risk</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+      </single>
+    </panel>
+  </row>
+
+  <!-- ===== 第二行: 饼图 + 折线图 ===== -->
+  <row>
+    <panel>
+      <title>告警类型分布 (饼图)</title>
+      <chart>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | stats count by alert_type
+          | sort - count</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="height">320</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>优先级分布 (饼图)</title>
+      <chart>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | stats count by priority
+          | sort - count</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="height">320</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ===== 第三行: 告警趋势折线图 ===== -->
+  <row>
+    <panel>
+      <title>告警趋势 (折线图)</title>
+      <chart>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | timechart span=5m count by alert_type</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.axisTitleX.text">时间</option>
+        <option name="charting.axisTitleY.text">告警数量</option>
+        <option name="height">300</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ===== 第四行: 风险等级趋势 + 业务分布 ===== -->
+  <row>
+    <panel>
+      <title>风险等级趋势 (折线图)</title>
+      <chart>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | timechart span=5m avg(risk_level) as 平均风险等级</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.axisTitleX.text">时间</option>
+        <option name="charting.axisTitleY.text">平均风险等级</option>
+        <option name="height">280</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>受影响应用 Top 10 (柱状图)</title>
+      <chart>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | stats count by app_name
+          | sort - count
+          | head 10</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="charting.chart">column</option>
+        <option name="charting.axisTitleX.text">应用</option>
+        <option name="charting.axisTitleY.text">告警数</option>
+        <option name="height">280</option>
+      </chart>
+    </panel>
+  </row>
+
+  <!-- ===== 第五行: 优先级排序列表 ===== -->
+  <row>
+    <panel>
+      <title>告警优先级处理队列</title>
+      <table>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | table timestamp, priority, risk_level, alert_type, host_ip, app_name, owner, diagnosis_summary
+          | sort risk_level desc, timestamp desc
+          | rename timestamp as 时间, priority as 优先级, risk_level as 风险等级,
+                  alert_type as 告警类型, host_ip as 设备IP, app_name as 应用名称,
+                  owner as 负责人, diagnosis_summary as 诊断摘要</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="count">50</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+      </table>
+    </panel>
+  </row>
+
+  <!-- ===== 第六行: 诊断详情 ===== -->
+  <row>
+    <panel>
+      <title>最新诊断报告详情</title>
+      <table>
+        <search>
+          <query>index="aiops_results" sourcetype="_json"
+          | table timestamp, alert_type, host_ip, priority, risk_level, app_name, full_report
+          | sort timestamp desc
+          | head 20
+          | rename timestamp as 时间, alert_type as 告警类型, host_ip as 设备IP,
+                  priority as 优先级, risk_level as 风险等级, app_name as 应用名称,
+                  full_report as 诊断报告</query>
+          <earliest>$time_range.earliest$</earliest>
+          <latest>$time_range.latest$</latest>
+        </search>
+        <option name="count">20</option>
+        <option name="drilldown">cell</option>
+      </table>
+    </panel>
+  </row>
+</form>

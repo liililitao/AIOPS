@@ -1,0 +1,3 @@
+SUBSCRIPTION等级
+最高等级：-PRD, CDC Shared Services, 不带任何后缀
+最低等级：-TST, -DEV

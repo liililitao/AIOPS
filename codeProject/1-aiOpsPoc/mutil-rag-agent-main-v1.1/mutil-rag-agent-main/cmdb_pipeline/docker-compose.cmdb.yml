@@ -1,0 +1,62 @@
+# ============================================================
+# CMDB Pipeline 基础设施: PostgreSQL 16 + Kafka (KRaft 模式)
+# ============================================================
+# 启动: docker compose -f docker-compose.cmdb.yml up -d
+# 停止: docker compose -f docker-compose.cmdb.yml down -v
+# ============================================================
+
+services:
+  # ============================================================
+  # PostgreSQL 16 — CMDB 主数据库
+  # ============================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: cmdb-postgres
+    environment:
+      POSTGRES_USER: cmdb_admin
+      POSTGRES_PASSWORD: cmdb_pass_2024
+      POSTGRES_DB: cmdb
+    ports:
+      - "5433:5432"   # 用 5433 避免和本地已有 PostgreSQL 冲突
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql/init_cmdb.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cmdb_admin -d cmdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ============================================================
+  # Apache Kafka 3.9 (KRaft 模式, 无需 Zookeeper)
+  # ============================================================
+  kafka:
+    image: bitnami/kafka:3.9
+    container_name: cmdb-kafka
+    ports:
+      - "9092:9092"
+    environment:
+      # KRaft 模式
+      KAFKA_CFG_NODE_ID: 1
+      KAFKA_CFG_PROCESS_ROLES: broker,controller
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      # 监听器
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      # 内部配置
+      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CFG_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_CFG_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: "true"
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics.sh --bootstrap-server localhost:9092 --list"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  pgdata:
+    driver: local

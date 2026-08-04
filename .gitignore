@@ -1,13 +1,17 @@
-# Secrets and local configuration
+# Credentials and local configuration
 .env
 .env.*
-!.env.example
+!/codeProject/1-aiOpsPoc/aiops/.env.example
 *.pem
 *.key
 *.p12
 *.pfx
+*.jks
+*.keystore
+credentials*.json
+secrets*.json
 
-# Python
+# Python environments and caches
 .venv/
 venv/
 env/
@@ -20,22 +24,61 @@ __pycache__/
 .coverage
 htmlcov/
 
-# JavaScript / frontend
+# JavaScript and frontend build output
 node_modules/
 dist/
 build/
 .vite/
 
-# Runtime data and generated output
-*.log
+# Runtime output and local databases
 logs/
 output/
 milvus_data/
-data/kb_docs/
-data/processed_alerts.json
+volumes/
+.understand-anything/
+**/benchmark/reports/
+*.log
 *.db
 *.sqlite
 *.sqlite3
+*.wal
+*.sst
+
+# Generated or sensitive datasets
+**/data/kb_docs/
+**/data/processed_alerts.json
+alert_log/
+testlog/
+test_log_app/
+CMDB数据库/
+测试机内文件/
+告警数据/
+带风险等级的告警数据/
+*.csv
+*.xlsx
+*.xls
+*.docx
+*.pptx
+*.pdf
+*.whl
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Private workspace material outside the source projects
+/7.27需求文档/
+/ghcc-整理好的SOP向量数据库存放md格式/
+/openai-task/
+/siyu哥-CMDB数据库/
+/师傅-waf告警数据/
+/师傅-应用告警信息列表/
+/师傅-数据库CMDB数据/
+/文德哥-告警数据(没啥用)/
+/杂物/
+/测试机-告警数据/
+/测试机备份文件(按照测试机目录放置)/
+/*.html
 
 # Editors and operating systems
 .idea/
