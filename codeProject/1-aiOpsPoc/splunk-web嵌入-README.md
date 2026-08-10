@@ -173,12 +173,12 @@ Splunk 通过 OS 进程隔离机制保证不同告警不串数据。每次告警
 
 ```
 Splunk Dashboard 按钮
-  │  带 ?splunk_user=$env:user$
+  │  Splunk 服务端生成 user/roles/exp/nonce/sig
   ▼
 Flask :5000 before_request
   │
-  ├─ 有 ?splunk_user 参数 → 信任（Splunk 已认证用户的页面渲染此 URL）
-  │     → 签发 JWT → 302 重定向去参数 → Set-Cookie
+  ├─ HMAC 签名正确 + 未过期 + nonce 未使用
+  │     → 检查角色 → 签发 JWT → 302 去参数 → Set-Cookie
   │
   ├─ 有 auth_token cookie → 验证 JWT → 放行
   │
@@ -190,7 +190,7 @@ Flask :5000 before_request
 - **签发：** `jwt.encode({username, roles, exp, jti}, JWT_SECRET, "HS256")`
 - **验证：** `jwt.decode(token, JWT_SECRET, ["HS256"])`
 - **有效期：** 默认 8 小时，与 Splunk session 对齐
-- **密钥：** 环境变量 `JWT_SECRET`，默认值 `"change-me-in-production"`
+- **密钥：** 环境变量 `JWT_SECRET` 或 `JWT_SECRET_FILE`，至少 32 字节且不能与 HMAC Secret 共用
 
 ### 路由设计
 
@@ -206,8 +206,12 @@ Flask :5000 before_request
 ```bash
 cd /opt/aiops-gateway
 export SPLUNK_WEB_URL="http://域名:8000"   # 必须改成公网地址，否则 302 跳转会指向 127.0.0.1
+export AIOPS_HANDOFF_SECRET_FILE="/opt/aiops-gateway/secrets/handoff_secret"
+export JWT_SECRET_FILE="/opt/aiops-gateway/secrets/jwt_secret"
 nohup python3 gateway.py > gateway.log 2>&1 &
 ```
+
+HMAC 签名命令、共享密钥和防重放部署详见 `HMAC_HANDOFF_DEPLOY.md`。
 
 ### 同事前端改动
 
@@ -248,7 +252,7 @@ cp /opt/aiops-gateway/frontend_backup/* /opt/aiops-gateway/frontend/
 
 部署到 `/data/splunk/etc/apps/search/local/data/ui/views/waf_dashboard.xml`。
 
-**面板组成（11 个面板，6 行）：**
+**面板组成（12 个面板，7 行）：**
 
 | 区域 | 面板 | 数据源 |
 |------|------|--------|
@@ -258,6 +262,7 @@ cp /opt/aiops-gateway/frontend_backup/* /opt/aiops-gateway/frontend/
 | 原始日志 | Blocked 趋势 | `index=azure` |
 | | 被攻击 Hostname/IP Top N | `index=azure` |
 | | 被攻击 URI Top 20 | `index=azure` |
+| 安全入口 | AIOps HMAC 签名跳转按钮 | `aiopssignurl` |
 
 ### JSON 数据接入 Dashboard
 
@@ -269,13 +274,20 @@ cp /opt/aiops-gateway/frontend_backup/* /opt/aiops-gateway/frontend/
 ### 按钮配置
 
 ```xml
-<a href="http://域名:5000/app/?splunk_user=$env:user$"
+<search id="aiops_handoff_link_search">
+  <query>| makeresults | aiopssignurl</query>
+  <done>
+    <set token="aiops_handoff_url">$result.handoff_url$</set>
+  </done>
+</search>
+
+<a href="$aiops_handoff_url$"
    target="_blank" ...>
   进入 AIOps 诊断平台
 </a>
 ```
 
-`$env:user$` 是 Splunk Simple XML 内置变量，代表当前登录用户名。**不需要额外声明 token。**
+`aiopssignurl` 从 Splunk 认证上下文读取用户名和角色，并在服务端生成短时 HMAC URL。共享密钥不会进入 Dashboard 源码或浏览器 JavaScript。
 
 ---
 
@@ -365,10 +377,10 @@ python3 waf_log_gen.py
 
 | # | 操作 | 预期结果 |
 |:---:|------|------|
-| 1 | `curl 域名:5000/health` | `{"status":"ok"}` |
+| 1 | `curl 域名:5000/health` | `hmac_handoff` 和 `jwt_signing` 均为 `configured` |
 | 2 | 浏览器访问 `域名:5000/app/`（无 cookie） | 302 → Splunk 登录页 |
-| 3 | 浏览器访问 `域名:5000/app/?splunk_user=test` | 302 → **helloworld** |
-| 4 | Splunk Dashboard 点按钮 | 新标签页 → **helloworld** |
+| 3 | 直接访问 `?splunk_user=admin` | 401 `legacy_disabled` |
+| 4 | Splunk Dashboard 点按钮 | HMAC 验证通过，新标签页 → **helloworld** |
 | 5 | 搜索 `index=azure` | 能看到 WAF 日志 |
 | 6 | 搜索 `index=waflogalert` | 能看到告警 JSON（含 risk_level） |
 | 7 | 告警规则手动测试 | 返回 count>=20 的结果 |

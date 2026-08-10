@@ -1,0 +1,846 @@
+2026-07-27 17:26:07,580 [INFO] aiops: [STATIC] Frontend: C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\aiops\frontend
+INFO:     Started server process [6764]
+INFO:     Waiting for application startup.
+2026-07-27 17:26:07,600 [INFO] aiops: [START] AIOps-Alert-Agent v1.0.0 starting...
+2026-07-27 17:26:07,616 [INFO] apscheduler.scheduler: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 65-70: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\aiops\run.py", line 12, in <module>
+    uvicorn.run(
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\uvicorn\main.py", line 621, in run
+    server.run()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\uvicorn\server.py", line 74, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 2056, in _run_once
+    handle._run()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\uvicorn\lifespan\on.py", line 86, in main
+    await app(scope, self.receive, self.send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 30, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\cors.py", line 80, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\exceptions.py", line 49, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 2677, in app
+    await self.lifespan(scope, receive, send)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 638, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 233, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 233, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 233, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 233, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 233, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 233, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+  File "C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\aiops\app\main.py", line 62, in lifespan
+    start_scheduler()
+  File "C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\aiops\app\core\scheduler.py", line 36, in start_scheduler
+    _scheduler.start()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\schedulers\background.py", line 33, in start
+    BaseScheduler.start(self, *args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\schedulers\base.py", line 210, in start
+    self._real_add_job(job, jobstore_alias, replace_existing)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\schedulers\base.py", line 1092, in _real_add_job
+    self._logger.info('Added job "%s" to job store "%s"', job.name, jobstore_alias)
+Message: 'Added job "%s" to job store "%s"'
+Arguments: ('\u626b\u63cf\u544a\u8b66\u76ee\u5f55', 'default')
+2026-07-27 17:26:07,849 [INFO] apscheduler.scheduler: Scheduler started
+2026-07-27 17:26:07,849 [INFO] aiops.scheduler: [SCHEDULER] Started, interval=5min
+2026-07-27 17:26:07,849 [INFO] aiops: [SCHEDULER] Started, interval=5min
+2026-07-27 17:26:07,850 [INFO] aiops: [READY] AIOps-Alert-Agent on port 5000
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 26, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py:121: RuntimeWarning: coroutine '_scan_job' was never awaited
+  del work_item
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     127.0.0.1:59148 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61565 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58780 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62743 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52887 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64843 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61640 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57522 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65299 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58579 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 31, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py:121: RuntimeWarning: coroutine '_scan_job' was never awaited
+  del work_item
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     127.0.0.1:57053 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55813 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54105 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51803 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55024 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60632 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64821 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64847 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53197 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 36, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:53655 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50460 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52564 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53123 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65131 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58452 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54355 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50943 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55590 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 41, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:62164 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63109 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57087 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55218 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65269 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58498 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60229 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52753 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54940 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56393 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 46, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:55973 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60622 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55654 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56589 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54682 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53910 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63552 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55182 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53461 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50036 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 51, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:49326 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58569 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57500 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56704 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59421 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55830 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62780 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59207 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54906 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55254 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 17, 56, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:49671 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53757 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58766 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65277 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54343 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60636 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65426 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62099 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54797 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 18, 1, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:49797 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64254 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52648 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64340 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56819 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57061 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54663 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54707 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65440 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56637 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 18, 6, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:61420 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57608 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59054 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59429 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54110 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50329 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55968 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60998 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64403 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 18, 11, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:58439 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53290 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51315 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58646 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63301 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53094 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55366 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57426 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58293 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 18, 16, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:53275 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59539 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63650 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50632 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53636 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60568 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51983 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58936 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59804 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54911 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 129, in run_job
+    logger.info('Running job "%s" (scheduled at %s)', job, run_time)
+Message: 'Running job "%s" (scheduled at %s)'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>, datetime.datetime(2026, 7, 27, 18, 21, 17, 615192, tzinfo=zoneinfo.ZoneInfo(key='Asia/Shanghai')))
+--- Logging error ---
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\logging\__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 67-72: character maps to <undefined>
+Call stack:
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\apscheduler\executors\base.py", line 156, in run_job
+    logger.info('Job "%s" executed successfully', job)
+Message: 'Job "%s" executed successfully'
+Arguments: (<Job (id=scan_alerts name=\u626b\u63cf\u544a\u8b66\u76ee\u5f55)>,)
+INFO:     127.0.0.1:52002 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64149 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49908 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50514 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53317 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49670 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61244 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54735 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51195 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60407 - "GET /api/v1/config/scheduler/status HTTP/1.1" 200 OK

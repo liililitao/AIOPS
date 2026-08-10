@@ -35,6 +35,7 @@ class AlertResult(BaseModel):
 class RawAlert(BaseModel):
     """原始的 Splunk 告警数据"""
     alert_name: str = ""
+    application_code: str = ""                    # iWE / WeCall 等受管应用编码
     trigger_time: str = ""                          # ISO 8601 本地时间
     trigger_time_utc: str = ""                      # ISO 8601 UTC
     event_count: int = 0
@@ -87,6 +88,7 @@ class AlertListItem(BaseModel):
     trigger_time: str
     risk_level: str
     processed_at: str
+    application_code: str = ""
 
 
 class AlertDetail(BaseModel):

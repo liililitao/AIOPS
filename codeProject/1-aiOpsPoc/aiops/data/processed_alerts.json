@@ -1,0 +1,25 @@
+{
+  "processed_files": {
+    "alert_test-waf_20260709_164054.json": {
+      "processed_at": "2026-07-29T14:37:38.143943",
+      "risk_level": "高",
+      "output_dir": "2026-07-29"
+    },
+    "alert_test-waf_20260710_162010.json": {
+      "processed_at": "2026-07-29T14:39:07.818595",
+      "risk_level": "高",
+      "output_dir": "2026-07-29"
+    },
+    "alert_test-waf_20260713_144409.json": {
+      "processed_at": "2026-07-29T14:40:08.906813",
+      "risk_level": "高",
+      "output_dir": "2026-07-29"
+    },
+    "alert_test-waf_20260710_170655.json": {
+      "processed_at": "2026-07-30T09:52:55.672209",
+      "risk_level": "高",
+      "output_dir": "2026-07-30"
+    }
+  },
+  "last_scan_time": "2026-08-07T10:39:45.740314"
+}

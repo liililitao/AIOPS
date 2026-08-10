@@ -1,0 +1,7 @@
+[]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[commands/aiopssignurl]
+access = read : [ * ], write : [ admin ]
+export = system

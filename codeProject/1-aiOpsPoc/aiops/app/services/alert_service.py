@@ -31,6 +31,10 @@ from app.schemas.alert import (
 from app.schemas.cmdb import CmdbLookupResult
 from app.core.risk_assessor import assess_risk
 from app.tools.cmdb_tool import _lookup_by_resource_id, _lookup_by_hostname
+from app.services.splunk_alert_service import (
+    get_cached_remote_alert_detail,
+    get_cached_remote_alerts,
+)
 
 logger = logging.getLogger("aiops.alert_service")
 
@@ -275,6 +279,7 @@ def get_alert_list(
         output_file = output_base / date_dir / fname
         hostname = ""
         alert_name = ""
+        application_code = ""
         trigger_time = ""
         risk_level = info.get("risk_level", "?")
 
@@ -282,6 +287,7 @@ def get_alert_list(
             try:
                 data = json.loads(output_file.read_text(encoding="utf-8"))
                 alert_name = data.get("alert_name", "")
+                application_code = data.get("application_code", "")
                 trigger_time = data.get("trigger_time", "")
                 risk_level = data.get("risk_level", risk_level)
                 results = data.get("results", [])
@@ -306,6 +312,33 @@ def get_alert_list(
             trigger_time=trigger_time,
             risk_level=risk_level,
             processed_at=info.get("processed_at", ""),
+            application_code=application_code,
+        ))
+
+    # 合并最近一次从 Splunk 同步的真实告警。远端同步由刷新/扫描接口触发，
+    # 这里仅读取缓存，避免每次页面筛选都访问远程服务器。
+    for remote_alert in get_cached_remote_alerts():
+        risk_level = str(remote_alert.get("risk_level", "未知"))
+        results = remote_alert.get("results") or []
+        first_result = results[0] if results and isinstance(results[0], dict) else {}
+        hostname = str(first_result.get("properties_hostname", ""))
+        alert_name = str(remote_alert.get("alert_name", ""))
+
+        if risk_filter != "all" and risk_level != risk_filter:
+            continue
+        if search:
+            query = search.lower()
+            if query not in hostname.lower() and query not in alert_name.lower():
+                continue
+
+        items.append(AlertListItem(
+            id=str(remote_alert.get("id", "")),
+            alert_name=alert_name,
+            hostname=hostname,
+            trigger_time=str(remote_alert.get("trigger_time", "")),
+            risk_level=risk_level,
+            processed_at=str(remote_alert.get("processed_at", "")),
+            application_code=str(remote_alert.get("application_code", "")),
         ))
 
     # 按处理时间倒序
@@ -315,6 +348,17 @@ def get_alert_list(
 
 def get_alert_detail(alert_id: str) -> Optional[AlertDetail]:
     """获取单个告警详情"""
+    remote_alert = get_cached_remote_alert_detail(alert_id)
+    if remote_alert:
+        return AlertDetail(
+            alert=remote_alert,
+            risk_details=remote_alert.get("risk_details"),
+            analysis_report=(
+                "此告警直接从 Splunk 同步；尚未生成本地 AI 分析报告。"
+            ),
+            suggestion="请根据告警详情和 Splunk 溯源链接进行初步处置。",
+        )
+
     settings = get_settings()
     index = _load_index(settings.processed_index_path)
 

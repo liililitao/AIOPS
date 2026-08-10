@@ -5,6 +5,16 @@
     数据来源: index=waflogalert 
   </description>
 
+  <!-- 由 Splunk 服务端每 30 秒刷新一次短时 HMAC 签名链接 -->
+  <search id="aiops_handoff_link_search">
+    <query>| makeresults | aiopssignurl</query>
+    <refresh>30s</refresh>
+    <refreshType>delay</refreshType>
+    <done>
+      <set token="aiops_handoff_url">$result.handoff_url$</set>
+    </done>
+  </search>
+
   <!-- ===== 第一行: KPI 统计卡片 ===== -->
   <row>
     <panel>
@@ -184,6 +194,24 @@
         <option name="count">20</option>
         <option name="drilldown">none</option>
       </table>
+    </panel>
+  </row>
+
+  <!-- ===== 第七行: AIOps 诊断平台入口 ===== -->
+  <row>
+    <panel depends="$aiops_handoff_url$">
+      <html>
+        <a href="$aiops_handoff_url$"
+           target="_blank"
+           style="display:inline-block; padding:8px 20px; background-color:#1e93c6; color:white; text-decoration:none; border-radius:4px;">
+          进入 AIOps 诊断平台
+        </a>
+      </html>
+    </panel>
+    <panel rejects="$aiops_handoff_url$">
+      <html>
+        <p>正在生成 AIOps 安全入口，请稍候…</p>
+      </html>
     </panel>
   </row>
 </dashboard>

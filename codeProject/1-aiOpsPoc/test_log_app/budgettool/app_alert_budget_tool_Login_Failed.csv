@@ -1,0 +1,3 @@
+_time,UserAccount,Operations,Result,Level
+2026-07-30T16:25:44.282+08:00,budget.li@novonordisk.com,登录,验证码错误,ERROR
+2026-07-30T16:25:44.282+08:00,finance.zhang@novonordisk.com,登录,IP地址未授权,ERROR

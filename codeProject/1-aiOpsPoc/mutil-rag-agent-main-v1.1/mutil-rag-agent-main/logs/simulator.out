@@ -1,0 +1,90 @@
+告警模拟器已启动
+  目标: http://localhost:9900/api/v1/splunk/alert
+  间隔: 30s (随机 ±50%)
+  每轮: 1 条
+  总数: 10
+--------------------------------------------------
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 103, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\http11.py", line 136, in handle_async_request
+    raise exc
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_async\http11.py", line 217, in _receive_event
+    data = await self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 32, in read
+    with map_exceptions(exc_map):
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\splunk\alert_simulator.py", line 153, in push_alert
+    resp = await client.post(endpoint, json=alert)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\splunk\alert_simulator.py", line 219, in <module>
+    asyncio.run(run_simulator(args.endpoint, args.interval, args.count, args.burst))
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\splunk\alert_simulator.py", line 186, in run_simulator
+    await push_alert(alert, endpoint)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\splunk\alert_simulator.py", line 160, in push_alert
+    print(f"  \u2717 推送失败: {e}")
+UnicodeEncodeError: 'gbk' codec can't encode character '\u2717' in position 2: illegal multibyte sequence

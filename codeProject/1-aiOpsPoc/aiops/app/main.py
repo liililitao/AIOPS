@@ -7,11 +7,19 @@ import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
+from app.core.session_auth import (
+    HandoffVerificationError,
+    SQLiteNonceStore,
+    create_session_token,
+    read_session_token,
+    verify_handoff,
+)
 
 # Configure logging - use ASCII-safe format for Windows console
 settings = get_settings()
@@ -23,6 +31,85 @@ logging.basicConfig(
     ],
 )
 logger = logging.getLogger("aiops")
+HANDOFF_NONCE_STORE = SQLiteNonceStore(settings.handoff_nonce_db_path)
+SESSION_COOKIE_NAME = "aiops_session"
+
+
+def _auth_failure(message: str, code: str, status_code: int = 401) -> Response:
+    return JSONResponse(
+        {"success": False, "message": message, "code": code},
+        status_code=status_code,
+        headers={"Cache-Control": "no-store"},
+    )
+
+
+async def authenticate_request(request: Request, call_next):
+    """Turn the signed Splunk handoff URL into a server-trusted user session."""
+    if not settings.AIOPS_AUTH_ENABLED or request.url.path == "/api/v1/health":
+        request.state.authenticated_user = None
+        return await call_next(request)
+    if request.method == "OPTIONS":
+        return await call_next(request)
+
+    signed_keys = {"v", "user", "exp", "nonce", "sig"}
+    if request.url.path in {"", "/"} and signed_keys.intersection(request.query_params):
+        missing = [key for key in signed_keys if not request.query_params.get(key)]
+        if missing:
+            return _auth_failure("安全跳转链接参数不完整", "missing")
+        if len(settings.AIOPS_HANDOFF_SECRET.encode("utf-8")) < 32:
+            return _auth_failure("AIOps 跳转密钥未配置", "configuration", 503)
+        if len(settings.AIOPS_SESSION_SECRET.encode("utf-8")) < 32:
+            return _auth_failure("AioPs 会话密钥未配置", "configuration", 503)
+        try:
+            identity = verify_handoff(
+                secret=settings.AIOPS_HANDOFF_SECRET,
+                version=request.query_params.get("v", ""),
+                user=request.query_params.get("user", ""),
+                exp=request.query_params.get("exp", ""),
+                nonce=request.query_params.get("nonce", ""),
+                signature=request.query_params.get("sig", ""),
+                roles=request.query_params.get("roles", ""),
+                max_ttl_seconds=settings.AIOPS_HANDOFF_MAX_TTL_SECONDS,
+                clock_skew_seconds=settings.AIOPS_HANDOFF_CLOCK_SKEW_SECONDS,
+                nonce_store=HANDOFF_NONCE_STORE,
+            )
+            session_token = create_session_token(
+                settings.AIOPS_SESSION_SECRET,
+                identity,
+                settings.AIOPS_SESSION_HOURS,
+            )
+        except HandoffVerificationError as exc:
+            return _auth_failure("安全跳转链接校验失败", exc.code)
+        except ValueError:
+            return _auth_failure("Aiops 会话密钥未配置", "configuration", 503)
+
+        response = RedirectResponse(url="/", status_code=303)
+        response.set_cookie(
+            SESSION_COOKIE_NAME,
+            session_token,
+            httponly=True,
+            secure=settings.AIOPS_COOKIE_SECURE,
+            samesite="lax",
+            max_age=max(1, settings.AIOPS_SESSION_HOURS) * 3600,
+            path="/",
+        )
+        response.headers["Cache-Control"] = "no-store"
+        return response
+
+    try:
+        identity = read_session_token(
+            settings.AIOPS_SESSION_SECRET,
+            request.cookies.get(SESSION_COOKIE_NAME),
+        )
+    except ValueError:
+        identity = None
+    if identity is None:
+        if request.url.path.startswith("/api/"):
+            return _auth_failure("请从 Splunk Dashboard 重新进入 AIOps", "unauthorized")
+        return _auth_failure("请从 Splunk Dashboard 重新进入 AIOps", "unauthorized")
+    request.state.authenticated_user = identity.username
+    request.state.authenticated_roles = identity.roles
+    return await call_next(request)
 
 
 @asynccontextmanager
@@ -82,6 +169,8 @@ app = FastAPI(
     version=settings.APP_VERSION,
     lifespan=lifespan,
 )
+
+app.middleware("http")(authenticate_request)
 
 # CORS
 app.add_middleware(

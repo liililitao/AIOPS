@@ -1,0 +1,51 @@
+{
+  "alert_name": "test-waf",
+  "trigger_time": "2026-07-10T16:20:10.969+08:00",
+  "trigger_time_utc": "2026-07-10T08:20:10.969Z",
+  "event_count": 2,
+  "trigger_reason": "Saved Search [test-waf] always(2)",
+  "splunk_url": "http://vm-cdcshared-tst-spl9forwarder:8000/app/search/search?q=%7Cloadjob%20rt_scheduler__adminjhgz__search__RMD55e6c7c059c57a98f_at_1783564199_1802.9%20%7C%20head%202%20%7C%20tail%201&earliest=0&latest=now",
+  "search_terms": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+  "full_spl": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+  "results": [
+    {
+      "id": "AGW-DAP-PRD-N3-01",
+      "properties_hostname": "purview.novonordiskchina.com.cn",
+      "properties_requestUri": "/.env.bak /.env.example /.env.old /.env_sample /api/shared/.env /api/shared/config/.env /app/config/parameters.yml /application/.env /conf/.env /core/.env /dev/.env /development/.env /env.backup /laravel/core/.env /mailer/.env /new/.env.local /new/.env.staging /node/.env_example /portal/.env /public/.env /site/.env /storage/logs/laravel.log",
+      "properties_action": "Blocked",
+      "count": "25"
+    }
+  ],
+  "operator_notes": "",
+  "risk_level": "高",
+  "risk_details": {
+    "environment_risk": "高",
+    "environment": "Production",
+    "count_risk": "低",
+    "count_value": 25,
+    "attack_type_risk": "中",
+    "attack_types": [
+      "env_scan",
+      "config_scan"
+    ],
+    "overall_risk": "高",
+    "assessed_at": "2026-07-29T14:37:38.146231"
+  },
+  "token_usage": {
+    "analysis_report": {
+      "prompt_tokens": 1477,
+      "completion_tokens": 1574,
+      "total_tokens": 3051
+    },
+    "suggestion": {
+      "prompt_tokens": 1470,
+      "completion_tokens": 2048,
+      "total_tokens": 3518
+    },
+    "total": {
+      "prompt_tokens": 2947,
+      "completion_tokens": 3622,
+      "total_tokens": 6569
+    }
+  }
+}

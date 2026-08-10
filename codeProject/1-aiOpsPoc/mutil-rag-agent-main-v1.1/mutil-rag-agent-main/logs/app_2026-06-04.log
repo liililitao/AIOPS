@@ -1,0 +1,90 @@
+2026-06-04 10:52:45.511 | INFO     | - | app.logging_config:setup_logging:82 | 日志系统已初始化 | level=INFO | dir=D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\logs | debug=False
+2026-06-04 10:52:45.527 | INFO     | - | app.main:lifespan:49 | ============================================================
+2026-06-04 10:52:45.527 | INFO     | - | app.main:lifespan:50 | 启动 MultiAgentAIOps v1.0.0
+2026-06-04 10:52:45.527 | INFO     | - | app.main:lifespan:51 | 运行模式: PRODUCTION
+2026-06-04 10:52:45.527 | INFO     | - | app.main:lifespan:52 | ============================================================
+2026-06-04 10:52:45.527 | INFO     | - | app.core.milvus:connect:54 | 连接 Milvus: localhost:19530 (timeout=10.0s)
+2026-06-04 10:52:45.637 | INFO     | - | app.core.milvus:connect:63 | Milvus 连接成功 | 已有 collections: ['multi_agent_kb']
+2026-06-04 10:52:45.849 | INFO     | - | app.core.mcp_client:connect:94 | 加载 MCP 服务: ['system', 'websearch', 'winlog', 'network', 'docker']
+2026-06-04 10:52:46.260 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 7bca94d3edf242398586216ce1b29182
+2026-06-04 10:52:46.260 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-04 10:52:47.445 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: adc4825e50514af7ab54bf0dd350adc8
+2026-06-04 10:52:47.447 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-04 10:52:48.645 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 42471cc153bc4179add45cbb553a8046
+2026-06-04 10:52:48.645 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-04 10:52:49.840 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 6232ad41ef13457f964332d857866a92
+2026-06-04 10:52:49.840 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-04 10:52:51.051 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 2f0a779f6b1845e292301eba3ca3ffa3
+2026-06-04 10:52:51.051 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-04 10:52:51.841 | INFO     | - | app.core.mcp_client:connect:121 | 已加载 15 个 MCP 工具 (成功 5/5 server):
+2026-06-04 10:52:51.841 | INFO     | - | app.core.mcp_client:connect:129 |   - get_local_system_overview: 获取当前电脑的 CPU、内存、磁盘和系统基础信息。只读操作，用于本机故障诊断。
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - get_local_cpu_memory: 获取当前电脑 CPU 和内存使用情况。只读操作，用于判断本机是否存在 CPU 或内存压力。
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - get_local_disk_usage: 获取当前电脑磁盘分区使用情况。只读操作，用于排查本机磁盘空间不足。
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - list_top_processes: 列出当前电脑资源占用最高的进程。只读操作，用于定位 CPU 或内存占用来源。
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - web_search: 联网搜索互联网, 获取官方文档/技术资料/错误码说明等外部知识。仅用于 OnCall 运维诊断, 严禁用于娱乐/八卦/隐私查询; query 必须脱敏, 不能含
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - query_windows_event: 查询本机 Windows 事件日志. 用于诊断蓝屏/崩溃/服务异常等本机故障. log_name: System / Application / Securit
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - ping_host: ping 一个公网主机, 检测连通性 / 丢包率 / 延迟. host 可以是域名 (www.baidu.com) 或公网 IP. 拒绝 ping 内网地址 (
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - http_check: 对一个 HTTP/HTTPS URL 发起 GET 请求, 返回状态码 / 响应时间 / 响应头摘要. 用于检查网站/接口可用性. 默认 10s 超时, 不跟随
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - dns_lookup: 解析域名为 IP 地址 (A 记录). 支持 IPv4. 用于排查 DNS 故障.
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - check_port: 检测指定 host 的 TCP 端口是否可达. 用于排查 '服务起来了吗 / 防火墙挡了吗'. 拒绝扫描内网 IP. timeout 默认 3 秒.
+2026-06-04 10:52:51.843 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_ps: 列出本机所有 Docker 容器 (含已停止). 返回容器名 / 镜像 / 状态 / 端口映射. 用于排查某个容器是否在运行.
+2026-06-04 10:52:51.844 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_stats: 查看一个容器的实时资源占用 (CPU% / 内存使用 / 网络IO / 磁盘IO). name 为容器名 (从 docker_ps 拿到). 一次性快照, 不持
+2026-06-04 10:52:51.844 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_logs: 拉取一个容器的最近日志, 用于排查容器内应用错误. name 为容器名. tail 为返回最近多少行 (默认 50, 上限 200). since_minute
+2026-06-04 10:52:51.844 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_inspect: 查看容器的详细配置 (镜像 / 启动命令 / 挂载卷 / 网络模式 / 重启策略). 用于排查 '为什么这个容器一直重启' 等深度问题.
+2026-06-04 10:52:51.844 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_restart: 重启一个容器 (写操作). **默认禁用**, 需要在 .env 设置 DOCKER_ALLOW_RESTART=true 才能调用. 用于挂掉的容器恢复. 调
+2026-06-04 10:52:51.844 | INFO     | - | app.main:lifespan:63 | 应用就绪, 等待请求...
+2026-06-04 10:54:01.537 | INFO     | 11ff18fc1155 | app.api.v1.splunk:receive_splunk_alert:111 | [SplunkAlert] 收到告警: type=memory_high ip=192.168.1.50 severity=high
+2026-06-04 10:54:01.556 | INFO     | 11ff18fc1155 | app.agents.graph:build_aiops_graph:149 | [Graph] AIOps graph 已编译完成 (skill_router + plan-execute-replan)
+2026-06-04 10:54:01.571 | ERROR    | 11ff18fc1155 | app.skills.registry:_scan_definitions:75 | [Skill] 跳过 D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\app\skills\definitions\splunk_alert_classify\SKILL.md: frontmatter YAML 语法错误: mapping values are not allowed here
+  in "<unicode string>", line 3, column 25:
+    description: 通用 SRE 告警诊断: 接收监控系统告警 → 查CMDB确定业务归属 → 查知识库匹 ... 
+                            ^
+2026-06-04 10:54:01.571 | INFO     | 11ff18fc1155 | app.skills.registry:get_skill_registry:91 | [Skill] 已加载 4 个 Skill: ['container_diagnosis', 'generic_oncall', 'host_resource_diagnosis', 'network_diagnosis']
+2026-06-04 10:54:04.023 | INFO     | 11ff18fc1155 | app.agents.skill_router:skill_router_node:158 | [Router] 选择 Skill: host_resource_diagnosis (主机资源诊断 (CPU/内存/磁盘)) | confidence=0.95 | reason=告警涉及内存使用率过高和 OOM Kill，属于主机资源类故障
+2026-06-04 10:54:04.024 | INFO     | 11ff18fc1155 | app.agents.planner:plan_node:42 | [Planner] 开始拆分任务 (skill=host_resource_diagnosis): 收到一条告警, 请诊断:
+- 告警类型: 内存使用率过高 (memory_high)
+- 严重程度: high
+- 设备 IP: 192.168.1.50
+- 告警描述: 192.168.1.50 发...
+2026-06-04 10:54:04.734 | INFO     | 11ff18fc1155 | app.agents.planner:plan_node:84 | [Planner] 已生成 3 步计划 (skill=host_resource_diagnosis):
+2026-06-04 10:54:04.734 | INFO     | 11ff18fc1155 | app.agents.planner:plan_node:86 |   Step 1: 调用 get_local_system_overview 获取主机内存和进程占用情况
+2026-06-04 10:54:04.734 | INFO     | 11ff18fc1155 | app.agents.planner:plan_node:86 |   Step 2: 调用 list_top_processes(sort_by=memory) 查看内存占用最高的进程
+2026-06-04 10:54:04.735 | INFO     | 11ff18fc1155 | app.agents.planner:plan_node:86 |   Step 3: 汇总诊断结论, 输出根因 + 处置建议
+2026-06-04 10:54:04.736 | INFO     | 11ff18fc1155 | app.agents.executor:execute_node:102 | [Executor] 第 1 步执行: 调用 get_local_system_overview 获取主机内存和进程占用情况
+2026-06-04 10:54:04.737 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #1) type=step_start — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:04.752 | INFO     | 11ff18fc1155 | app.agents.subagents.runner:get_subagent_tools:149 | [Subagent] 已注册 3 个 delegate 工具: ['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer']
+2026-06-04 10:54:04.752 | INFO     | 11ff18fc1155 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-04 10:54:04.752 | INFO     | 11ff18fc1155 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=host_resource_diagnosis mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['check_port', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'dns_lookup', 'docker_inspect', 'docker_logs', 'docker_ps', 'docker_restart', 'docker_stats', 'http_check', 'ping_host', 'query_cmdb'] auto_readonly=['query_cmdb', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+2026-06-04 10:54:04.753 | INFO     | 11ff18fc1155 | app.agents.executor:_get_executor:67 | [Executor] 创建 Agent: skill=host_resource_diagnosis runner=parallel perm=normal tools=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer']
+2026-06-04 10:54:07.931 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #2) type=usage — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:07.931 | INFO     | 11ff18fc1155 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 1: 1 tool_calls -> 1 batches, safe_batch_sizes=[1] serial=[]
+2026-06-04 10:54:09.790 | INFO     | 11ff18fc1155 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=get_local_system_overview safe=True read_only=True elapsed=1859ms result_chars=404
+2026-06-04 10:54:09.790 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #3) type=tool_call — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:16.334 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #4) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:16.337 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #5) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:17.261 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #20) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:18.578 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #40) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:19.886 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #60) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:20.987 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #80) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:22.141 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #100) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:22.174 | INFO     | 11ff18fc1155 | app.agents.executor:execute_node:170 | [Executor] 完成: ## 步骤 1 结果：本机系统概览  | 指标 | 数值 | 状态 | |---|---|---| | CPU 使用率 | 3.5% (24核/32线程) | ✅ 正常 | | 内存使用率 | **8...
+2026-06-04 10:54:22.176 | INFO     | 11ff18fc1155 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 1 步, iteration=1, 剩余 2 步, reroute_count=0
+2026-06-04 10:54:22.177 | INFO     | 11ff18fc1155 | app.agents.replanner:replan_node:227 | [Replanner] Harness 快路径: fast_path, 剩余 2 步
+2026-06-04 10:54:22.178 | INFO     | 11ff18fc1155 | app.agents.executor:execute_node:102 | [Executor] 第 2 步执行: 调用 list_top_processes(sort_by=memory) 查看内存占用最高的进程
+2026-06-04 10:54:22.178 | INFO     | 11ff18fc1155 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-04 10:54:22.180 | INFO     | 11ff18fc1155 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=host_resource_diagnosis mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['check_port', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'dns_lookup', 'docker_inspect', 'docker_logs', 'docker_ps', 'docker_restart', 'docker_stats', 'http_check', 'ping_host', 'query_cmdb'] auto_readonly=['query_cmdb', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+2026-06-04 10:54:24.680 | INFO     | 11ff18fc1155 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 1: 1 tool_calls -> 1 batches, safe_batch_sizes=[1] serial=[]
+2026-06-04 10:54:25.784 | INFO     | 11ff18fc1155 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=list_top_processes safe=True read_only=True elapsed=1103ms result_chars=1329
+2026-06-04 10:54:51.721 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #120) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:53.003 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #140) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:54.262 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #160) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:55.585 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #180) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:56.727 | WARNING  | 11ff18fc1155 | app.agents.stream_sink:emit:53 | [stream_sink] ⚠ sink=None (miss #200) type=step_token — ContextVar 没跨 LangGraph 任务传过来
+2026-06-04 10:54:56.905 | INFO     | 11ff18fc1155 | app.agents.executor:execute_node:170 | [Executor] 完成: **关键指标总结**：内存占用最高的进程为 `vmmemWSL`（WSL2 虚拟机），独占约 6.8 GB 物理内存（占比 20.99%）。紧随其后的是 `pycharm64.exe`（约 3.2 G...
+2026-06-04 10:54:56.908 | INFO     | 11ff18fc1155 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 2 步, iteration=2, 剩余 1 步, reroute_count=0
+2026-06-04 10:55:21.951 | INFO     | 11ff18fc1155 | app.agents.replanner:_synthesize_final_report:95 | [Report] 用 qwen3.6-plus 合成最终报告, len=1762 (草稿 len=702)
+2026-06-04 10:55:21.952 | INFO     | 11ff18fc1155 | app.agents.replanner:replan_node:371 | [Replanner] 决策: 生成最终报告 (len=1809)
+2026-06-04 10:55:21.953 | INFO     | 11ff18fc1155 | app.agents.graph:should_end:64 | [Graph] 收到 response, 流程结束
+2026-06-04 10:55:21.955 | INFO     | 11ff18fc1155 | app.api.middleware:dispatch:61 | POST /api/v1/splunk/alert -> 200 (80420.5ms)
+2026-06-04 10:55:22.010 | INFO     | 11ff18fc1155 | app.services.splunk_forwarder:forward_to_splunk:124 | [SplunkForwarder] 已写入: alert=memory_high risk=3 priority=中
+2026-06-04 10:55:22.010 | INFO     | 11ff18fc1155 | app.api.v1.splunk:_safe_forward:151 | [SplunkAlert] 已写入 Splunk

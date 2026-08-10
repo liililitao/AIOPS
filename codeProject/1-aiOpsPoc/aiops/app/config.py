@@ -50,6 +50,34 @@ class Settings(BaseSettings):
     ALERT_OUTPUT_DIR: str = "../带风险等级的告警数据"
     PROCESSED_INDEX_PATH: str = "data/processed_alerts.json"
 
+    # Splunk 真实告警数据源
+    SPLUNK_ENABLED: bool = False
+    SPLUNK_BASE_URL: str = ""  # 例如 https://splunk.example.com:8089
+    SPLUNK_TOKEN: str = ""     # 仅使用具备 search 权限的 Splunk token
+    SPLUNK_VERIFY_TLS: bool = True
+    SPLUNK_ALERT_INDEX: str = "waflogalert"
+    # 留空时使用 SPLUNK_ALERT_INDEX 查询；可配置完整 SPL 以适配其他告警格式。
+    SPLUNK_ALERT_QUERY: str = ""
+    SPLUNK_ALERT_EARLIEST_TIME: str = "-24h@h"
+    SPLUNK_ALERT_LATEST_TIME: str = "now"
+    SPLUNK_ALERT_MAX_RESULTS: int = 500
+    SPLUNK_TIMEOUT_SECONDS: int = 20
+
+    # ==========================================
+    # Splunk 跳转认证与应用告警权限
+    # ==========================================
+    # 开启后仅允许通过带 HMAC 签名的 Splunk 跳转链接进入页面。
+    AIOPS_AUTH_ENABLED: bool = False
+    AIOPS_HANDOFF_SECRET: str = ""  # 必须与 Splunk aiopssignurl 使用的密钥相同
+    AIOPS_SESSION_SECRET: str = ""  # 仅本服务使用，用于签名浏览器会话
+    AIOPS_HANDOFF_MAX_TTL_SECONDS: int = 120
+    AIOPS_HANDOFF_CLOCK_SKEW_SECONDS: int = 5
+    AIOPS_HANDOFF_NONCE_DB: str = "data/handoff_nonces.sqlite3"
+    AIOPS_SESSION_HOURS: int = 8
+    AIOPS_COOKIE_SECURE: bool = False
+    # 默认复用项目已有的 user_application_permissions SQLite 数据库。
+    AIOPS_AUTHZ_DB: str = ""
+
     # ==========================================
     # CMDB 数据源
     # ==========================================
@@ -149,6 +177,22 @@ class Settings(BaseSettings):
         return path.resolve()
 
     @property
+    def handoff_nonce_db_path(self) -> Path:
+        path = Path(self.AIOPS_HANDOFF_NONCE_DB)
+        if not path.is_absolute():
+            path = self.project_root / path
+        return path.resolve()
+
+    @property
+    def authorization_db_path(self) -> Path:
+        if self.AIOPS_AUTHZ_DB:
+            path = Path(self.AIOPS_AUTHZ_DB)
+            if not path.is_absolute():
+                path = self.project_root / path
+            return path.resolve()
+        return (self.project_root.parent / "gateway" / "data" / "aiops_authorization.sqlite3").resolve()
+
+    @property
     def reports_path(self) -> Path:
         """分析报告输出目录"""
         path = Path(self.OUTPUT_REPORTS_DIR)
@@ -177,6 +221,18 @@ class Settings(BaseSettings):
             warnings.append(
                 f"告警输入目录不存在: {self.alert_input_path}，将自动创建"
             )
+        if self.SPLUNK_ENABLED:
+            if not self.SPLUNK_BASE_URL:
+                warnings.append("SPLUNK_ENABLED=true，但 SPLUNK_BASE_URL 未配置")
+            if not self.SPLUNK_TOKEN:
+                warnings.append("SPLUNK_ENABLED=true，但 SPLUNK_TOKEN 未配置")
+        if self.AIOPS_AUTH_ENABLED:
+            if len(self.AIOPS_HANDOFF_SECRET.encode("utf-8")) < 32:
+                warnings.append("AIOPS_AUTH_ENABLED=true，但 AIOPS_HANDOFF_SECRET 无效")
+            if len(self.AIOPS_SESSION_SECRET.encode("utf-8")) < 32:
+                warnings.append("AIOPS_AUTH_ENABLED=true，但 AIOPS_SESSION_SECRET 无效")
+            if not self.authorization_db_path.exists():
+                warnings.append(f"告警权限数据库不存在: {self.authorization_db_path}")
         return warnings
 
 

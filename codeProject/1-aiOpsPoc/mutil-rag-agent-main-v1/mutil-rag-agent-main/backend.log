@@ -1,0 +1,354 @@
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=7, microseconds=401689), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='logging_config.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\logging_config.py'), 'function': 'setup_logging', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 82, 'message': '\u65e5\u5fd7\u7cfb\u7edf\u5df2\u521d\u59cb\u5316 | level=INFO | dir=C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\logs | debug=False', 'module': 'logging_config', 'name': 'app.logging_config', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 10, 59, 66460, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 79-86: character maps to <undefined>
+--- End of logging error ---
+INFO:     Started server process [12184]
+INFO:     Waiting for application startup.
+[milvus-lite] started at http://127.0.0.1:57676 (port=57676)
+[gateway] Starting FastAPI on port 9900...
+[gateway] MILVUS_HOST=127.0.0.1 MILVUS_PORT=57676
+2026-07-24 12:10:59.088 | INFO     | - | app.main:lifespan:51 | ============================================================
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=7, microseconds=424134), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='main.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\main.py'), 'function': 'lifespan', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 52, 'message': '\u542f\u52a8 MultiAgentAIOps v1.0.0', 'module': 'main', 'name': 'app.main', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 10, 59, 88905, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 64-65: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=7, microseconds=424831), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='main.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\main.py'), 'function': 'lifespan', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 53, 'message': '\u8fd0\u884c\u6a21\u5f0f: PRODUCTION', 'module': 'main', 'name': 'app.main', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 10, 59, 89602, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 64-67: character maps to <undefined>
+--- End of logging error ---
+2026-07-24 12:10:59.090 | INFO     | - | app.main:lifespan:54 | ============================================================
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=7, microseconds=425616), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='milvus.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\milvus.py'), 'function': 'connect', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 54, 'message': '\u8fde\u63a5 Milvus: 127.0.0.1:57676 (timeout=10.0s)', 'module': 'milvus', 'name': 'app.core.milvus', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 10, 59, 90387, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 70-71: character maps to <undefined>
+--- End of logging error ---
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\milvus.py:56: PyMilvusDeprecationWarning: `connections.connect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.connect(
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\milvus.py:118: PyMilvusDeprecationWarning: `utility.list_collections` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  return utility.list_collections(using=self.DEFAULT_ALIAS)
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=7, microseconds=435863), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='milvus.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\milvus.py'), 'function': 'connect', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 63, 'message': 'Milvus \u8fde\u63a5\u6210\u529f | \u5df2\u6709 collections: []', 'module': 'milvus', 'name': 'app.core.milvus', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 10, 59, 100634, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 77-80: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=8, microseconds=267889), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': 'connect', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 94, 'message': "\u52a0\u8f7d MCP \u670d\u52a1: ['system', 'websearch', 'winlog', 'network', 'docker']", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 10, 59, 932660, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 74-75: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=13, microseconds=422642), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': '_load_one', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 165, 'message': "MCP 'system' \u52a0\u8f7d\u5931\u8d25 (\u5df2\u91cd\u8bd5 1 \u6b21): ConnectError: All connection attempts failed", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 5, 87413, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 90-93: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=18, microseconds=571635), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': '_load_one', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 165, 'message': "MCP 'websearch' \u52a0\u8f7d\u5931\u8d25 (\u5df2\u91cd\u8bd5 1 \u6b21): ConnectError: All connection attempts failed", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 10, 236406, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 93-96: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=23, microseconds=723179), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': '_load_one', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 165, 'message': "MCP 'winlog' \u52a0\u8f7d\u5931\u8d25 (\u5df2\u91cd\u8bd5 1 \u6b21): ConnectError: All connection attempts failed", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 15, 387950, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 90-93: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=28, microseconds=876651), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': '_load_one', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 165, 'message': "MCP 'network' \u52a0\u8f7d\u5931\u8d25 (\u5df2\u91cd\u8bd5 1 \u6b21): ConnectError: All connection attempts failed", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 20, 541422, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 91-94: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=34, microseconds=25684), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': '_load_one', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 165, 'message': "MCP 'docker' \u52a0\u8f7d\u5931\u8d25 (\u5df2\u91cd\u8bd5 1 \u6b21): ConnectError: All connection attempts failed", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 25, 690455, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 90-93: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=34, microseconds=28071), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='mcp_client.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\mcp_client.py'), 'function': 'connect', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 133, 'message': "\u672a\u52a0\u8f7d\u5230\u4efb\u4f55 MCP \u5de5\u5177 (\u5931\u8d25 server: ['system', 'websearch', 'winlog', 'network', 'docker']), \u5e94\u7528\u4ee5\u65e0 MCP \u5de5\u5177\u6a21\u5f0f\u7ee7\u7eed\u8fd0\u884c", 'module': 'mcp_client', 'name': 'app.core.mcp_client', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 25, 692842, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 75-80: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=34, microseconds=30185), 'exception': None, 'extra': {'request_id': '-'}, 'file': (name='main.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\main.py'), 'function': 'lifespan', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 71, 'message': '\u5e94\u7528\u5c31\u7eea, \u7b49\u5f85\u8bf7\u6c42...', 'module': 'main', 'name': 'app.main', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 11, 25, 694956, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 64-67: character maps to <undefined>
+--- End of logging error ---
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9900 (Press CTRL+C to quit)
+I0724 04:12:19.231667   17944 chttp2_transport.cc:1393] ipv4:127.0.0.1:57676: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11}
+E0724 04:12:19.231867   17944 chttp2_transport.cc:1425] ipv4:127.0.0.1:57676: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms
+2026-07-24 12:12:34.524 | INFO     | 25a351203721 | app.api.middleware:dispatch:61 | GET /health/ready -> 404 (3.9ms)
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\milvus.py:101: PyMilvusDeprecationWarning: `connections.get_connection_addr` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  addr = connections.get_connection_addr(self.DEFAULT_ALIAS)
+2026-07-24 12:12:46.984 | INFO     | 503671262eb4 | app.api.middleware:dispatch:61 | GET /api/v1/health/ready -> 200 (14.6ms)
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=359, microseconds=583533), 'exception': None, 'extra': {'request_id': '19bd13f01da2'}, 'file': (name='document_service.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\services\\document_service.py'), 'function': 'upload_document', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 50, 'message': '[document] \u6536\u5230\u4e0a\u4f20: test_kb.md (589 bytes)', 'module': 'document_service', 'name': 'app.services.document_service', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 16, 51, 248304, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 114-117: character maps to <undefined>
+--- End of logging error ---
+2026-07-24 12:16:51.251 | INFO     | 19bd13f01da2 | app.core.splitter:split_markdown:203 | [splitter] test_kb.md: sections=4 parents=4 children=4
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\vector_store.py:53: PyMilvusDeprecationWarning: `connections.list_connections` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  if internal_alias not in [c[0] for c in connections.list_connections()]:
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\vector_store.py:54: PyMilvusDeprecationWarning: `connections.connect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.connect(alias=internal_alias, uri=uri)
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=359, microseconds=597868), 'exception': None, 'extra': {'request_id': '19bd13f01da2'}, 'file': (name='vector_store.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\vector_store.py'), 'function': 'get_vector_store', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 56, 'message': '\u521b\u5efa VectorStore: collection=multi_agent_kb, uri=http://127.0.0.1:57676, alias=cm-2090181644752', 'module': 'vector_store', 'name': 'app.core.vector_store', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 16, 51, 262639, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 96-97: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=359, microseconds=598587), 'exception': None, 'extra': {'request_id': '19bd13f01da2'}, 'file': (name='embedding.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\embedding.py'), 'function': 'get_embeddings', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 97, 'message': '\u521b\u5efa Ollama Embedding \u5ba2\u6237\u7aef: model=bge-m3, dim=1024, base_url=http://localhost:11434', 'module': 'embedding', 'name': 'app.core.embedding', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 16, 51, 263358, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 91-92: character maps to <undefined>
+--- End of logging error ---
+2026-07-24 12:16:57.671 | ERROR    | - | grpc._server:_call_behavior:636 | Exception calling application: Method not implemented!
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1044, in _bootstrap
+    self._bootstrap_inner()
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1082, in _bootstrap_inner
+    self._context.run(self.run)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\threading.py", line 1024, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 119, in _worker
+    work_item.run(ctx)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\grpc\_server.py", line 788, in _unary_response_in_pool
+    response, proceed = _call_behavior(
+> File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\grpc\_server.py", line 608, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\pymilvus\grpc_gen\milvus_pb2_grpc.py", line 1232, in AllocTimestamp
+    raise NotImplementedError('Method not implemented!')
+NotImplementedError: Method not implemented!
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=366, microseconds=596385), 'exception': None, 'extra': {'request_id': '19bd13f01da2'}, 'file': (name='document_service.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\services\\document_service.py'), 'function': 'upload_document', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 65, 'message': '[document] test_kb.md: \u7d22\u5f15 4 \u4e2a chunk', 'module': 'document_service', 'name': 'app.services.document_service', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 16, 58, 261156, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 126-127: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=366, microseconds=602524), 'exception': None, 'extra': {'request_id': '19bd13f01da2'}, 'file': (name='hybrid_retriever.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\hybrid_retriever.py'), 'function': '<module>', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[hybrid] rank_bm25 \u672a\u5b89\u88c5, Hybrid Search \u5c06\u81ea\u52a8\u964d\u7ea7\u5230\u7eaf\u5411\u91cf. \u5b89\u88c5: pip install rank_bm25>=0.2.2', 'module': 'hybrid_retriever', 'name': 'app.core.hybrid_retriever', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 16, 58, 267295, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\hybrid_retriever.py", line 50, in <module>
+    from rank_bm25 import BM25Okapi
+ModuleNotFoundError: No module named 'rank_bm25'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 111-113: character maps to <undefined>
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=366, microseconds=605509), 'exception': None, 'extra': {'request_id': '19bd13f01da2'}, 'file': (name='hybrid_retriever.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\core\\hybrid_retriever.py'), 'function': 'refresh_bm25_index', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 182, 'message': '[hybrid] rank_bm25 \u672a\u5b89\u88c5, \u8df3\u8fc7 refresh', 'module': 'hybrid_retriever', 'name': 'app.core.hybrid_retriever', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 16, 58, 270280, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 122-124: character maps to <undefined>
+--- End of logging error ---
+2026-07-24 12:16:58.271 | INFO     | 19bd13f01da2 | app.api.middleware:dispatch:61 | POST /api/v1/documents/upload -> 200 (7029.2ms)
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\core\milvus.py:127: PyMilvusDeprecationWarning: `utility.has_collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  return utility.has_collection(collection_name=col, using=self.DEFAULT_ALIAS)
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\services\document_service.py:95: PyMilvusDeprecationWarning: `Collection` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  col = Collection(settings.milvus_collection)
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\services\document_service.py:96: PyMilvusDeprecationWarning: `Collection.load` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  col.load()
+C:\Users\JHGZ\Desktop\aiops\codeProject\1-aiOpsPoc\mutil-rag-agent-main-v1\mutil-rag-agent-main\app\services\document_service.py:100: PyMilvusDeprecationWarning: `Collection.query` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  results = col.query(
+2026-07-24 12:17:03.620 | INFO     | b5d2378c823f | app.api.middleware:dispatch:61 | GET /api/v1/documents -> 200 (49.4ms)
+2026-07-24 12:17:51.531 | INFO     | ed8c0c6baf7d | app.api.middleware:dispatch:61 | GET / -> 200 (58.6ms)
+2026-07-24 12:17:51.567 | INFO     | d195208f2998 | app.api.middleware:dispatch:61 | GET /styles.css -> 200 (2.7ms)
+2026-07-24 12:17:51.569 | INFO     | 180b686f7e6c | app.api.middleware:dispatch:61 | GET /app.js -> 200 (3.6ms)
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=420, microseconds=312462), 'exception': None, 'extra': {'request_id': '5719d99235d5'}, 'file': (name='registry.py', path='C:\\Users\\JHGZ\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\mutil-rag-agent-main-v1\\mutil-rag-agent-main\\app\\skills\\registry.py'), 'function': 'get_skill_registry', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 167, 'message': "[Skill] \u5df2\u52a0\u8f7d 4 \u4e2a Skill: ['container_diagnosis', 'generic_oncall', 'host_resource_diagnosis', 'network_diagnosis']", 'module': 'registry', 'name': 'app.skills.registry', 'process': (id=12184, name='MainProcess'), 'thread': (id=20292, name='MainThread'), 'time': datetime(2026, 7, 24, 12, 17, 51, 977233, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '??????'))}
+Traceback (most recent call last):
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\JHGZ\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 105-107: character maps to <undefined>
+--- End of logging error ---
+2026-07-24 12:17:51.978 | INFO     | ab583c829810 | app.api.middleware:dispatch:61 | GET /api/v1/health/ready -> 200 (14.5ms)
+2026-07-24 12:17:51.979 | INFO     | 5719d99235d5 | app.api.middleware:dispatch:61 | GET /api/v1/skills -> 200 (14.7ms)
+2026-07-24 12:17:52.093 | INFO     | 26f721a56547 | app.api.middleware:dispatch:61 | GET /favicon.ico -> 404 (4.1ms)
+2026-07-24 12:17:56.116 | INFO     | d2259b5af08d | app.api.middleware:dispatch:61 | GET /api/v1/approvals/pending -> 200 (4136.8ms)
+2026-07-24 12:17:57.276 | INFO     | a4a0f77c90d4 | app.api.middleware:dispatch:61 | GET /api/v1/documents -> 200 (17.0ms)
+2026-07-24 12:17:57.318 | INFO     | b8998df5d0eb | app.api.middleware:dispatch:61 | GET /api/v1/eval/reports -> 200 (39.9ms)
+2026-07-24 12:18:06.057 | INFO     | 327d8d2a234e | app.api.middleware:dispatch:61 | GET /api/v1/approvals/pending -> 200 (4075.6ms)
+I0724 04:20:07.988413    9952 chttp2_transport.cc:1393] ipv4:127.0.0.1:57676: Got goaway [11] err=UNAVAILABLE:GOAWAY received; Error code: 11; Debug Text: too_many_pings {http2_error:11}
+E0724 04:20:07.988715    9952 chttp2_transport.cc:1425] ipv4:127.0.0.1:57676: Received a GOAWAY with error code ENHANCE_YOUR_CALM and debug data equal to "too_many_pings". Current keepalive time (before throttling): 10000ms

@@ -1,0 +1,381 @@
+2026-06-05 15:50:27.943 | INFO     | - | app.logging_config:setup_logging:82 | 日志系统已初始化 | level=INFO | dir=D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\logs | debug=False
+INFO:     Started server process [32012]
+INFO:     Waiting for application startup.
+2026-06-05 15:50:27.960 | INFO     | - | app.main:lifespan:49 | ============================================================
+2026-06-05 15:50:27.960 | INFO     | - | app.main:lifespan:50 | 启动 MultiAgentAIOps v1.0.0
+2026-06-05 15:50:27.960 | INFO     | - | app.main:lifespan:51 | 运行模式: PRODUCTION
+2026-06-05 15:50:27.960 | INFO     | - | app.main:lifespan:52 | ============================================================
+2026-06-05 15:50:27.960 | INFO     | - | app.core.milvus:connect:54 | 连接 Milvus: localhost:19530 (timeout=10.0s)
+D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\app\core\milvus.py:56: PyMilvusDeprecationWarning: `connections.connect` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  connections.connect(
+D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\app\core\milvus.py:118: PyMilvusDeprecationWarning: `utility.list_collections` is an ORM-style PyMilvus API and will be removed in PyMilvus 3.1. Use `MilvusClient` instead.
+  return utility.list_collections(using=self.DEFAULT_ALIAS)
+2026-06-05 15:50:28.041 | INFO     | - | app.core.milvus:connect:63 | Milvus 连接成功 | 已有 collections: ['multi_agent_kb']
+2026-06-05 15:50:28.300 | INFO     | - | app.core.mcp_client:connect:94 | 加载 MCP 服务: ['system', 'websearch', 'winlog', 'network', 'docker']
+2026-06-05 15:50:28.719 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: d6d3e698b68e43faa4a0b9666e8937d2
+2026-06-05 15:50:28.722 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:50:29.996 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 1f124b136673441a878de5dc337a5d3e
+2026-06-05 15:50:30.000 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:50:31.210 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 709130e2c428455cbc426e2a1bdb2913
+2026-06-05 15:50:31.238 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:50:32.047 | INFO     | - | mcp.client.streamable_http:handle_get_stream:298 | GET stream disconnected, reconnecting in 1000ms...
+2026-06-05 15:50:32.497 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 0b846e4eb60242309d59268e89fa58d3
+2026-06-05 15:50:32.498 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:50:33.775 | INFO     | - | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 66557de4b8d84a599211495f030365b2
+2026-06-05 15:50:33.776 | INFO     | - | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:50:34.567 | INFO     | - | app.core.mcp_client:connect:121 | 已加载 15 个 MCP 工具 (成功 5/5 server):
+2026-06-05 15:50:34.568 | INFO     | - | app.core.mcp_client:connect:129 |   - get_local_system_overview: 获取当前电脑的 CPU、内存、磁盘和系统基础信息。只读操作，用于本机故障诊断。
+2026-06-05 15:50:34.569 | INFO     | - | app.core.mcp_client:connect:129 |   - get_local_cpu_memory: 获取当前电脑 CPU 和内存使用情况。只读操作，用于判断本机是否存在 CPU 或内存压力。
+2026-06-05 15:50:34.570 | INFO     | - | app.core.mcp_client:connect:129 |   - get_local_disk_usage: 获取当前电脑磁盘分区使用情况。只读操作，用于排查本机磁盘空间不足。
+2026-06-05 15:50:34.570 | INFO     | - | app.core.mcp_client:connect:129 |   - list_top_processes: 列出当前电脑资源占用最高的进程。只读操作，用于定位 CPU 或内存占用来源。
+2026-06-05 15:50:34.570 | INFO     | - | app.core.mcp_client:connect:129 |   - web_search: 联网搜索互联网, 获取官方文档/技术资料/错误码说明等外部知识。仅用于 OnCall 运维诊断, 严禁用于娱乐/八卦/隐私查询; query 必须脱敏, 不能含
+2026-06-05 15:50:34.570 | INFO     | - | app.core.mcp_client:connect:129 |   - query_windows_event: 查询本机 Windows 事件日志. 用于诊断蓝屏/崩溃/服务异常等本机故障. log_name: System / Application / Securit
+2026-06-05 15:50:34.570 | INFO     | - | app.core.mcp_client:connect:129 |   - ping_host: ping 一个公网主机, 检测连通性 / 丢包率 / 延迟. host 可以是域名 (www.baidu.com) 或公网 IP. 拒绝 ping 内网地址 (
+2026-06-05 15:50:34.570 | INFO     | - | app.core.mcp_client:connect:129 |   - http_check: 对一个 HTTP/HTTPS URL 发起 GET 请求, 返回状态码 / 响应时间 / 响应头摘要. 用于检查网站/接口可用性. 默认 10s 超时, 不跟随
+2026-06-05 15:50:34.571 | INFO     | - | app.core.mcp_client:connect:129 |   - dns_lookup: 解析域名为 IP 地址 (A 记录). 支持 IPv4. 用于排查 DNS 故障.
+2026-06-05 15:50:34.571 | INFO     | - | app.core.mcp_client:connect:129 |   - check_port: 检测指定 host 的 TCP 端口是否可达. 用于排查 '服务起来了吗 / 防火墙挡了吗'. 拒绝扫描内网 IP. timeout 默认 3 秒.
+2026-06-05 15:50:34.571 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_ps: 列出本机所有 Docker 容器 (含已停止). 返回容器名 / 镜像 / 状态 / 端口映射. 用于排查某个容器是否在运行.
+2026-06-05 15:50:34.571 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_stats: 查看一个容器的实时资源占用 (CPU% / 内存使用 / 网络IO / 磁盘IO). name 为容器名 (从 docker_ps 拿到). 一次性快照, 不持
+2026-06-05 15:50:34.571 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_logs: 拉取一个容器的最近日志, 用于排查容器内应用错误. name 为容器名. tail 为返回最近多少行 (默认 50, 上限 200). since_minute
+2026-06-05 15:50:34.572 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_inspect: 查看容器的详细配置 (镜像 / 启动命令 / 挂载卷 / 网络模式 / 重启策略). 用于排查 '为什么这个容器一直重启' 等深度问题.
+2026-06-05 15:50:34.572 | INFO     | - | app.core.mcp_client:connect:129 |   - docker_restart: 重启一个容器 (写操作). **默认禁用**, 需要在 .env 设置 DOCKER_ALLOW_RESTART=true 才能调用. 用于挂掉的容器恢复. 调
+2026-06-05 15:50:34.572 | INFO     | - | app.main:lifespan:63 | 应用就绪, 等待请求...
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:9900 (Press CTRL+C to quit)
+2026-06-05 15:50:53.161 | INFO     | 0c8b9086a4b7 | app.api.v1.splunk:receive_splunk_alert:111 | [SplunkAlert] 收到告警: type=service_500 ip=10.0.2.11 severity=high
+2026-06-05 15:50:53.209 | INFO     | 0c8b9086a4b7 | app.agents.graph:build_aiops_graph:149 | [Graph] AIOps graph 已编译完成 (skill_router + plan-execute-replan)
+2026-06-05 15:50:53.238 | ERROR    | 0c8b9086a4b7 | app.skills.registry:_scan_definitions:75 | [Skill] 跳过 D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\app\skills\definitions\splunk_alert_classify\SKILL.md: frontmatter YAML 语法错误: mapping values are not allowed here
+  in "<unicode string>", line 3, column 25:
+    description: 通用 SRE 告警诊断: 接收监控系统告警 → 查CMDB确定业务归属 → 查知识库匹 ... 
+                            ^
+2026-06-05 15:50:53.238 | INFO     | 0c8b9086a4b7 | app.skills.registry:get_skill_registry:91 | [Skill] 已加载 4 个 Skill: ['container_diagnosis', 'generic_oncall', 'host_resource_diagnosis', 'network_diagnosis']
+2026-06-05 15:50:56.410 | INFO     | 0c8b9086a4b7 | app.agents.skill_router:skill_router_node:158 | [Router] 选择 Skill: generic_oncall (通用 OnCall 兜底排查) | confidence=0.8 | reason=用户输入涉及服务5xx错误，属于运维诊断范围，但未明确指向具体故障类型，因此选择通用OnCall兜底排查
+2026-06-05 15:50:56.413 | INFO     | 0c8b9086a4b7 | app.agents.planner:plan_node:42 | [Planner] 开始拆分任务 (skill=generic_oncall): 收到一条告警, 请诊断:
+- 告警类型: 服务 5xx 错误 (service_500)
+- 严重程度: high
+- 设备 IP: 10.0.2.11
+- 告警描述: 10.0.2.11 服务 us...
+2026-06-05 15:50:57.173 | ERROR    | 0c8b9086a4b7 | app.agents.planner:plan_node:65 | [Planner] 结构化输出失败, 使用 fallback 计划: 1 validation error for Plan
+  Input should be a valid dictionary or instance of Plan [type=model_type, input_value=['收集关键证据: 使...根因 + 处置建议'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/model_type
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\click\core.py", line 1524, in __call__
+    return self.main(*args, **kwargs)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\click\core.py", line 1445, in main
+    rv = self.invoke(ctx)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\click\core.py", line 1308, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\click\core.py", line 877, in invoke
+    return callback(*args, **kwargs)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 441, in main
+    run(
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 620, in run
+    server.run()
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1987, in _run_once
+    handle._run()
+  File "C:\Users\bohejie\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 501, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+> File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\app\agents\planner.py", line 57, in plan_node
+    plan = await ainvoke_structured(
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\app\core\structured.py", line 87, in ainvoke_structured
+    obj = schema_cls.model_validate(data)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\pydantic\main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Plan
+  Input should be a valid dictionary or instance of Plan [type=model_type, input_value=['收集关键证据: 使...根因 + 处置建议'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/model_type
+2026-06-05 15:50:57.184 | WARNING  | 0c8b9086a4b7 | app.agents.planner:plan_node:66 | [transition] node=planner reason=planner_llm_failed detail=ValidationError: 1 validation error for Plan
+  Input should be a valid dictionary or instance of Plan [type=model_type, input_value=['收集关键证据: 使...根因 + 处置建议'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/model_type
+2026-06-05 15:50:57.185 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:102 | [Executor] 第 1 步执行: 查询知识库, 寻找类似问题的处理经验
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=31, microseconds=592530), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #1) type=step_start — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 50, 57, 186628, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:50:57.197 | INFO     | 0c8b9086a4b7 | app.agents.subagents.runner:get_subagent_tools:149 | [Subagent] 已注册 3 个 delegate 工具: ['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer']
+2026-06-05 15:50:57.198 | INFO     | 0c8b9086a4b7 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-05 15:50:57.199 | INFO     | 0c8b9086a4b7 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=generic_oncall mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'docker_restart', 'query_cmdb'] auto_readonly=['query_cmdb', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+2026-06-05 15:50:57.199 | INFO     | 0c8b9086a4b7 | app.agents.executor:_get_executor:67 | [Executor] 创建 Agent: skill=generic_oncall runner=parallel perm=normal tools=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer']
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=47, microseconds=161311), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #2) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 12, 755409, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=47, microseconds=166907), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #3) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 12, 761005, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=47, microseconds=267786), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #4) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 12, 861884, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=47, microseconds=283704), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #5) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 12, 877802, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=48, microseconds=121431), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #20) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 13, 715529, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:51:14.101 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:170 | [Executor] 完成: 请提供具体的**故障现象、告警标题、错误码或相关服务名称**（例如："MySQL 主从延迟告警"、"Nginx 502 错误"、"CPU 100% 排查"等）。  收到具体信息后，我将立即调用知识库检...
+2026-06-05 15:51:14.103 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 1 步, iteration=1, 剩余 1 步, reroute_count=0
+2026-06-05 15:51:14.909 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:395 | [Replanner] 决策: 继续执行 2 步
+2026-06-05 15:51:14.910 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:397 |   剩余步骤 1: 查询服务日志，分析 500 错误的具体原因
+2026-06-05 15:51:14.910 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:397 |   剩余步骤 2: 检查服务依赖的数据库或接口是否正常
+2026-06-05 15:51:14.914 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:102 | [Executor] 第 2 步执行: 查询服务日志，分析 500 错误的具体原因
+2026-06-05 15:51:14.915 | INFO     | 0c8b9086a4b7 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-05 15:51:14.917 | INFO     | 0c8b9086a4b7 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=generic_oncall mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'docker_restart', 'query_cmdb'] auto_readonly=['query_cmdb', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+2026-06-05 15:51:19.709 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 1: 1 tool_calls -> 1 batches, safe_batch_sizes=[1] serial=[]
+2026-06-05 15:51:20.523 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: d2d428e26ff94dcdbca784b95efcb8ac
+2026-06-05 15:51:20.524 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:22.444 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_ps safe=True read_only=True elapsed=2734ms result_chars=1821
+2026-06-05 15:51:25.458 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 2: 1 tool_calls -> 1 batches, safe_batch_sizes=[1] serial=[]
+2026-06-05 15:51:26.251 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 67e5fd764011470e8ef2eb49f62ca72b
+2026-06-05 15:51:26.253 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:27.397 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_logs safe=True read_only=True elapsed=1939ms result_chars=4218
+2026-06-05 15:51:30.327 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 3: 1 tool_calls -> 1 batches, safe_batch_sizes=[1] serial=[]
+2026-06-05 15:51:31.048 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 9f6aef6dcb80432c8022abd1c665a0d7
+2026-06-05 15:51:31.049 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:32.251 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_logs safe=True read_only=True elapsed=1923ms result_chars=4223
+2026-06-05 15:51:34.729 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 4: 1 tool_calls -> 1 batches, safe_batch_sizes=[1] serial=[]
+2026-06-05 15:51:35.504 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: a8aeb4030fc94694b5c6822250ece542
+2026-06-05 15:51:35.505 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:36.703 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_logs safe=True read_only=True elapsed=1973ms result_chars=4179
+2026-06-05 15:51:36.703 | WARNING  | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:393 | [ParallelAgent] 达到 max_iters=4, 强制退出 loop. 最后一条 AIMessage 可能仍有 pending tool_calls.
+2026-06-05 15:51:36.704 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:170 | [Executor] 完成: [{'type': 'text', 'text': '## docker logs docker-worker-1 (tail=100)\n\n```\n...(已截断, 仅显示最后 4000 字符)...
+2026-06-05 15:51:36.707 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 2 步, iteration=2, 剩余 1 步, reroute_count=0
+2026-06-05 15:51:37.344 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:395 | [Replanner] 决策: 继续执行 1 步
+2026-06-05 15:51:37.344 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:397 |   剩余步骤 1: 检查服务依赖的数据库或接口是否正常
+2026-06-05 15:51:37.347 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:102 | [Executor] 第 3 步执行: 检查服务依赖的数据库或接口是否正常
+2026-06-05 15:51:37.349 | INFO     | 0c8b9086a4b7 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-05 15:51:37.349 | INFO     | 0c8b9086a4b7 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=generic_oncall mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'docker_restart', 'query_cmdb'] auto_readonly=['query_cmdb', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=76, microseconds=141709), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #40) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 41, 735807, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:51:42.601 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 1: 2 tool_calls -> 1 batches, safe_batch_sizes=[2] serial=[]
+2026-06-05 15:51:43.351 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 602ebc399df64b9eb789df27d0315a8f
+2026-06-05 15:51:43.352 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:44.926 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=get_local_system_overview safe=True read_only=True elapsed=2322ms result_chars=404
+2026-06-05 15:51:45.952 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_ps safe=True read_only=True elapsed=3349ms result_chars=1821
+2026-06-05 15:51:45.952 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:381 | [ParallelAgent] parallel batch (2) done in 3350ms: ['docker_ps', 'get_local_system_overview']
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=83, microseconds=805895), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #60) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 51, 49, 399993, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:51:53.656 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 2: 5 tool_calls -> 1 batches, safe_batch_sizes=[5] serial=[]
+2026-06-05 15:51:56.248 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 5b33e3cdd85a4ad793a64f3e7cb632eb
+2026-06-05 15:51:56.251 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 8debfedf12da49029f91a4948adfdc3b
+2026-06-05 15:51:56.252 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 3bc02a5537f245d9bf03b41022a7624d
+2026-06-05 15:51:56.253 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:56.253 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:56.254 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:56.255 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 4296301b23a647d19d0c413dd0961121
+2026-06-05 15:51:56.256 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 191c1ebffcff4771b91fa88abb245b59
+2026-06-05 15:51:56.258 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:56.259 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:51:58.058 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:handle_get_stream:298 | GET stream disconnected, reconnecting in 1000ms...
+2026-06-05 15:51:58.064 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:handle_get_stream:298 | GET stream disconnected, reconnecting in 1000ms...
+2026-06-05 15:51:58.065 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=check_port safe=True read_only=True elapsed=4407ms result_chars=109
+2026-06-05 15:51:58.067 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=check_port safe=True read_only=True elapsed=4410ms result_chars=109
+2026-06-05 15:51:58.067 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=http_check safe=True read_only=True elapsed=4409ms result_chars=118
+2026-06-05 15:51:58.068 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=check_port safe=True read_only=True elapsed=4411ms result_chars=109
+2026-06-05 15:51:58.069 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=check_port safe=True read_only=True elapsed=4412ms result_chars=109
+2026-06-05 15:51:58.070 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:381 | [ParallelAgent] parallel batch (5) done in 4414ms: ['check_port', 'check_port', 'check_port', 'check_port', 'http_check']
+2026-06-05 15:52:02.903 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 3: 6 tool_calls -> 1 batches, safe_batch_sizes=[6] serial=[]
+2026-06-05 15:52:06.273 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 0f129798f25c45f097c99bcb38032ecf
+2026-06-05 15:52:06.274 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:06.275 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 6b6777c95015454387eb6ea5e82f8f29
+2026-06-05 15:52:06.275 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:06.278 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 83d3f1d9617f42b5846759bf6d4beef1
+2026-06-05 15:52:06.279 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:06.280 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: eb17b82ae74842d7855d5721526af06c
+2026-06-05 15:52:06.282 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:06.284 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: b5ad3c2cc5c84de3862f35e2ce2bfd13
+2026-06-05 15:52:06.285 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:06.289 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 7a8fdb3b7c6c4b038c42283363b74aaa
+2026-06-05 15:52:06.294 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:08.478 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_stats safe=True read_only=True elapsed=5575ms result_chars=218
+2026-06-05 15:52:09.553 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:handle_get_stream:298 | GET stream disconnected, reconnecting in 1000ms...
+2026-06-05 15:52:09.555 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_stats safe=True read_only=True elapsed=6651ms result_chars=216
+2026-06-05 15:52:09.619 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:handle_get_stream:298 | GET stream disconnected, reconnecting in 1000ms...
+2026-06-05 15:52:09.628 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_stats safe=True read_only=True elapsed=6723ms result_chars=212
+2026-06-05 15:52:09.630 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_stats safe=True read_only=True elapsed=6724ms result_chars=211
+2026-06-05 15:52:09.631 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_stats safe=True read_only=True elapsed=6726ms result_chars=210
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=104, microseconds=37120), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #80) type=tool_call — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 9, 631218, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:52:09.633 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_stats safe=True read_only=True elapsed=6729ms result_chars=209
+2026-06-05 15:52:09.634 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:381 | [ParallelAgent] parallel batch (6) done in 6730ms: ['docker_stats', 'docker_stats', 'docker_stats', 'docker_stats', 'docker_stats', 'docker_stats']
+2026-06-05 15:52:12.851 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 4: 3 tool_calls -> 1 batches, safe_batch_sizes=[3] serial=[]
+2026-06-05 15:52:14.501 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: e655d4c878b940b5bf59de0cff08026b
+2026-06-05 15:52:14.502 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:14.507 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: be3eca048630435fbd4ed1aa56b0e06a
+2026-06-05 15:52:14.508 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:14.511 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_session_id_from_response:181 | Received session ID: 2d60483cf27342a08ac455bc961fe99c
+2026-06-05 15:52:14.513 | INFO     | 0c8b9086a4b7 | mcp.client.streamable_http:_maybe_extract_protocol_version_from_message:193 | Negotiated protocol version: 2025-11-25
+2026-06-05 15:52:15.724 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_logs safe=True read_only=True elapsed=2873ms result_chars=1750
+2026-06-05 15:52:15.726 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_logs safe=True read_only=True elapsed=2873ms result_chars=1159
+2026-06-05 15:52:15.728 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=docker_logs safe=True read_only=True elapsed=2876ms result_chars=2070
+2026-06-05 15:52:15.728 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:381 | [ParallelAgent] parallel batch (3) done in 2878ms: ['docker_logs', 'docker_logs', 'docker_logs']
+2026-06-05 15:52:15.728 | WARNING  | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:393 | [ParallelAgent] 达到 max_iters=4, 强制退出 loop. 最后一条 AIMessage 可能仍有 pending tool_calls.
+2026-06-05 15:52:15.730 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:170 | [Executor] 完成: [{'type': 'text', 'text': '## docker logs docker-redis-1 (tail=15)\n\n```\n1:M 05 Jun 2026 07:39:10....
+2026-06-05 15:52:15.731 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 3 步, iteration=3, 剩余 0 步, reroute_count=0
+2026-06-05 15:52:16.392 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:395 | [Replanner] 决策: 继续执行 2 步
+2026-06-05 15:52:16.394 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:397 |   剩余步骤 1: 检查服务的 CPU、内存和磁盘使用情况
+2026-06-05 15:52:16.394 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:397 |   剩余步骤 2: 检查服务的网络连接状态
+2026-06-05 15:52:16.398 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:102 | [Executor] 第 4 步执行: 检查服务的 CPU、内存和磁盘使用情况
+2026-06-05 15:52:16.398 | INFO     | 0c8b9086a4b7 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-05 15:52:16.399 | INFO     | 0c8b9086a4b7 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=generic_oncall mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'docker_restart', 'query_cmdb'] auto_readonly=['query_cmdb', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+2026-06-05 15:52:19.723 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:365 | [ParallelAgent] round 1: 2 tool_calls -> 1 batches, safe_batch_sizes=[2] serial=[]
+2026-06-05 15:52:19.727 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=get_local_disk_usage safe=True read_only=True elapsed=4ms result_chars=273
+2026-06-05 15:52:20.727 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:_safe_invoke_tool:154 | [ParallelAgent] tool=get_local_cpu_memory safe=True read_only=True elapsed=1003ms result_chars=266
+2026-06-05 15:52:20.727 | INFO     | 0c8b9086a4b7 | app.runtime.tool_runner:run_parallel_agent:381 | [ParallelAgent] parallel batch (2) done in 1004ms: ['get_local_cpu_memory', 'get_local_disk_usage']
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=119, microseconds=119011), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #100) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 24, 713109, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=120, microseconds=431449), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #120) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 26, 25547, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=121, microseconds=726458), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #140) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 27, 320556, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=123, microseconds=17352), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #160) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 28, 611450, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=124, microseconds=168386), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #180) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 29, 762484, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=124, microseconds=737081), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='executor.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\executor.py'), 'function': 'execute_node', 'level': (name='INFO', no=20, icon='\u2139\ufe0f'), 'line': 170, 'message': '[Executor] 完成: ## 本机资源使用情况总结  | 指标 | 当前值 | 状态评估 | |---|---|---| | **CPU 使用率** | 4.3% | \u2705 正常，无压力 | | **内存使用率** | 81....', 'module': 'executor', 'name': 'app.agents.executor', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 30, 331179, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u2705' in position 178: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:52:30.337 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 4 步, iteration=4, 剩余 1 步, reroute_count=0
+2026-06-05 15:52:31.094 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:395 | [Replanner] 决策: 继续执行 1 步
+2026-06-05 15:52:31.094 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:397 |   剩余步骤 1: 检查服务的网络连接状态
+2026-06-05 15:52:31.097 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:102 | [Executor] 第 5 步执行: 检查服务的网络连接状态
+2026-06-05 15:52:31.097 | INFO     | 0c8b9086a4b7 | app.tools.mcp_loader:get_all_tools:85 | 工具集合: 本地=7 + MCP=15 + Subagent=3 -> 去重后 21 个
+2026-06-05 15:52:31.098 | INFO     | 0c8b9086a4b7 | app.runtime.tool_filter:filter_tools_for_skill:152 | [Harness] Skill=generic_oncall mode=normal risk=low visible=['search_knowledge_base', 'get_current_time', 'get_local_system_overview', 'get_local_cpu_memory', 'get_local_disk_usage', 'list_top_processes', 'query_cmdb', 'web_search', 'query_windows_event', 'ping_host', 'http_check', 'dns_lookup', 'check_port', 'docker_ps', 'docker_stats', 'docker_logs', 'docker_inspect', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] deny=[] ask=[] skill_filtered=['delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer', 'docker_restart', 'query_cmdb'] auto_readonly=['query_cmdb', 'delegate_to_evidence_collector', 'delegate_to_kb_researcher', 'delegate_to_report_writer'] enabled_risks={'search_knowledge_base': 'low', 'get_current_time': 'low', 'get_local_system_overview': 'low', 'get_local_cpu_memory': 'low', 'get_local_disk_usage': 'low', 'list_top_processes': 'low', 'query_cmdb': 'low', 'web_search': 'medium', 'query_windows_event': 'low', 'ping_host': 'low', 'http_check': 'low', 'dns_lookup': 'low', 'check_port': 'low', 'docker_ps': 'low', 'docker_stats': 'low', 'docker_logs': 'low', 'docker_inspect': 'low', 'delegate_to_evidence_collector': 'low', 'delegate_to_kb_researcher': 'medium', 'delegate_to_report_writer': 'low'} mcp_lazy=False
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=130, microseconds=896816), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #200) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 36, 490914, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+--- Logging error in Loguru Handler #1 ---
+Record was: {'elapsed': datetime.timedelta(seconds=131, microseconds=869151), 'exception': None, 'extra': {'request_id': '0c8b9086a4b7'}, 'file': (name='stream_sink.py', path='D:\\Code\\Code_Project\\pycharmProject\\复现测试\\6-找工作学习\\4-自己找的项目\\mutil-rag-agent-main\\app\\agents\\stream_sink.py'), 'function': 'emit', 'level': (name='WARNING', no=30, icon='\u26a0\ufe0f'), 'line': 53, 'message': '[stream_sink] \u26a0 sink=None (miss #220) type=step_token — ContextVar 没跨 LangGraph 任务传过来', 'module': 'stream_sink', 'name': 'app.agents.stream_sink', 'process': (id=32012, name='MainProcess'), 'thread': (id=25524, name='MainThread'), 'time': datetime(2026, 6, 5, 15, 52, 37, 463249, tzinfo=datetime.timezone(datetime.timedelta(seconds=28800), '中国标准时间'))}
+Traceback (most recent call last):
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_handler.py", line 206, in emit
+    self._sink.write(str_record)
+  File "D:\Code\Code_Project\pycharmProject\复现测试\6-找工作学习\4-自己找的项目\mutil-rag-agent-main\.venv\Lib\site-packages\loguru\_simple_sinks.py", line 16, in write
+    self._stream.write(message)
+UnicodeEncodeError: 'gbk' codec can't encode character '\u26a0' in position 99: illegal multibyte sequence
+--- End of logging error ---
+2026-06-05 15:52:38.087 | INFO     | 0c8b9086a4b7 | app.agents.executor:execute_node:170 | [Executor] 完成: 我需要更多信息才能执行网络连接检查。请提供以下信息：  1. **目标服务地址**：需要检查的 IP 地址或域名是什么？（例如 `10.0.1.101` 或 `api.example.com`） 2....
+2026-06-05 15:52:38.089 | INFO     | 0c8b9086a4b7 | app.agents.replanner:replan_node:218 | [Replanner] 评估进度: 已执行 5 步, iteration=5, 剩余 0 步, reroute_count=0
+2026-06-05 15:52:38.090 | WARNING  | 0c8b9086a4b7 | app.agents.replanner:replan_node:244 | [Replanner] Harness 强制收敛: max_steps_reached
+2026-06-05 15:52:38.091 | INFO     | 0c8b9086a4b7 | app.agents.graph:should_end:64 | [Graph] 收到 response, 流程结束
+2026-06-05 15:52:38.097 | INFO     | 0c8b9086a4b7 | app.api.middleware:dispatch:61 | POST /api/v1/splunk/alert -> 200 (104938.4ms)
+2026-06-05 15:52:38.160 | INFO     | 0c8b9086a4b7 | app.services.splunk_forwarder:forward_to_splunk:124 | [SplunkForwarder] 已写入: alert=service_500 risk=3 priority=中
+2026-06-05 15:52:38.161 | INFO     | 0c8b9086a4b7 | app.api.v1.splunk:_safe_forward:151 | [SplunkAlert] 已写入 Splunk

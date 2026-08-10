@@ -1,0 +1,22 @@
+{
+  "alert_name": "test-waf",
+  "trigger_time": "2026-07-13T14:54:37.031+08:00",
+  "trigger_time_utc": "2026-07-13T06:54:37.031Z",
+  "event_count": 1,
+  "trigger_reason": "Saved Search [test-waf] always(1)",
+  "splunk_url": "http://vm-cdcshared-tst-spl9forwarder:8000/app/search/search?q=%7Cloadjob%20rt_scheduler__adminjhgz__search__RMD55e6c7c059c57a98f_at_1783564199_1802.32%20%7C%20head%201%20%7C%20tail%201&earliest=0&latest=now",
+  "search_terms": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+  "full_spl": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+  "results": [
+    {
+      "id": "AGW-DAP-PRD-N3-01",
+      "properties_hostname": "purview.novonordiskchina.com.cn",
+      "properties_requestUri": "/.env.production.local /api/.env /app/.env /app/config/parameters.yml /apps/.env /backend/.env /crm/.env /docker/app/.env /env.backup /env/.env /js/.env /laravel/core/.env /mail/.env /mailer/.env /main/.env /portal/.env /website/.env",
+      "properties_action": "Blocked",
+      "count": "20",
+      "__mv_properties_requestUri": "$/.env.production.local$;$/api/.env$;$/app/.env$;$/app/config/parameters.yml$;$/apps/.env$;$/backend/.env$;$/crm/.env$;$/docker/app/.env$;$/env.backup$;$/env/.env$;$/js/.env$;$/laravel/core/.env$;$/mail/.env$;$/mailer/.env$;$/main/.env$;$/portal/.env$;$/website/.env$"
+    }
+  ],
+  "operator_notes": "",
+  "risk_level": "高"
+}

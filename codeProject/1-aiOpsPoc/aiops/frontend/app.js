@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initDetailTabs();
     initKnowledgeBase();
-    loadAlerts();
+    loadAlerts({ sync: true });
     loadConfig();
     pollSchedulerStatus();
 });
@@ -39,7 +39,7 @@ function initNavigation() {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(`tab-${tabName}`).classList.add('active');
             // 加载数据
-            if (tabName === 'results') loadAlerts();
+            if (tabName === 'results') loadAlerts({ sync: true });
             if (tabName === 'kbchat') loadKBStats();
             if (tabName === 'knowledge') loadDocs();
             if (tabName === 'config') loadConfig();
@@ -47,7 +47,7 @@ function initNavigation() {
     });
 
     // 刷新按钮
-    document.getElementById('btn-refresh')?.addEventListener('click', loadAlerts);
+    document.getElementById('btn-refresh')?.addEventListener('click', refreshAlerts);
     document.getElementById('btn-scan-now')?.addEventListener('click', triggerScan);
 
     // 筛选
@@ -72,19 +72,51 @@ function initDetailTabs() {
 // ==========================================
 // 加载告警列表
 // ==========================================
-async function loadAlerts() {
+async function loadAlerts({ sync = false } = {}) {
     const listEl = document.getElementById('alert-list');
     listEl.innerHTML = '<div class="loading"><div class="spinner"></div> 加载中...</div>';
+    let syncError = null;
 
     try {
+        if (sync) {
+            try {
+                const syncRes = await fetch('/api/v1/alerts/sync', { method: 'POST' });
+                if (!syncRes.ok) {
+                    const error = await syncRes.json().catch(() => ({}));
+                    throw new Error(error.detail || `同步失败（HTTP ${syncRes.status}）`);
+                }
+            } catch (err) {
+                // 同步失败时仍展示最近一次成功同步的缓存和本地告警。
+                syncError = err;
+                console.error('Splunk 告警同步失败:', err);
+            }
+        }
         const res = await fetch('/api/v1/alerts');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         state.alerts = data.alerts || [];
         renderAlertList();
+        return { syncError };
     } catch (err) {
         console.error('加载告警列表失败:', err);
         listEl.innerHTML = '<div class="empty-state">加载失败，请确认后端服务已启动</div>';
+    }
+}
+
+async function refreshAlerts() {
+    const btn = document.getElementById('btn-refresh');
+    if (!btn) return;
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳ 同步中...';
+    try {
+        const result = await loadAlerts({ sync: true });
+        if (result?.syncError) {
+            alert(`Splunk 同步失败，已显示最近一次成功同步的数据：${result.syncError.message}`);
+        }
+    } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
     }
 }
 
@@ -357,9 +389,11 @@ async function triggerScan() {
     btn.textContent = '⏳ 扫描中...';
     try {
         const res = await fetch('/api/v1/scheduler/scan', { method: 'POST' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
+        if (data.status !== 'ok') throw new Error(data.message || '扫描失败');
         alert(data.message || '扫描已触发');
-        setTimeout(loadAlerts, 3000);
+        await loadAlerts();
     } catch (err) {
         alert('触发扫描失败: ' + err.message);
     } finally {

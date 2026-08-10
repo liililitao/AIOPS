@@ -1,0 +1,3 @@
+_time,initial,query,result
+2026-07-30T16:25:44.280+08:00,lisi,UPDATE users SET password=? WHERE id=?,failed
+2026-07-30T16:25:44.280+08:00,lisi,SELECT * FROM users WHERE id=?,failed

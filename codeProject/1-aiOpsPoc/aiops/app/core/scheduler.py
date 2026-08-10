@@ -84,6 +84,10 @@ def get_scheduler_status() -> dict:
 async def trigger_scan() -> dict:
     """手动触发一次扫描（同步等待完成）"""
     try:
+        from app.services.splunk_alert_service import sync_remote_alerts
+
+        # 同步 Splunk 后，继续执行原有本地告警目录扫描。
+        await sync_remote_alerts()
         await _scan_job()
         return {"status": "ok", "message": "扫描已完成"}
     except Exception as e:
