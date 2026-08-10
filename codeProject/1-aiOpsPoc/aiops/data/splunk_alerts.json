@@ -1,12 +1,13 @@
 {
   "source": "splunk",
-  "synced_at": "2026-08-07T02:39:45.709484+00:00",
+  "synced_at": "2026-08-10T07:40:13.574056+00:00",
   "query": "search index=waflogalert | sort 0 - _time | head 1000",
   "alerts": [
     {
       "id": "splunk_8e5297cc31e7fa43df461120",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-30T16:44:02.098+08:00",
       "trigger_time_utc": "2026-07-30T08:44:02.098Z",
       "event_count": 1,
@@ -33,14 +34,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_00d5723174d6b39a4cc7f873",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:23:41.189+08:00",
       "trigger_time_utc": "2026-07-14T09:23:41.189Z",
       "event_count": 1,
@@ -67,14 +69,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4232dfa6f085f050a1f7e65f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:22:33.432+08:00",
       "trigger_time_utc": "2026-07-14T09:22:33.432Z",
       "event_count": 1,
@@ -101,14 +104,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_57f7f24b85111940f4ceeaef",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:21:22.422+08:00",
       "trigger_time_utc": "2026-07-14T09:21:22.422Z",
       "event_count": 1,
@@ -135,14 +139,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8307d220aa833deda5724833",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:20:26.149+08:00",
       "trigger_time_utc": "2026-07-14T09:20:26.149Z",
       "event_count": 1,
@@ -169,14 +174,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9959ed6182604b90cb480836",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:19:15.064+08:00",
       "trigger_time_utc": "2026-07-14T09:19:15.064Z",
       "event_count": 1,
@@ -203,14 +209,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3a9cba0751214f06b3adb97f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:18:13.722+08:00",
       "trigger_time_utc": "2026-07-14T09:18:13.722Z",
       "event_count": 1,
@@ -237,14 +244,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_af5502249d3106af0927eec4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:17:08.545+08:00",
       "trigger_time_utc": "2026-07-14T09:17:08.545Z",
       "event_count": 1,
@@ -271,14 +279,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_694b57a14e7aba58ce722a3d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:15:51.782+08:00",
       "trigger_time_utc": "2026-07-14T09:15:51.782Z",
       "event_count": 1,
@@ -305,14 +314,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_80b2ea935e3baccfc48d4b98",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:14:44.388+08:00",
       "trigger_time_utc": "2026-07-14T09:14:44.388Z",
       "event_count": 1,
@@ -339,14 +349,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b43ec6e720fd68cbed23ac63",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:13:32.927+08:00",
       "trigger_time_utc": "2026-07-14T09:13:32.927Z",
       "event_count": 1,
@@ -373,14 +384,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d3e9f823ea22e52c24a7fd6c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:12:18.838+08:00",
       "trigger_time_utc": "2026-07-14T09:12:18.838Z",
       "event_count": 1,
@@ -407,14 +419,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f615eaa2a9d3b67d95a9bab7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:11:04.748+08:00",
       "trigger_time_utc": "2026-07-14T09:11:04.748Z",
       "event_count": 1,
@@ -441,14 +454,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_713655d1b7b7b5da307d6149",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:09:59.773+08:00",
       "trigger_time_utc": "2026-07-14T09:09:59.773Z",
       "event_count": 1,
@@ -475,14 +489,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5d4d00a31b188582ba0cf512",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:08:52.109+08:00",
       "trigger_time_utc": "2026-07-14T09:08:52.109Z",
       "event_count": 1,
@@ -509,14 +524,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_bc378cb82607d527d764ec1a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:07:34.652+08:00",
       "trigger_time_utc": "2026-07-14T09:07:34.652Z",
       "event_count": 1,
@@ -543,14 +559,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7f0c3a57fffeef56c7eac4d7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:06:26.147+08:00",
       "trigger_time_utc": "2026-07-14T09:06:26.147Z",
       "event_count": 1,
@@ -577,14 +594,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_74880c23ab5b5803e3556a98",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:05:20.759+08:00",
       "trigger_time_utc": "2026-07-14T09:05:20.759Z",
       "event_count": 1,
@@ -611,14 +629,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f8ce4b78992da82f9312e8a8",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:04:04.107+08:00",
       "trigger_time_utc": "2026-07-14T09:04:04.107Z",
       "event_count": 1,
@@ -645,14 +664,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7d9251cc80b42bfe539406a9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:02:52.834+08:00",
       "trigger_time_utc": "2026-07-14T09:02:52.834Z",
       "event_count": 1,
@@ -679,14 +699,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_14da165f162c5ce570058bd5",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:01:47.602+08:00",
       "trigger_time_utc": "2026-07-14T09:01:47.602Z",
       "event_count": 1,
@@ -713,14 +734,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3cabf36808db080e8a3ee538",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T17:00:30.264+08:00",
       "trigger_time_utc": "2026-07-14T09:00:30.264Z",
       "event_count": 1,
@@ -747,14 +769,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a90d34245f9a63cf84e8f91f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:59:16.974+08:00",
       "trigger_time_utc": "2026-07-14T08:59:16.974Z",
       "event_count": 1,
@@ -781,14 +804,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5c037e3f7aad454a9a75c353",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:58:09.104+08:00",
       "trigger_time_utc": "2026-07-14T08:58:09.104Z",
       "event_count": 1,
@@ -815,14 +839,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_95d960ed09ec08234d49936d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:56:55.748+08:00",
       "trigger_time_utc": "2026-07-14T08:56:55.749Z",
       "event_count": 1,
@@ -849,14 +874,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_198ec811e68bd6ee3e036b1c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:55:55.828+08:00",
       "trigger_time_utc": "2026-07-14T08:55:55.828Z",
       "event_count": 1,
@@ -883,14 +909,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8a0ee3980e26ed72062a04b6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:54:59.732+08:00",
       "trigger_time_utc": "2026-07-14T08:54:59.732Z",
       "event_count": 1,
@@ -917,14 +944,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d032f28dc1b696629f317f71",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:54:02.651+08:00",
       "trigger_time_utc": "2026-07-14T08:54:02.651Z",
       "event_count": 1,
@@ -951,14 +979,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c0ce185d1af655fa52c0d92a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:48:39.981+08:00",
       "trigger_time_utc": "2026-07-14T08:48:39.981Z",
       "event_count": 1,
@@ -985,14 +1014,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5726aa6e0a0ebf3fde9d1839",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:47:34.697+08:00",
       "trigger_time_utc": "2026-07-14T08:47:34.697Z",
       "event_count": 1,
@@ -1019,14 +1049,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7a66491dd7d41b7c95e5be4f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:46:20.595+08:00",
       "trigger_time_utc": "2026-07-14T08:46:20.595Z",
       "event_count": 1,
@@ -1053,14 +1084,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ce0f76f3453bb3096e5bd129",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:45:11.888+08:00",
       "trigger_time_utc": "2026-07-14T08:45:11.888Z",
       "event_count": 1,
@@ -1087,14 +1119,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_60a39d2e0129da9aa2176cce",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:44:09.235+08:00",
       "trigger_time_utc": "2026-07-14T08:44:09.235Z",
       "event_count": 1,
@@ -1121,14 +1154,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_aa2ab7b563dee0b197bc8cce",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:43:07.248+08:00",
       "trigger_time_utc": "2026-07-14T08:43:07.248Z",
       "event_count": 1,
@@ -1155,14 +1189,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_648ef9dbf80e59358e56328b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:41:50.307+08:00",
       "trigger_time_utc": "2026-07-14T08:41:50.307Z",
       "event_count": 1,
@@ -1189,14 +1224,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_15386b02ebe92b4ba06507c4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:40:39.912+08:00",
       "trigger_time_utc": "2026-07-14T08:40:39.912Z",
       "event_count": 1,
@@ -1223,14 +1259,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_1421962da37b63a79ec4d16c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:39:43.595+08:00",
       "trigger_time_utc": "2026-07-14T08:39:43.595Z",
       "event_count": 1,
@@ -1257,14 +1294,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_37f4f3a966c3f0e6d4ee88bd",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:38:32.298+08:00",
       "trigger_time_utc": "2026-07-14T08:38:32.298Z",
       "event_count": 1,
@@ -1291,14 +1329,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7e3a61cd01ef05c4f6372d25",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:37:18.265+08:00",
       "trigger_time_utc": "2026-07-14T08:37:18.265Z",
       "event_count": 1,
@@ -1325,14 +1364,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7b765508a3e0c4f7d7c51959",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:36:16.518+08:00",
       "trigger_time_utc": "2026-07-14T08:36:16.518Z",
       "event_count": 1,
@@ -1359,14 +1399,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b2ab0bf6a5a55273b978c4b6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:34:59.270+08:00",
       "trigger_time_utc": "2026-07-14T08:34:59.270Z",
       "event_count": 1,
@@ -1393,14 +1434,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3b9b91750ef1b90662ec15aa",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:33:51.045+08:00",
       "trigger_time_utc": "2026-07-14T08:33:51.045Z",
       "event_count": 1,
@@ -1427,14 +1469,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_2f092a3e734d5b96553d86bf",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:32:54.860+08:00",
       "trigger_time_utc": "2026-07-14T08:32:54.860Z",
       "event_count": 1,
@@ -1461,14 +1504,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_afef433ec81e4f0bd27d4b9b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:31:55.594+08:00",
       "trigger_time_utc": "2026-07-14T08:31:55.594Z",
       "event_count": 1,
@@ -1495,14 +1539,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a36aa76d6eea38bf2be2e48b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:30:44.622+08:00",
       "trigger_time_utc": "2026-07-14T08:30:44.622Z",
       "event_count": 1,
@@ -1529,14 +1574,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_12991f7907c262cfa8aaad19",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:29:33.592+08:00",
       "trigger_time_utc": "2026-07-14T08:29:33.592Z",
       "event_count": 1,
@@ -1563,14 +1609,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_22de4cefcf10d044dcda92f4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:28:14.084+08:00",
       "trigger_time_utc": "2026-07-14T08:28:14.084Z",
       "event_count": 1,
@@ -1597,14 +1644,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_090c234d8e58bf3603a7cb76",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:27:08.738+08:00",
       "trigger_time_utc": "2026-07-14T08:27:08.738Z",
       "event_count": 1,
@@ -1631,14 +1679,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_2afd7de933d39088aeed6a70",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:25:54.875+08:00",
       "trigger_time_utc": "2026-07-14T08:25:54.875Z",
       "event_count": 1,
@@ -1665,14 +1714,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3c0439702c7ce56a9b892af4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:24:40.791+08:00",
       "trigger_time_utc": "2026-07-14T08:24:40.791Z",
       "event_count": 1,
@@ -1699,14 +1749,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8ae6e2612055a4e319a531f0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:23:35.602+08:00",
       "trigger_time_utc": "2026-07-14T08:23:35.602Z",
       "event_count": 1,
@@ -1733,14 +1784,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_84edc35bca4e1e0065859aca",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:22:20.949+08:00",
       "trigger_time_utc": "2026-07-14T08:22:20.949Z",
       "event_count": 1,
@@ -1767,14 +1819,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8da9123e9074c584f6bbaa81",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:21:24.672+08:00",
       "trigger_time_utc": "2026-07-14T08:21:24.672Z",
       "event_count": 1,
@@ -1801,14 +1854,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_0251cd29588ccb09a48a5c82",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:20:10.946+08:00",
       "trigger_time_utc": "2026-07-14T08:20:10.946Z",
       "event_count": 1,
@@ -1835,14 +1889,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_6fb69abd95ec022afc14c319",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:19:08.190+08:00",
       "trigger_time_utc": "2026-07-14T08:19:08.190Z",
       "event_count": 1,
@@ -1869,14 +1924,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_26a6d14fa8d09d9cba7a1ee9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:17:54.047+08:00",
       "trigger_time_utc": "2026-07-14T08:17:54.047Z",
       "event_count": 1,
@@ -1903,14 +1959,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ccd1ee5c445ced00fbccebad",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:16:58.226+08:00",
       "trigger_time_utc": "2026-07-14T08:16:58.226Z",
       "event_count": 1,
@@ -1937,14 +1994,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_fb03af8fe4dd6d586836aa95",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:15:44.087+08:00",
       "trigger_time_utc": "2026-07-14T08:15:44.087Z",
       "event_count": 1,
@@ -1971,14 +2029,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9c62111dc19db709cd1950c3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:14:26.775+08:00",
       "trigger_time_utc": "2026-07-14T08:14:26.775Z",
       "event_count": 1,
@@ -2005,14 +2064,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d5988c608896caf6cfd3248f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:13:13.661+08:00",
       "trigger_time_utc": "2026-07-14T08:13:13.662Z",
       "event_count": 1,
@@ -2039,14 +2099,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8eb2fc7ebfbee715154305a3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:11:59.138+08:00",
       "trigger_time_utc": "2026-07-14T08:11:59.138Z",
       "event_count": 1,
@@ -2073,14 +2134,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9897042604ec3a8837d21821",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:10:59.425+08:00",
       "trigger_time_utc": "2026-07-14T08:10:59.425Z",
       "event_count": 1,
@@ -2107,14 +2169,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_125b0d1c2d24013ba67a5749",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:09:51.173+08:00",
       "trigger_time_utc": "2026-07-14T08:09:51.173Z",
       "event_count": 1,
@@ -2141,14 +2204,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_cbc708af960560b57ac76747",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:08:37.816+08:00",
       "trigger_time_utc": "2026-07-14T08:08:37.816Z",
       "event_count": 1,
@@ -2175,14 +2239,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_af882841616137a75303efb6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:07:23.696+08:00",
       "trigger_time_utc": "2026-07-14T08:07:23.696Z",
       "event_count": 1,
@@ -2209,14 +2274,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_85f554e88688e358cd25a415",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:06:32.815+08:00",
       "trigger_time_utc": "2026-07-14T08:06:32.815Z",
       "event_count": 1,
@@ -2243,14 +2309,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e34d93db8857bf36a8afd4b5",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:05:16.333+08:00",
       "trigger_time_utc": "2026-07-14T08:05:16.333Z",
       "event_count": 1,
@@ -2277,14 +2344,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_6c171ccacf47e12ef46e99af",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:04:14.142+08:00",
       "trigger_time_utc": "2026-07-14T08:04:14.142Z",
       "event_count": 1,
@@ -2311,14 +2379,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_26195e1b067b2504f1550730",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:03:06.112+08:00",
       "trigger_time_utc": "2026-07-14T08:03:06.112Z",
       "event_count": 1,
@@ -2345,14 +2414,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3b8564ccc19b26cb89c06276",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:01:55.368+08:00",
       "trigger_time_utc": "2026-07-14T08:01:55.368Z",
       "event_count": 1,
@@ -2379,14 +2449,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ba979d0865cfa26a316d0a9b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T16:00:59.396+08:00",
       "trigger_time_utc": "2026-07-14T08:00:59.396Z",
       "event_count": 1,
@@ -2413,14 +2484,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_eb88383eb4b1d53761185de7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:59:45.453+08:00",
       "trigger_time_utc": "2026-07-14T07:59:45.453Z",
       "event_count": 1,
@@ -2447,14 +2519,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_19d38d512c8bdb64519d182a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:58:49.339+08:00",
       "trigger_time_utc": "2026-07-14T07:58:49.339Z",
       "event_count": 1,
@@ -2481,14 +2554,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_44e938116822ef3a819829b4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:57:38.118+08:00",
       "trigger_time_utc": "2026-07-14T07:57:38.118Z",
       "event_count": 1,
@@ -2515,14 +2589,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_2c44dbad96b44671f96a10ac",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:56:32.731+08:00",
       "trigger_time_utc": "2026-07-14T07:56:32.731Z",
       "event_count": 1,
@@ -2549,14 +2624,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f5da8d9e5415287c21e60148",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:55:18.886+08:00",
       "trigger_time_utc": "2026-07-14T07:55:18.886Z",
       "event_count": 1,
@@ -2583,14 +2659,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a8127251d2793c40b7fb68d3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:54:04.363+08:00",
       "trigger_time_utc": "2026-07-14T07:54:04.363Z",
       "event_count": 1,
@@ -2617,14 +2694,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4715bd8f9bafc7ff5d95af66",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:52:47.785+08:00",
       "trigger_time_utc": "2026-07-14T07:52:47.785Z",
       "event_count": 1,
@@ -2651,14 +2729,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_45876e09f2a8201f93e777ba",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:51:30.892+08:00",
       "trigger_time_utc": "2026-07-14T07:51:30.892Z",
       "event_count": 1,
@@ -2685,14 +2764,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a5987185f9d9a5bb189fca31",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:50:16.734+08:00",
       "trigger_time_utc": "2026-07-14T07:50:16.734Z",
       "event_count": 1,
@@ -2719,14 +2799,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4bdaa786b5374fc9c9012da1",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:49:09.607+08:00",
       "trigger_time_utc": "2026-07-14T07:49:09.607Z",
       "event_count": 1,
@@ -2753,14 +2834,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_649693ba41952e070aada242",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:47:53.416+08:00",
       "trigger_time_utc": "2026-07-14T07:47:53.416Z",
       "event_count": 1,
@@ -2787,14 +2869,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9c49e5cea81084c254286851",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:46:41.853+08:00",
       "trigger_time_utc": "2026-07-14T07:46:41.853Z",
       "event_count": 1,
@@ -2821,14 +2904,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_86cdb15c204bcc2712ea016e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:45:25.699+08:00",
       "trigger_time_utc": "2026-07-14T07:45:25.699Z",
       "event_count": 1,
@@ -2855,14 +2939,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_419560d597a6babf5beb770d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:44:23.670+08:00",
       "trigger_time_utc": "2026-07-14T07:44:23.670Z",
       "event_count": 1,
@@ -2889,14 +2974,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d79b44ef770e9434713a8d11",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:43:06.534+08:00",
       "trigger_time_utc": "2026-07-14T07:43:06.534Z",
       "event_count": 1,
@@ -2923,14 +3009,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a466b34bddaa6c4e3afb3bb6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:41:46.942+08:00",
       "trigger_time_utc": "2026-07-14T07:41:46.942Z",
       "event_count": 1,
@@ -2957,14 +3044,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9bdd808196da146c4cc2567c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:40:38.325+08:00",
       "trigger_time_utc": "2026-07-14T07:40:38.325Z",
       "event_count": 1,
@@ -2991,14 +3079,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4f0daa87eaf4ffb77cf64357",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:39:20.929+08:00",
       "trigger_time_utc": "2026-07-14T07:39:20.929Z",
       "event_count": 1,
@@ -3025,14 +3114,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5c2080729974952d13c72135",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:38:20.922+08:00",
       "trigger_time_utc": "2026-07-14T07:38:20.922Z",
       "event_count": 1,
@@ -3059,14 +3149,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8f8e22a7b73fd7d10e502879",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:37:06.046+08:00",
       "trigger_time_utc": "2026-07-14T07:37:06.046Z",
       "event_count": 1,
@@ -3093,14 +3184,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_659d4e31e588d0279417b4b7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:36:07.097+08:00",
       "trigger_time_utc": "2026-07-14T07:36:07.097Z",
       "event_count": 1,
@@ -3127,14 +3219,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c440401d9180b2662741dab3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:35:04.572+08:00",
       "trigger_time_utc": "2026-07-14T07:35:04.572Z",
       "event_count": 1,
@@ -3161,14 +3254,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d2c4e31a743b13314e2cf072",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:33:59.474+08:00",
       "trigger_time_utc": "2026-07-14T07:33:59.474Z",
       "event_count": 1,
@@ -3195,14 +3289,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_71f05d0ac247ea7b77909cb9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:32:45.924+08:00",
       "trigger_time_utc": "2026-07-14T07:32:45.924Z",
       "event_count": 1,
@@ -3229,14 +3324,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e7c36a464c6bee0364940a2f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:31:34.579+08:00",
       "trigger_time_utc": "2026-07-14T07:31:34.579Z",
       "event_count": 1,
@@ -3263,14 +3359,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a76538ff921f5bc67374fcef",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:30:26.465+08:00",
       "trigger_time_utc": "2026-07-14T07:30:26.465Z",
       "event_count": 1,
@@ -3297,14 +3394,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_64a315ae2de67f3ff92c05aa",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:29:18.015+08:00",
       "trigger_time_utc": "2026-07-14T07:29:18.015Z",
       "event_count": 1,
@@ -3331,14 +3429,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d1cacf5d8e1be0d9843d555f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:28:13.178+08:00",
       "trigger_time_utc": "2026-07-14T07:28:13.178Z",
       "event_count": 1,
@@ -3365,14 +3464,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_0e043c085571b8e4f0de5b87",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:26:58.686+08:00",
       "trigger_time_utc": "2026-07-14T07:26:58.686Z",
       "event_count": 1,
@@ -3399,14 +3499,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_30c97fb3d510c338946e9770",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:25:41.488+08:00",
       "trigger_time_utc": "2026-07-14T07:25:41.488Z",
       "event_count": 1,
@@ -3433,14 +3534,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_31676c54a734e0e33a2b4ccb",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:24:30.317+08:00",
       "trigger_time_utc": "2026-07-14T07:24:30.317Z",
       "event_count": 1,
@@ -3467,14 +3569,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_186bcd6fe720022e1a758b99",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:23:18.162+08:00",
       "trigger_time_utc": "2026-07-14T07:23:18.162Z",
       "event_count": 1,
@@ -3501,14 +3604,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d8a0a7429d43a84491335430",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:22:09.842+08:00",
       "trigger_time_utc": "2026-07-14T07:22:09.842Z",
       "event_count": 1,
@@ -3535,14 +3639,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3db77e790eeb4116fbe12623",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:20:52.718+08:00",
       "trigger_time_utc": "2026-07-14T07:20:52.718Z",
       "event_count": 1,
@@ -3569,14 +3674,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_968b00f21d70855a97186f46",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:19:50.368+08:00",
       "trigger_time_utc": "2026-07-14T07:19:50.368Z",
       "event_count": 1,
@@ -3603,14 +3709,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_960c62a923383ed9879d8e5c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:18:45.269+08:00",
       "trigger_time_utc": "2026-07-14T07:18:45.269Z",
       "event_count": 1,
@@ -3637,14 +3744,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_72fedfb5a6e2ab15e47594b9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:17:39.846+08:00",
       "trigger_time_utc": "2026-07-14T07:17:39.846Z",
       "event_count": 1,
@@ -3671,14 +3779,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_35aa6695303d4078c18414cd",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:16:31.574+08:00",
       "trigger_time_utc": "2026-07-14T07:16:31.574Z",
       "event_count": 1,
@@ -3705,14 +3814,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_001fd6514c13c35e4653e142",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:15:14.195+08:00",
       "trigger_time_utc": "2026-07-14T07:15:14.195Z",
       "event_count": 1,
@@ -3739,14 +3849,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8b0c4466dd1d140d8ccfd1e4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:13:56.904+08:00",
       "trigger_time_utc": "2026-07-14T07:13:56.904Z",
       "event_count": 1,
@@ -3773,14 +3884,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a832b640017353e9f68631d7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:12:39.415+08:00",
       "trigger_time_utc": "2026-07-14T07:12:39.415Z",
       "event_count": 1,
@@ -3807,14 +3919,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d848a5707e6ae59ce63f1f3c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:11:28.350+08:00",
       "trigger_time_utc": "2026-07-14T07:11:28.351Z",
       "event_count": 1,
@@ -3841,14 +3954,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_6dffb1135d7a1193eccccc75",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:10:13.768+08:00",
       "trigger_time_utc": "2026-07-14T07:10:13.768Z",
       "event_count": 1,
@@ -3875,14 +3989,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_636d3fef178b59dc5c791924",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:08:56.797+08:00",
       "trigger_time_utc": "2026-07-14T07:08:56.797Z",
       "event_count": 1,
@@ -3909,14 +4024,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_83164baef1f4212c90ad5a17",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:07:48.768+08:00",
       "trigger_time_utc": "2026-07-14T07:07:48.768Z",
       "event_count": 1,
@@ -3943,14 +4059,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ea3124bb122ee10d20251329",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:06:37.357+08:00",
       "trigger_time_utc": "2026-07-14T07:06:37.357Z",
       "event_count": 1,
@@ -3977,14 +4094,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_fa9abace866586bae84a5f37",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:05:32.677+08:00",
       "trigger_time_utc": "2026-07-14T07:05:32.677Z",
       "event_count": 1,
@@ -4011,14 +4129,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_378e3510acb2aeb4c396c80b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:04:13.180+08:00",
       "trigger_time_utc": "2026-07-14T07:04:13.180Z",
       "event_count": 1,
@@ -4045,14 +4164,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b65dca0d68934dd972928054",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:02:59.299+08:00",
       "trigger_time_utc": "2026-07-14T07:02:59.299Z",
       "event_count": 1,
@@ -4079,14 +4199,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b4bf2e17c4baa071b5479c55",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:01:44.685+08:00",
       "trigger_time_utc": "2026-07-14T07:01:44.685Z",
       "event_count": 1,
@@ -4113,14 +4234,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d07ae06c24608942edebd312",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T15:00:33.361+08:00",
       "trigger_time_utc": "2026-07-14T07:00:33.361Z",
       "event_count": 1,
@@ -4147,14 +4269,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_fc2caaa5f07ace1e590bb309",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:59:13.830+08:00",
       "trigger_time_utc": "2026-07-14T06:59:13.830Z",
       "event_count": 1,
@@ -4181,14 +4304,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_1c542fc0733bd92f7d4942e7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:57:59.655+08:00",
       "trigger_time_utc": "2026-07-14T06:57:59.655Z",
       "event_count": 1,
@@ -4215,14 +4339,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_18bffaeb32ba2a6667a59320",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:56:57.492+08:00",
       "trigger_time_utc": "2026-07-14T06:56:57.492Z",
       "event_count": 1,
@@ -4249,14 +4374,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_065c23e1f667a2ca065308ba",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:55:52.828+08:00",
       "trigger_time_utc": "2026-07-14T06:55:52.828Z",
       "event_count": 1,
@@ -4283,14 +4409,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_0ec3ce0add3c257f0b03e614",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:54:44.499+08:00",
       "trigger_time_utc": "2026-07-14T06:54:44.499Z",
       "event_count": 1,
@@ -4317,14 +4444,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_54399ca7e7571a0b64741e82",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:53:41.950+08:00",
       "trigger_time_utc": "2026-07-14T06:53:41.950Z",
       "event_count": 1,
@@ -4351,14 +4479,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d26b11b0638c471fadc99e26",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:52:25.441+08:00",
       "trigger_time_utc": "2026-07-14T06:52:25.441Z",
       "event_count": 1,
@@ -4385,14 +4514,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_cc5b52b7f63404fb2122877e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:51:13.841+08:00",
       "trigger_time_utc": "2026-07-14T06:51:13.841Z",
       "event_count": 1,
@@ -4419,14 +4549,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e9b22927744511cc1a0f168e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:50:02.761+08:00",
       "trigger_time_utc": "2026-07-14T06:50:02.761Z",
       "event_count": 1,
@@ -4453,14 +4584,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_656b08fc117661df2ce642cb",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:48:51.909+08:00",
       "trigger_time_utc": "2026-07-14T06:48:51.909Z",
       "event_count": 1,
@@ -4487,14 +4619,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b19e9435bbf90b6151097be3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:35:07.027+08:00",
       "trigger_time_utc": "2026-07-14T06:35:07.027Z",
       "event_count": 1,
@@ -4521,14 +4654,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f1614de050a8f484a83f27c9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:34:07.588+08:00",
       "trigger_time_utc": "2026-07-14T06:34:07.588Z",
       "event_count": 1,
@@ -4555,14 +4689,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_bfb41c7b4461dfb8fb73a5ee",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:32:53.554+08:00",
       "trigger_time_utc": "2026-07-14T06:32:53.554Z",
       "event_count": 1,
@@ -4589,14 +4724,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_01b217da1fb2b4470fc2b726",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:31:39.521+08:00",
       "trigger_time_utc": "2026-07-14T06:31:39.521Z",
       "event_count": 1,
@@ -4623,14 +4759,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_71b2dbc0f90177f080046830",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:30:31.650+08:00",
       "trigger_time_utc": "2026-07-14T06:30:31.650Z",
       "event_count": 1,
@@ -4657,14 +4794,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7f38caa084adba5437dca73f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:29:35.762+08:00",
       "trigger_time_utc": "2026-07-14T06:29:35.762Z",
       "event_count": 1,
@@ -4691,14 +4829,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d17b63da41a7f77457bec8e1",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:28:21.571+08:00",
       "trigger_time_utc": "2026-07-14T06:28:21.571Z",
       "event_count": 1,
@@ -4725,14 +4864,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_31059f4a450d50e1ffc872cf",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:27:03.828+08:00",
       "trigger_time_utc": "2026-07-14T06:27:03.828Z",
       "event_count": 1,
@@ -4759,14 +4899,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7443c6c5a6bca58c66bcffc6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:25:59.042+08:00",
       "trigger_time_utc": "2026-07-14T06:25:59.042Z",
       "event_count": 1,
@@ -4793,14 +4934,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ccc777ad5833c7ba94a64c61",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:24:39.603+08:00",
       "trigger_time_utc": "2026-07-14T06:24:39.603Z",
       "event_count": 1,
@@ -4827,14 +4969,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_15a8ac7759a8405a512d2937",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:23:34.766+08:00",
       "trigger_time_utc": "2026-07-14T06:23:34.766Z",
       "event_count": 1,
@@ -4861,14 +5004,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_502fe25f05cc05dedb04bc04",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:22:21.053+08:00",
       "trigger_time_utc": "2026-07-14T06:22:21.053Z",
       "event_count": 1,
@@ -4895,14 +5039,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_cbe0f76e328f38dc454f64db",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:21:06.318+08:00",
       "trigger_time_utc": "2026-07-14T06:21:06.318Z",
       "event_count": 1,
@@ -4929,14 +5074,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_66c5af7003a2718e3119a4da",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:19:58.521+08:00",
       "trigger_time_utc": "2026-07-14T06:19:58.521Z",
       "event_count": 1,
@@ -4963,14 +5109,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_28adef3e7fb944b47b7d681f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:18:53.126+08:00",
       "trigger_time_utc": "2026-07-14T06:18:53.126Z",
       "event_count": 1,
@@ -4997,14 +5144,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ff5c203ac58f376a15dc4b11",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:17:36.319+08:00",
       "trigger_time_utc": "2026-07-14T06:17:36.319Z",
       "event_count": 1,
@@ -5031,14 +5179,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_60db1ea363ef94318b9181cf",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:16:42.656+08:00",
       "trigger_time_utc": "2026-07-14T06:16:42.656Z",
       "event_count": 1,
@@ -5065,14 +5214,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c6acf5c2e5ee933dfc6a5d2a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:15:28.512+08:00",
       "trigger_time_utc": "2026-07-14T06:15:28.512Z",
       "event_count": 1,
@@ -5099,14 +5249,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_aeec2fe6482427533910b612",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:14:40.781+08:00",
       "trigger_time_utc": "2026-07-14T06:14:40.781Z",
       "event_count": 1,
@@ -5133,14 +5284,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_dd9c58ae62550910b02145c0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:13:24.306+08:00",
       "trigger_time_utc": "2026-07-14T06:13:24.306Z",
       "event_count": 1,
@@ -5167,14 +5319,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_590cd4b557324f5a33c52c31",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:12:04.266+08:00",
       "trigger_time_utc": "2026-07-14T06:12:04.266Z",
       "event_count": 1,
@@ -5201,14 +5354,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_00300cc9405d6debdfbf1f30",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:10:52.347+08:00",
       "trigger_time_utc": "2026-07-14T06:10:52.347Z",
       "event_count": 1,
@@ -5235,14 +5389,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_89a069b7d5e60c0ca718df2f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:09:32.590+08:00",
       "trigger_time_utc": "2026-07-14T06:09:32.590Z",
       "event_count": 1,
@@ -5269,14 +5424,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4ff42519425abcafee2712cc",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:08:18.303+08:00",
       "trigger_time_utc": "2026-07-14T06:08:18.303Z",
       "event_count": 1,
@@ -5303,14 +5459,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5b1d65b18670fb6436760840",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:07:04.555+08:00",
       "trigger_time_utc": "2026-07-14T06:07:04.555Z",
       "event_count": 1,
@@ -5337,14 +5494,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_cfc89d50073124e15bd9747f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:05:53.912+08:00",
       "trigger_time_utc": "2026-07-14T06:05:53.912Z",
       "event_count": 1,
@@ -5371,14 +5529,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_71e844b63f9accee19ec6ee3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:04:36.439+08:00",
       "trigger_time_utc": "2026-07-14T06:04:36.439Z",
       "event_count": 1,
@@ -5405,14 +5564,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c0900dba19602e77c71684a7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:03:28.302+08:00",
       "trigger_time_utc": "2026-07-14T06:03:28.302Z",
       "event_count": 1,
@@ -5439,14 +5599,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_6ebaf94e00bb451bf0b7a80a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:02:13.671+08:00",
       "trigger_time_utc": "2026-07-14T06:02:13.671Z",
       "event_count": 1,
@@ -5473,14 +5634,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3f930cb4b15fb14d88ce6c7c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T14:01:14.569+08:00",
       "trigger_time_utc": "2026-07-14T06:01:14.569Z",
       "event_count": 1,
@@ -5507,14 +5669,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c2c9c520584191da1fcab2c4",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:59:57.306+08:00",
       "trigger_time_utc": "2026-07-14T05:59:57.306Z",
       "event_count": 1,
@@ -5541,14 +5704,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f9b50dd13204b2bdb14af3ed",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:58:55.035+08:00",
       "trigger_time_utc": "2026-07-14T05:58:55.035Z",
       "event_count": 1,
@@ -5575,14 +5739,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d2d405cc145302b1a4fddd18",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:57:41.048+08:00",
       "trigger_time_utc": "2026-07-14T05:57:41.048Z",
       "event_count": 1,
@@ -5609,14 +5774,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_bd66a3d1162e8793b7e32a8a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:56:23.784+08:00",
       "trigger_time_utc": "2026-07-14T05:56:23.784Z",
       "event_count": 1,
@@ -5643,14 +5809,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a44d199709930667ce860c00",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:55:15.444+08:00",
       "trigger_time_utc": "2026-07-14T05:55:15.444Z",
       "event_count": 1,
@@ -5677,14 +5844,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c43495bbb0df161d9a1afcfd",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:54:09.828+08:00",
       "trigger_time_utc": "2026-07-14T05:54:09.828Z",
       "event_count": 1,
@@ -5711,14 +5879,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c220409e95c001f427def987",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:52:53.900+08:00",
       "trigger_time_utc": "2026-07-14T05:52:53.900Z",
       "event_count": 1,
@@ -5745,14 +5914,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_65dc8ae043fd28279f65dc74",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:51:36.605+08:00",
       "trigger_time_utc": "2026-07-14T05:51:36.605Z",
       "event_count": 1,
@@ -5779,14 +5949,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b108083bc775567ab0a00777",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:50:25.107+08:00",
       "trigger_time_utc": "2026-07-14T05:50:25.107Z",
       "event_count": 1,
@@ -5813,14 +5984,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5151093013661121015f62a7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:49:10.676+08:00",
       "trigger_time_utc": "2026-07-14T05:49:10.676Z",
       "event_count": 1,
@@ -5847,14 +6019,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4ef64a008f64dc92759643ac",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:47:51.200+08:00",
       "trigger_time_utc": "2026-07-14T05:47:51.200Z",
       "event_count": 1,
@@ -5881,14 +6054,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_60096667214a770fb4874398",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:46:40.600+08:00",
       "trigger_time_utc": "2026-07-14T05:46:40.600Z",
       "event_count": 1,
@@ -5915,14 +6089,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f86bc871101c2d1e0f3caf9e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:45:31.730+08:00",
       "trigger_time_utc": "2026-07-14T05:45:31.730Z",
       "event_count": 1,
@@ -5949,14 +6124,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_1cab460c965cb906b8dafbbb",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:44:20.527+08:00",
       "trigger_time_utc": "2026-07-14T05:44:20.527Z",
       "event_count": 1,
@@ -5983,14 +6159,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_071937f212c778907e078d45",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:43:08.998+08:00",
       "trigger_time_utc": "2026-07-14T05:43:08.998Z",
       "event_count": 1,
@@ -6017,14 +6194,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_245a71cc5008c2a8951333cb",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:42:04.323+08:00",
       "trigger_time_utc": "2026-07-14T05:42:04.323Z",
       "event_count": 1,
@@ -6051,14 +6229,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_180c62448b91cbd473458ef0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:40:49.678+08:00",
       "trigger_time_utc": "2026-07-14T05:40:49.678Z",
       "event_count": 1,
@@ -6085,14 +6264,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c7380bf8fd3e41e5b3247aa7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:39:42.378+08:00",
       "trigger_time_utc": "2026-07-14T05:39:42.378Z",
       "event_count": 1,
@@ -6119,14 +6299,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8209f697535631a7a4f38e83",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:38:34.314+08:00",
       "trigger_time_utc": "2026-07-14T05:38:34.314Z",
       "event_count": 1,
@@ -6153,14 +6334,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_4358024e43fb33cdc29a2783",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T13:37:17.857+08:00",
       "trigger_time_utc": "2026-07-14T05:37:17.857Z",
       "event_count": 1,
@@ -6187,14 +6369,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_dfdd68d67344ff13c84c2322",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:46:49.363+08:00",
       "trigger_time_utc": "2026-07-14T03:46:49.363Z",
       "event_count": 1,
@@ -6221,14 +6404,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e2c71803c9e1e052ddf728a0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:45:32.350+08:00",
       "trigger_time_utc": "2026-07-14T03:45:32.350Z",
       "event_count": 1,
@@ -6255,14 +6439,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a8f09433288e32bbed9f4b05",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:44:24.353+08:00",
       "trigger_time_utc": "2026-07-14T03:44:24.353Z",
       "event_count": 1,
@@ -6289,14 +6474,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7af582efee269f9ab905f7f2",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:43:25.694+08:00",
       "trigger_time_utc": "2026-07-14T03:43:25.694Z",
       "event_count": 1,
@@ -6323,14 +6509,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_127afcae554d6d179132f2ee",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:42:26.638+08:00",
       "trigger_time_utc": "2026-07-14T03:42:26.638Z",
       "event_count": 1,
@@ -6357,14 +6544,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d8c3c286b2ab026d6fb5ca8f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:41:15.905+08:00",
       "trigger_time_utc": "2026-07-14T03:41:15.905Z",
       "event_count": 1,
@@ -6391,14 +6579,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_af78601be12e0cd3e6c1223d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:40:02.003+08:00",
       "trigger_time_utc": "2026-07-14T03:40:02.003Z",
       "event_count": 1,
@@ -6425,14 +6614,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_19e2082ab8dab9bff1a408e5",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:38:47.932+08:00",
       "trigger_time_utc": "2026-07-14T03:38:47.932Z",
       "event_count": 1,
@@ -6459,14 +6649,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e1f73431c9acced6cc7da48e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:37:48.303+08:00",
       "trigger_time_utc": "2026-07-14T03:37:48.303Z",
       "event_count": 1,
@@ -6493,14 +6684,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_1d493d6e9cafc41560914bc1",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:36:43.370+08:00",
       "trigger_time_utc": "2026-07-14T03:36:43.370Z",
       "event_count": 1,
@@ -6527,14 +6719,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8a1733ec341b11fb49886471",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:35:26.300+08:00",
       "trigger_time_utc": "2026-07-14T03:35:26.300Z",
       "event_count": 1,
@@ -6561,14 +6754,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8a665e8ac81e63e1c17be60f",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:34:12.152+08:00",
       "trigger_time_utc": "2026-07-14T03:34:12.152Z",
       "event_count": 1,
@@ -6595,14 +6789,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_570e9d40fcd4a41084c5599b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:33:04.030+08:00",
       "trigger_time_utc": "2026-07-14T03:33:04.030Z",
       "event_count": 1,
@@ -6629,14 +6824,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9fd4d6293ca4607c771d9a51",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:31:59.196+08:00",
       "trigger_time_utc": "2026-07-14T03:31:59.196Z",
       "event_count": 1,
@@ -6663,14 +6859,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d0065cabd75d990c01bcd0c2",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:30:42.582+08:00",
       "trigger_time_utc": "2026-07-14T03:30:42.582Z",
       "event_count": 1,
@@ -6697,14 +6894,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_004abd94f2e40e956a060f74",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:29:40.180+08:00",
       "trigger_time_utc": "2026-07-14T03:29:40.180Z",
       "event_count": 1,
@@ -6731,14 +6929,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_57be83854b6f80d9719eb273",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:28:47.174+08:00",
       "trigger_time_utc": "2026-07-14T03:28:47.174Z",
       "event_count": 1,
@@ -6765,14 +6964,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_9ba06e0e6bb7f21c41817747",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:27:30.070+08:00",
       "trigger_time_utc": "2026-07-14T03:27:30.070Z",
       "event_count": 1,
@@ -6799,14 +6999,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_70fa10007620b2a1d1d0eddb",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:26:10.810+08:00",
       "trigger_time_utc": "2026-07-14T03:26:10.811Z",
       "event_count": 1,
@@ -6833,14 +7034,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_dc41e03c23312f2ff73a562a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:25:05.342+08:00",
       "trigger_time_utc": "2026-07-14T03:25:05.342Z",
       "event_count": 1,
@@ -6867,14 +7069,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_40a5a14f2db20c117a3667bf",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:24:00.328+08:00",
       "trigger_time_utc": "2026-07-14T03:24:00.328Z",
       "event_count": 1,
@@ -6901,14 +7104,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_2ab2ff8b86f2f930b77ac468",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:22:46.159+08:00",
       "trigger_time_utc": "2026-07-14T03:22:46.159Z",
       "event_count": 1,
@@ -6935,14 +7139,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c8d3cc8a5ed2572511ebb5ad",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:21:35.261+08:00",
       "trigger_time_utc": "2026-07-14T03:21:35.261Z",
       "event_count": 1,
@@ -6969,14 +7174,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5c4b72d7a2fbba308c009734",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:20:25.150+08:00",
       "trigger_time_utc": "2026-07-14T03:20:25.150Z",
       "event_count": 1,
@@ -7003,14 +7209,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a9b90ff9eb4f3d69aabe7ded",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:19:26.583+08:00",
       "trigger_time_utc": "2026-07-14T03:19:26.583Z",
       "event_count": 1,
@@ -7037,14 +7244,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_daf441b6d5e5b37de677e267",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:18:11.907+08:00",
       "trigger_time_utc": "2026-07-14T03:18:11.907Z",
       "event_count": 1,
@@ -7071,14 +7279,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8fd4603fb16d00185c795a40",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-14T11:16:58.428+08:00",
       "trigger_time_utc": "2026-07-14T03:16:58.428Z",
       "event_count": 1,
@@ -7105,14 +7314,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f881674aff48c4e72e6c239a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T16:05:02.244+08:00",
       "trigger_time_utc": "2026-07-13T08:05:02.244Z",
       "event_count": 1,
@@ -7139,14 +7349,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3e4976faca4c2a25f77f14c6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T16:03:53.799+08:00",
       "trigger_time_utc": "2026-07-13T08:03:53.799Z",
       "event_count": 1,
@@ -7173,14 +7384,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c76eb2c4d131b4832f3f04fc",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T16:02:48.547+08:00",
       "trigger_time_utc": "2026-07-13T08:02:48.547Z",
       "event_count": 1,
@@ -7207,14 +7419,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a78f1de5604f700d50eb4e12",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T16:01:40.776+08:00",
       "trigger_time_utc": "2026-07-13T08:01:40.776Z",
       "event_count": 1,
@@ -7241,14 +7454,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a67d4456041e0342305c429a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T16:00:23.795+08:00",
       "trigger_time_utc": "2026-07-13T08:00:23.795Z",
       "event_count": 1,
@@ -7275,14 +7489,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5106ab8ef5256ba4fb3e3d4a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:59:18.860+08:00",
       "trigger_time_utc": "2026-07-13T07:59:18.860Z",
       "event_count": 1,
@@ -7309,14 +7524,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_676044b31fb87ceb2067a605",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:58:18.948+08:00",
       "trigger_time_utc": "2026-07-13T07:58:18.948Z",
       "event_count": 1,
@@ -7343,14 +7559,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_944990fad04a0bd5cd95d85e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:57:07.822+08:00",
       "trigger_time_utc": "2026-07-13T07:57:07.823Z",
       "event_count": 1,
@@ -7377,14 +7594,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e4fb4f409977db864fe5d2de",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:55:57.091+08:00",
       "trigger_time_utc": "2026-07-13T07:55:57.091Z",
       "event_count": 1,
@@ -7411,14 +7629,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_b3f303c158533964b044e399",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:46:55.855+08:00",
       "trigger_time_utc": "2026-07-13T07:46:55.855Z",
       "event_count": 1,
@@ -7445,14 +7664,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_7a3761a741c333aa903fd5f5",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:45:44.681+08:00",
       "trigger_time_utc": "2026-07-13T07:45:44.681Z",
       "event_count": 1,
@@ -7479,14 +7699,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c2155b2961edbef25a8ec668",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:44:28.044+08:00",
       "trigger_time_utc": "2026-07-13T07:44:28.044Z",
       "event_count": 1,
@@ -7513,14 +7734,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a97c68b733775fdbfc12ca96",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:43:17.713+08:00",
       "trigger_time_utc": "2026-07-13T07:43:17.713Z",
       "event_count": 1,
@@ -7547,14 +7769,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_67109466fd20429b73618bd6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:42:21.267+08:00",
       "trigger_time_utc": "2026-07-13T07:42:21.267Z",
       "event_count": 1,
@@ -7581,14 +7804,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c9784203dfe86fe5e9e6503c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:41:07.568+08:00",
       "trigger_time_utc": "2026-07-13T07:41:07.568Z",
       "event_count": 1,
@@ -7615,14 +7839,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_5e7a22b2d034d6a9fcb4d68a",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:39:48.051+08:00",
       "trigger_time_utc": "2026-07-13T07:39:48.051Z",
       "event_count": 1,
@@ -7649,14 +7874,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_87c839280e93f38e8ad21d7e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:38:39.584+08:00",
       "trigger_time_utc": "2026-07-13T07:38:39.584Z",
       "event_count": 1,
@@ -7683,14 +7909,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_90fc2417324f3cb0fb2ffbb8",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:37:25.757+08:00",
       "trigger_time_utc": "2026-07-13T07:37:25.757Z",
       "event_count": 1,
@@ -7717,14 +7944,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3a12392722eb43b23150129d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:36:23.622+08:00",
       "trigger_time_utc": "2026-07-13T07:36:23.622Z",
       "event_count": 1,
@@ -7751,14 +7979,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_efedb09cef8caccffbc332a6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:35:04.049+08:00",
       "trigger_time_utc": "2026-07-13T07:35:04.049Z",
       "event_count": 1,
@@ -7785,14 +8014,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f860dd0bb932d0ee731c4400",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:33:52.518+08:00",
       "trigger_time_utc": "2026-07-13T07:33:52.518Z",
       "event_count": 1,
@@ -7819,14 +8049,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_1350b847f5ac65651fe7ff88",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:32:47.277+08:00",
       "trigger_time_utc": "2026-07-13T07:32:47.277Z",
       "event_count": 1,
@@ -7853,14 +8084,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3c95756e41f56bee3f43eeaa",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:31:33.646+08:00",
       "trigger_time_utc": "2026-07-13T07:31:33.646Z",
       "event_count": 1,
@@ -7887,14 +8119,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_2df18ee58e3da2f7ccba6ef0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:30:16.374+08:00",
       "trigger_time_utc": "2026-07-13T07:30:16.374Z",
       "event_count": 1,
@@ -7921,14 +8154,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_756210ac1dd26e37baec70d0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:29:02.485+08:00",
       "trigger_time_utc": "2026-07-13T07:29:02.485Z",
       "event_count": 1,
@@ -7955,14 +8189,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8130a5c99133c2962cefee8c",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:27:59.709+08:00",
       "trigger_time_utc": "2026-07-13T07:27:59.709Z",
       "event_count": 1,
@@ -7989,14 +8224,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_0e52d03ca57a39c01e2c9ec7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:26:51.613+08:00",
       "trigger_time_utc": "2026-07-13T07:26:51.613Z",
       "event_count": 1,
@@ -8023,14 +8259,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_251eafc67fbd9d715cc51db0",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:25:37.029+08:00",
       "trigger_time_utc": "2026-07-13T07:25:37.029Z",
       "event_count": 1,
@@ -8057,14 +8294,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ccc2ba54495b91c10a2ac5a9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:24:43.216+08:00",
       "trigger_time_utc": "2026-07-13T07:24:43.216Z",
       "event_count": 1,
@@ -8091,14 +8329,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d6693e88c353fa84a45ddf23",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:23:40.766+08:00",
       "trigger_time_utc": "2026-07-13T07:23:40.766Z",
       "event_count": 1,
@@ -8125,14 +8364,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_375c9a6a5a5dc6f5d2f7a11e",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:22:20.827+08:00",
       "trigger_time_utc": "2026-07-13T07:22:20.827Z",
       "event_count": 1,
@@ -8159,14 +8399,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_ea99958f02778857334791f9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:21:06.640+08:00",
       "trigger_time_utc": "2026-07-13T07:21:06.640Z",
       "event_count": 1,
@@ -8193,14 +8434,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8dae2b216acf2576785e5cd3",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:19:52.077+08:00",
       "trigger_time_utc": "2026-07-13T07:19:52.077Z",
       "event_count": 1,
@@ -8227,14 +8469,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a0f70454a22a19a547f32dc5",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:18:46.331+08:00",
       "trigger_time_utc": "2026-07-13T07:18:46.331Z",
       "event_count": 1,
@@ -8261,14 +8504,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_084e8ce1be27ff73d2f97f06",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:13:03.158+08:00",
       "trigger_time_utc": "2026-07-13T07:13:03.158Z",
       "event_count": 1,
@@ -8295,14 +8539,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_e8044b46822e19f76666c791",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:11:51.922+08:00",
       "trigger_time_utc": "2026-07-13T07:11:51.922Z",
       "event_count": 1,
@@ -8329,14 +8574,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_46af5f7781b5440df4d54e2b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:10:37.848+08:00",
       "trigger_time_utc": "2026-07-13T07:10:37.848Z",
       "event_count": 1,
@@ -8363,14 +8609,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_2120783d2fd170ed4d39c482",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:09:23.541+08:00",
       "trigger_time_utc": "2026-07-13T07:09:23.541Z",
       "event_count": 1,
@@ -8397,14 +8644,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_bc3810ca0ca106f65020b1fb",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:08:15.410+08:00",
       "trigger_time_utc": "2026-07-13T07:08:15.410Z",
       "event_count": 1,
@@ -8431,14 +8679,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_944126a8d9cdff5b0ac14455",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:06:57.913+08:00",
       "trigger_time_utc": "2026-07-13T07:06:57.913Z",
       "event_count": 1,
@@ -8465,14 +8714,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c5c3a037edc40abbd182f315",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:05:41.124+08:00",
       "trigger_time_utc": "2026-07-13T07:05:41.124Z",
       "event_count": 1,
@@ -8499,14 +8749,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_bdf57e851ac4a6b81bed4ed9",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:04:29.453+08:00",
       "trigger_time_utc": "2026-07-13T07:04:29.453Z",
       "event_count": 1,
@@ -8533,14 +8784,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_3971767dd5927a385520fe16",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:03:11.876+08:00",
       "trigger_time_utc": "2026-07-13T07:03:11.876Z",
       "event_count": 1,
@@ -8567,14 +8819,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_c9f211008253fd927e65c30d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:01:57.592+08:00",
       "trigger_time_utc": "2026-07-13T07:01:57.592Z",
       "event_count": 1,
@@ -8601,14 +8854,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_1af046769cfa131afa491c60",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T15:00:46.408+08:00",
       "trigger_time_utc": "2026-07-13T07:00:46.408Z",
       "event_count": 1,
@@ -8635,14 +8889,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a0bf3c7b3cfb98c59d41a5a2",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:59:38.568+08:00",
       "trigger_time_utc": "2026-07-13T06:59:38.568Z",
       "event_count": 1,
@@ -8669,14 +8924,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_0ca2f65324346effcbc0e791",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:58:27.114+08:00",
       "trigger_time_utc": "2026-07-13T06:58:27.114Z",
       "event_count": 1,
@@ -8703,14 +8959,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_74c5b3d46bbf3ab9ab5f2842",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:57:07.281+08:00",
       "trigger_time_utc": "2026-07-13T06:57:07.281Z",
       "event_count": 1,
@@ -8737,14 +8994,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_22f35f6a839de957d295444d",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:55:51.069+08:00",
       "trigger_time_utc": "2026-07-13T06:55:51.069Z",
       "event_count": 1,
@@ -8771,14 +9029,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_8f7bdd75374f956cdfbeebad",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:54:37.031+08:00",
       "trigger_time_utc": "2026-07-13T06:54:37.031Z",
       "event_count": 1,
@@ -8805,14 +9064,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_d967805bd9abe5f265cb89f6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:53:19.538+08:00",
       "trigger_time_utc": "2026-07-13T06:53:19.538Z",
       "event_count": 1,
@@ -8839,14 +9099,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_236813f50467d824edce08a6",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:52:17.412+08:00",
       "trigger_time_utc": "2026-07-13T06:52:17.412Z",
       "event_count": 1,
@@ -8873,14 +9134,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f07233b29cc229863c929b9b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:51:18.599+08:00",
       "trigger_time_utc": "2026-07-13T06:51:18.599Z",
       "event_count": 1,
@@ -8907,14 +9169,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_f79c030fd6dcd3f9989d0b57",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:50:13.534+08:00",
       "trigger_time_utc": "2026-07-13T06:50:13.534Z",
       "event_count": 1,
@@ -8941,14 +9204,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_cb854c469c08446afba33878",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:49:05.794+08:00",
       "trigger_time_utc": "2026-07-13T06:49:05.794Z",
       "event_count": 1,
@@ -8975,14 +9239,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_48a8614486f7e5b30901eaa5",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:47:46.651+08:00",
       "trigger_time_utc": "2026-07-13T06:47:46.651Z",
       "event_count": 1,
@@ -9009,14 +9274,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "中",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_55d621e1980e490e9b363938",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:46:38.375+08:00",
       "trigger_time_utc": "2026-07-13T06:46:38.375Z",
       "event_count": 1,
@@ -9043,14 +9309,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_091ba61e34f21f92e9c2026b",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:45:20.986+08:00",
       "trigger_time_utc": "2026-07-13T06:45:20.986Z",
       "event_count": 1,
@@ -9077,14 +9344,15 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "高",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     },
     {
       "id": "splunk_a5a7ec6b2de15102523b7ad7",
       "source": "splunk",
       "alert_name": "test-waf",
+      "application_code": "",
       "trigger_time": "2026-07-13T14:44:09.765+08:00",
       "trigger_time_utc": "2026-07-13T06:44:09.765Z",
       "event_count": 1,
@@ -9111,9 +9379,9 @@
         "attack_type_risk": "未知",
         "attack_types": [],
         "overall_risk": "低",
-        "assessed_at": "2026-08-07T02:39:45.709484+00:00"
+        "assessed_at": "2026-08-10T07:40:13.574056+00:00"
       },
-      "processed_at": "2026-08-07T02:39:45.709484+00:00"
+      "processed_at": "2026-08-10T07:40:13.574056+00:00"
     }
   ]
 }
