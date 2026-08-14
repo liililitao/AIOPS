@@ -1,0 +1,11 @@
+_time,title,operator_user,operator_url
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,supervisor_wang,/admin/role/bind_menu
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,supervisor_wang,/admin/role/update_privilege
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,tester_zhao,/admin/role/update_privilege
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,manager_li,/admin/role/bind_menu
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,admin_sys,/admin/role/bind_menu
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,developer_chen,/admin/role/update_privilege
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,developer_chen,/admin/permission/grant
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,tester_zhao,/admin/permission/grant
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,admin_sys,/admin/role/update_privilege
+2026-08-13T10:59:38.857+08:00,权限、菜单按钮绑定,developer_chen,/system/role/edit_menu_bind

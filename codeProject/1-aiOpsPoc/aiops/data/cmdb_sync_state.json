@@ -1,0 +1,7 @@
+{
+  "status": "ok",
+  "message": "已从 Splunk 导入 3 条 CMDB 记录",
+  "rows": 3,
+  "synced_at": "2026-08-11T08:39:38.872665+00:00",
+  "path": "C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\aiops\\data\\cmdb_latest.csv"
+}

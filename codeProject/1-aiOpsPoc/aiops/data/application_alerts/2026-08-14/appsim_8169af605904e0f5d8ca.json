@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_budget_tool_Login_Failed",
+  "application_code": "NNRC Budget Tool",
+  "trigger_time": "2026-08-14T09:13:24.593+08:00",
+  "trigger_time_utc": "2026-08-14T09:13:24.595775+08:00",
+  "event_count": 6,
+  "trigger_reason": "模拟应用日志命中规则 #15：app_alert_budget_tool_Login_Failed",
+  "search_terms": "index=app_s_2year sourcetype=budgettool Level=ERROR Operations=\"登录\" \n| stats values(_time) as time values(Result) as Result count by UserAccount,Operations",
+  "full_spl": "index=app_s_2year sourcetype=budgettool Level=ERROR Operations=\"登录\" \n| stats values(_time) as time values(Result) as Result count by UserAccount,Operations",
+  "results": [
+    {
+      "id": "NNRC Budget Tool-APP-SIM",
+      "properties_hostname": "nnrc-budget-tool.simulated.local",
+      "properties_requestUri": "UserAccount=user011@example.com; Operations=登录; Result=IP地址未授权; Level=ERROR",
+      "properties_action": "应用异常",
+      "count": "6"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\budgettool\\app_alert_budget_tool_Login_Failed.csv"
+}

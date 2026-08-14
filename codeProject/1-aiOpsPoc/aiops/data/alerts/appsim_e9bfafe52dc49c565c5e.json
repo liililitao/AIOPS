@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_rared_Edit_Points",
+  "application_code": "RareD NovoCare",
+  "trigger_time": "2026-08-14T10:07:53.594+08:00",
+  "trigger_time_utc": "2026-08-14T10:07:53.594774+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #10：app_alert_rared_Edit_Points",
+  "search_terms": "index=app_s_6month sourcetype=rared OperateType=1059\n|stats count by OperateTime,OperateWorkerName,OperateDescription",
+  "full_spl": "index=app_s_6month sourcetype=rared OperateType=1059\n|stats count by OperateTime,OperateWorkerName,OperateDescription",
+  "results": [
+    {
+      "id": "RareD NovoCare-APP-SIM",
+      "properties_hostname": "rared-novocare.simulated.local",
+      "properties_requestUri": "OperateWorkerName=doctor_zhang; OperateDescription=修改积分规则: 患者教育积分+3; OperateType=1059",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\rared\\app_alert_rared_Edit_Points.csv"
+}

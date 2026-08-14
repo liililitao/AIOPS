@@ -1,0 +1,11 @@
+_time,title,operator_user,operator_url
+2026-08-14T10:16:01.643+08:00,用户管理添加/编辑操作日志,hr_admin_li,/user/management/create
+2026-08-14T10:16:01.643+08:00,用户管理添加/编辑操作日志,hr_admin_li,/admin/user/edit/1001
+2026-08-14T10:16:01.643+08:00,用户管理添加/编辑操作日志,system_admin_chen,/admin/user/add
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,dept_manager_wang,/admin/user/edit/1001
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,dept_manager_wang,/admin/user/edit/1001
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,dept_manager_wang,/system/user/update_profile/2035
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,hr_admin_zhang,/admin/user/edit/1001
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,hr_admin_li,/user/management/create
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,dept_manager_wang,/admin/user/add
+2026-08-14T10:16:01.644+08:00,用户管理添加/编辑操作日志,hr_admin_zhang,/admin/user/edit/1001

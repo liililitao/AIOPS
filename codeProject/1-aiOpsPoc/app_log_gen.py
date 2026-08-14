@@ -664,8 +664,12 @@ def get_output_filename(config: dict) -> str:
     return f"{config['alert_name']}.csv"
 
 
-def run_generation(rule_index: int, count: int) -> str:
-    """执行生成，返回输出文件路径（按 target_index 分流到子目录）"""
+def run_generation(rule_index: int, count: int, *, return_records: bool = False):
+    """执行生成，返回输出文件路径；需要时同时返回本次生成的日志记录。
+
+    ``return_records`` 供 AIOps Web API 使用，避免页面上的模拟告警与实际写入
+    CSV 的日志样例不一致。默认值保持原有 CLI 调用的返回类型不变。
+    """
     config = RULE_CONFIGS[rule_index]  # 0-based
 
     # 按 sourcetype 分流: test_log_app/iwe/ 等
@@ -680,6 +684,7 @@ def run_generation(rule_index: int, count: int) -> str:
     # 追加模式写入（和 waf_log_gen.py 一样）
     fieldnames = config["output_fields"]
 
+    records = []
     with open(fpath, mode="a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         if not file_exists:
@@ -690,10 +695,11 @@ def run_generation(rule_index: int, count: int) -> str:
             # 只输出 output_fields 中定义的列
             row = {k: log.get(k, "") for k in fieldnames}
             writer.writerow(row)
+            records.append(row)
 
         f.flush()
 
-    return fpath
+    return (fpath, records) if return_records else fpath
 
 
 # ============================================================

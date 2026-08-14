@@ -1,0 +1,55 @@
+{
+  "alert_name": "app_alert_iwe_Data_Docking_Failure",
+  "application_code": "iWE",
+  "trigger_time": "2026-08-13T13:07:35.841+08:00",
+  "trigger_time_utc": "2026-08-13T13:07:35.842580+08:00",
+  "event_count": 5,
+  "trigger_reason": "模拟应用日志命中规则 #2：app_alert_iwe_Data_Docking_Failure",
+  "splunk_url": "",
+  "search_terms": "index=app_s_6month sourcetype=iwe source=iwe_iwe2022service_log status=\"failed\"\n|stats count by _time,url,status",
+  "full_spl": "index=app_s_6month sourcetype=iwe source=iwe_iwe2022service_log status=\"failed\"\n|stats count by _time,url,status",
+  "results": [
+    {
+      "id": "iWE-APP-SIM",
+      "properties_hostname": "iwe.simulated.local",
+      "properties_requestUri": "url=/api/v2/integration/sap/material; status=failed",
+      "properties_action": "应用异常",
+      "count": "5"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\iwe\\app_alert_iwe_Data_Docking_Failure.csv",
+  "risk_level": "中",
+  "risk_details": {
+    "environment_risk": "低",
+    "environment": "Non-Production",
+    "count_risk": "低",
+    "count_value": 5,
+    "attack_type_risk": "中",
+    "attack_types": [
+      "api_exploit",
+      "random_scan"
+    ],
+    "overall_risk": "中",
+    "assessed_at": "2026-08-13T13:07:41.641356"
+  },
+  "token_usage": {
+    "analysis_report": {
+      "prompt_tokens": 957,
+      "completion_tokens": 1481,
+      "total_tokens": 2438
+    },
+    "suggestion": {
+      "prompt_tokens": 950,
+      "completion_tokens": 1572,
+      "total_tokens": 2522
+    },
+    "total": {
+      "prompt_tokens": 1907,
+      "completion_tokens": 3053,
+      "total_tokens": 4960
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null
+}

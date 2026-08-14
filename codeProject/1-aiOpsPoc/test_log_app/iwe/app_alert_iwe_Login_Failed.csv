@@ -1,3 +1,19 @@
 _time,initial,query,result
 2026-07-30T16:25:44.280+08:00,lisi,UPDATE users SET password=? WHERE id=?,failed
 2026-07-30T16:25:44.280+08:00,lisi,SELECT * FROM users WHERE id=?,failed
+2026-08-13T09:24:07.898+08:00,huangfei,UPDATE users SET password=? WHERE id=?,failed
+2026-08-13T09:24:07.898+08:00,liuxing,SELECT COUNT(*) FROM orders WHERE status=?,failed
+2026-08-13T09:24:07.898+08:00,zhangsan,"INSERT INTO logs (user,action) VALUES (?,?)",failed
+2026-08-13T09:24:07.898+08:00,sunyue,UPDATE users SET password=? WHERE id=?,failed
+2026-08-13T09:24:07.898+08:00,liuxing,SELECT * FROM users WHERE id=?,failed
+2026-08-13T10:04:19.723+08:00,zhouhao,SELECT * FROM users WHERE id=?,failed
+2026-08-13T10:36:03.574+08:00,chenqi,"INSERT INTO logs (user,action) VALUES (?,?)",failed
+2026-08-13T10:36:03.574+08:00,zhaoliu,SELECT COUNT(*) FROM orders WHERE status=?,failed
+2026-08-13T10:36:03.574+08:00,lisi,"INSERT INTO logs (user,action) VALUES (?,?)",failed
+2026-08-13T10:36:03.574+08:00,chenqi,"INSERT INTO logs (user,action) VALUES (?,?)",failed
+2026-08-13T10:36:03.574+08:00,lisi,"INSERT INTO logs (user,action) VALUES (?,?)",failed
+2026-08-13T10:36:03.575+08:00,wuming,DELETE FROM sessions WHERE expired=?,failed
+2026-08-13T10:36:03.575+08:00,chenqi,DELETE FROM sessions WHERE expired=?,failed
+2026-08-13T10:36:03.575+08:00,chenqi,UPDATE users SET password=? WHERE id=?,failed
+2026-08-13T10:36:03.575+08:00,zhangsan,DELETE FROM sessions WHERE expired=?,failed
+2026-08-13T10:36:03.575+08:00,sunyue,UPDATE users SET password=? WHERE id=?,failed

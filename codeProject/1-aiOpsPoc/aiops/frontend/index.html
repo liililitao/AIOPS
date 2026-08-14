@@ -38,8 +38,15 @@
                             </select>
                             <input type="text" id="filter-search" class="filter-input" placeholder="搜索域名...">
                             <button id="btn-refresh" class="btn btn-sm">🔄 刷新</button>
-                            <button id="btn-scan-now" class="btn btn-sm btn-primary">⚡ 立即扫描</button>
                         </div>
+                    </div>
+                    <div class="simulation-bar">
+                        <strong>🧪 模拟应用告警</strong>
+                        <select id="simulation-rule" class="filter-select" aria-label="应用告警规则">
+                            <option value="">加载规则中...</option>
+                        </select>
+                        <input type="number" id="simulation-count" class="filter-input simulation-count" min="1" max="1000" value="10" aria-label="日志条数">
+                        <button id="btn-generate-application-alert" class="btn btn-sm btn-primary">生成日志和告警</button>
                     </div>
                     <div class="alert-list" id="alert-list">
                         <div class="empty-state">暂无告警数据</div>
@@ -161,6 +168,7 @@
                         <label>数据源类型</label>
                         <select id="cfg-cmdb-type" class="config-input">
                             <option value="xlsx">Excel (xlsx)</option>
+                            <option value="splunk_csv">Splunk CSV（每日自动同步）</option>
                             <option value="api">API (未来)</option>
                         </select>
                     </div>
@@ -168,6 +176,11 @@
                         <label>文件路径</label>
                         <input type="text" id="cfg-cmdb-path" class="config-input" readonly>
                     </div>
+                    <div class="config-row">
+                        <label>每日同步状态</label>
+                        <span id="cfg-cmdb-sync-status">-</span>
+                    </div>
+                    <button id="btn-cmdb-sync" class="btn btn-primary">立即从 Splunk 同步 CMDB</button>
                 </div>
             </div>
         </div>

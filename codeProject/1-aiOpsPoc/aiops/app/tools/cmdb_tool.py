@@ -9,6 +9,7 @@ CMDB 查询工具 - Agent 可调用的 Tool
 """
 
 import logging
+import csv
 from typing import Optional
 
 import openpyxl
@@ -39,13 +40,27 @@ def _load_cmdb() -> dict:
         "system_headers": [],
     }
 
-    xlsx_path = settings.cmdb_xlsx_path
-    if not xlsx_path:
-        logger.warning("CMDB xlsx 路径未配置或文件不存在")
-        _cache = cache
-        return cache
-
     try:
+        if settings.CMDB_TYPE in {"csv", "splunk_csv"}:
+            csv_path = settings.cmdb_csv_path
+            if not csv_path:
+                raise FileNotFoundError(settings.CMDB_CSV_PATH)
+            with csv_path.open("r", encoding="utf-8-sig", newline="") as csv_file:
+                rows = list(csv.DictReader(csv_file))
+            headers = list(rows[0].keys()) if rows else []
+            cache["paas_headers"] = headers
+            cache["paas_rows"] = [{str(k): str(v or "") for k, v in row.items()} for row in rows]
+            cache["iaas_headers"] = headers
+            cache["iaas_rows"] = cache["paas_rows"]
+            cache["system_headers"] = headers
+            cache["system_rows"] = cache["paas_rows"]
+            logger.info("CMDB CSV 加载完成: rows=%s", len(rows))
+            _cache = cache
+            return cache
+
+        xlsx_path = settings.cmdb_xlsx_path
+        if not xlsx_path:
+            raise FileNotFoundError(settings.CMDB_XLSX_PATH)
         wb = openpyxl.load_workbook(str(xlsx_path), data_only=True)
 
         # 加载 Azure IaaS
@@ -175,6 +190,27 @@ def invalidate_cache():
     logger.info("CMDB 缓存已清除")
 
 
+def lookup_cmdb_record(resource_id: str = "", hostname: str = "") -> CmdbLookupResult:
+    """返回结构化 CMDB 事实，供知识库 Tool 在 Agent 阶段调用。
+
+    查询顺序固定为资源 ID 精确匹配，再以主机名关联匹配。这个函数不使用 LLM。
+    """
+    if resource_id:
+        result = _lookup_by_resource_id(resource_id.strip())
+        if result and result.found:
+            return result
+    if hostname:
+        result = _lookup_by_hostname(hostname.strip())
+        if result and result.found:
+            return result
+    return CmdbLookupResult(
+        found=False,
+        match_type="none",
+        environment=_find_env_by_subscription(resource_id),
+        error=f"未在 CMDB 中找到匹配记录 (resource_id={resource_id}, hostname={hostname})",
+    )
+
+
 @tool
 def cmdb_lookup(resource_id: str = "", hostname: str = "") -> str:
     """
@@ -188,35 +224,5 @@ def cmdb_lookup(resource_id: str = "", hostname: str = "") -> str:
     """
     import json
 
-    # 第一优先级: 精确匹配
-    if resource_id:
-        result = _lookup_by_resource_id(resource_id.strip())
-        if result and result.found:
-            return json.dumps(result.model_dump(), ensure_ascii=False, indent=2)
-
-    # 第二优先级: 模糊匹配
-    if hostname:
-        result = _lookup_by_hostname(hostname.strip())
-        if result and result.found:
-            return json.dumps(result.model_dump(), ensure_ascii=False, indent=2)
-
-    # 都没匹配到
-    # 尝试从 resource_id 中推断（如 ID 包含 PRD 字样）
-    env = "Unknown"
-    if resource_id:
-        rid_upper = resource_id.upper()
-        if "PRD" in rid_upper or "PROD" in rid_upper:
-            env = "Production"
-        elif "TST" in rid_upper or "DEV" in rid_upper:
-            env = "Non-Production"
-
-    return json.dumps(
-        CmdbLookupResult(
-            found=False,
-            match_type="none",
-            environment=env,
-            error=f"未在 CMDB 中找到匹配记录 (resource_id={resource_id}, hostname={hostname})",
-        ).model_dump(),
-        ensure_ascii=False,
-        indent=2,
-    )
+    result = lookup_cmdb_record(resource_id=resource_id, hostname=hostname)
+    return json.dumps(result.model_dump(), ensure_ascii=False, indent=2)

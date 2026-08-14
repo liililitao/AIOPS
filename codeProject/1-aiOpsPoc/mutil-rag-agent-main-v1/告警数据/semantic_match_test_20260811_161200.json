@@ -1,0 +1,21 @@
+{
+  "alert_name": "test-waf",
+  "application_code": "",
+  "trigger_time": "2026-08-11T16:12:00+08:00",
+  "trigger_time_utc": "2026-08-11T08:12:00Z",
+  "event_count": 1,
+  "trigger_reason": "Saved Search [test-waf] always(1)",
+  "splunk_url": "",
+  "search_terms": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked | stats values(properties_action) as properties_action values(properties_requestUri) as properties_requestUri count by properties_hostname,id | search count>=20",
+  "full_spl": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked | stats values(properties_action) as properties_action values(properties_requestUri) as properties_requestUri count by properties_hostname,id | search count>=20",
+  "results": [
+    {
+      "id": "AGW-DAP-PRD-N3-01",
+      "properties_hostname": "purview.novonordiskchina.com.cn",
+      "properties_requestUri": "/.env /.env.production /config/application.yml /api/config/config.yml /.aws/credentials",
+      "properties_action": "Blocked",
+      "count": "24"
+    }
+  ],
+  "operator_notes": "模拟测试：生产网关的环境文件与配置文件扫描告警"
+}

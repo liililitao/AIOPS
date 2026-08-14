@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_novocare_diabetes_Modify_User",
+  "application_code": "NNRC Diabetes.com",
+  "trigger_time": "2026-08-14T10:16:01.643+08:00",
+  "trigger_time_utc": "2026-08-14T10:16:01.644486+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #13：app_alert_novocare_diabetes_Modify_User",
+  "search_terms": "index=app_s_6month sourcetype=novocare_diabetes title=\"用户管理添加/编辑操作日志\"\n| stats count by _time,title,operator_user,operator_url",
+  "full_spl": "index=app_s_6month sourcetype=novocare_diabetes title=\"用户管理添加/编辑操作日志\"\n| stats count by _time,title,operator_user,operator_url",
+  "results": [
+    {
+      "id": "NNRC Diabetes.com-APP-SIM",
+      "properties_hostname": "nnrc-diabetes.com.simulated.local",
+      "properties_requestUri": "title=用户管理添加/编辑操作日志; operator_user=hr_admin_li; operator_url=/user/management/create",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\novocare_diabetes\\app_alert_novocare_diabetes_Modify_User.csv"
+}

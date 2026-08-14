@@ -1,0 +1,54 @@
+{
+  "alert_name": "app_alert_rared_Add_Role",
+  "application_code": "RareD NovoCare",
+  "trigger_time": "2026-08-13T16:10:47.349+08:00",
+  "trigger_time_utc": "2026-08-13T16:10:47.349717+08:00",
+  "event_count": 6,
+  "trigger_reason": "模拟应用日志命中规则 #9：app_alert_rared_Add_Role",
+  "splunk_url": "",
+  "search_terms": "index=app_s_6month sourcetype=rared OperateType=1009\n|stats count by OperateTime,OperateWorkerName,OperateDescription",
+  "full_spl": "index=app_s_6month sourcetype=rared OperateType=1009\n|stats count by OperateTime,OperateWorkerName,OperateDescription",
+  "results": [
+    {
+      "id": "RareD NovoCare-APP-SIM",
+      "properties_hostname": "rared-novocare.simulated.local",
+      "properties_requestUri": "OperateWorkerName=sysadmin_wang; OperateDescription=新增角色: 数据管理员; OperateType=1009",
+      "properties_action": "应用异常",
+      "count": "6"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\rared\\app_alert_rared_Add_Role.csv",
+  "risk_level": "低",
+  "risk_details": {
+    "environment_risk": "低",
+    "environment": "Non-Production",
+    "count_risk": "低",
+    "count_value": 6,
+    "attack_type_risk": "低",
+    "attack_types": [
+      "random_scan"
+    ],
+    "overall_risk": "低",
+    "assessed_at": "2026-08-13T16:25:12.945176"
+  },
+  "token_usage": {
+    "analysis_report": {
+      "prompt_tokens": 288,
+      "completion_tokens": 288,
+      "total_tokens": 576
+    },
+    "suggestion": {
+      "prompt_tokens": 188,
+      "completion_tokens": 188,
+      "total_tokens": 376
+    },
+    "total": {
+      "prompt_tokens": 476,
+      "completion_tokens": 476,
+      "total_tokens": 952
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null
+}

@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_pmt_Login_Failed",
+  "application_code": "PMT for S&D",
+  "trigger_time": "2026-08-13T16:39:24.134+08:00",
+  "trigger_time_utc": "2026-08-13T16:39:24.137065+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #5：app_alert_pmt_Login_Failed",
+  "search_terms": "index=app_s_12month sourcetype=pmt source=sd_log_action detail=登录失败 \n| stats values(_time) as time values(action) as action values(query) as query values(detail) as detail count by module \n| eval time=strftime(time,\"%Y/%m/%d %H:%M:%S\") \n| table time,",
+  "full_spl": "index=app_s_12month sourcetype=pmt source=sd_log_action detail=登录失败 \n| stats values(_time) as time values(action) as action values(query) as query values(detail) as detail count by module \n| eval time=strftime(time,\"%Y/%m/%d %H:%M:%S\") \n| table time,",
+  "results": [
+    {
+      "id": "PMT for S&D-APP-SIM",
+      "properties_hostname": "pmt-for-s&d.simulated.local",
+      "properties_requestUri": "module=SD_PRICE; action=AUTH; query=/pmt/api/v1/login; detail=登录失败",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\pmt\\app_alert_pmt_Login_Failed.csv"
+}

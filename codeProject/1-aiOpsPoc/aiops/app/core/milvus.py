@@ -112,7 +112,12 @@ def insert_chunks(chunks: list[dict], collection: str = None) -> int:
     return result.get("insert_count", 0)
 
 
-def search(query_vector: list[float], top_k: int = 5, collection: str = None) -> list[dict]:
+def search(
+    query_vector: list[float],
+    top_k: int = 5,
+    collection: str = None,
+    raise_on_error: bool = False,
+) -> list[dict]:
     """向量相似度搜索"""
     client = get_client()
     if client is None:
@@ -127,6 +132,8 @@ def search(query_vector: list[float], top_k: int = 5, collection: str = None) ->
         return results[0] if results else []
     except Exception as e:
         logger.warning(f"搜索失败: {e}")
+        if raise_on_error:
+            raise
         return []
 
 

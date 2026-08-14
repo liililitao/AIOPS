@@ -1,0 +1,55 @@
+{
+  "alert_name": "app_alert_novocare_diabetes_Change_of_Role_Privileges",
+  "application_code": "NNRC Diabetes.com",
+  "trigger_time": "2026-08-13T10:59:38.857+08:00",
+  "trigger_time_utc": "2026-08-13T10:59:38.858204+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #12：app_alert_novocare_diabetes_Change_of_Role_Privileges",
+  "splunk_url": "",
+  "search_terms": "index=app_s_6month sourcetype=novocare_diabetes title=\"权限、菜单按钮绑定\"\n| stats count by _time,title,operator_user,operator_url",
+  "full_spl": "index=app_s_6month sourcetype=novocare_diabetes title=\"权限、菜单按钮绑定\"\n| stats count by _time,title,operator_user,operator_url",
+  "results": [
+    {
+      "id": "NNRC Diabetes.com-APP-SIM",
+      "properties_hostname": "nnrc-diabetes.com.simulated.local",
+      "properties_requestUri": "title=权限、菜单按钮绑定; operator_user=supervisor_wang; operator_url=/admin/role/bind_menu",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\novocare_diabetes\\app_alert_novocare_diabetes_Change_of_Role_Privileges.csv",
+  "risk_level": "高",
+  "risk_details": {
+    "environment_risk": "低",
+    "environment": "Non-Production",
+    "count_risk": "低",
+    "count_value": 10,
+    "attack_type_risk": "高",
+    "attack_types": [
+      "random_scan",
+      "admin_target"
+    ],
+    "overall_risk": "高",
+    "assessed_at": "2026-08-13T10:59:45.807130"
+  },
+  "token_usage": {
+    "analysis_report": {
+      "prompt_tokens": 1013,
+      "completion_tokens": 1234,
+      "total_tokens": 2247
+    },
+    "suggestion": {
+      "prompt_tokens": 1006,
+      "completion_tokens": 1618,
+      "total_tokens": 2624
+    },
+    "total": {
+      "prompt_tokens": 2019,
+      "completion_tokens": 2852,
+      "total_tokens": 4871
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null
+}

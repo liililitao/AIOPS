@@ -1,8 +1,10 @@
 """
 定时调度器 - 基于 APScheduler 的告警扫描调度
+修复：BackgroundScheduler 同步线程无法直接执行async协程
 """
 
 import logging
+import asyncio
 from datetime import datetime, timedelta
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -25,8 +27,9 @@ def start_scheduler():
         return
 
     _scheduler = BackgroundScheduler(daemon=True)
+    # 包装：同步外壳内部使用asyncio.run执行异步扫描函数
     _scheduler.add_job(
-        _scan_job,
+        _sync_scan_wrapper,
         "interval",
         minutes=settings.SCAN_INTERVAL_MINUTES,
         id="scan_alerts",
@@ -82,21 +85,35 @@ def get_scheduler_status() -> dict:
 
 
 async def trigger_scan() -> dict:
-    """手动触发一次扫描（同步等待完成）"""
+    """手动触发一次扫描（同步等待完成，API调用入口）"""
     try:
-        from app.services.splunk_alert_service import sync_remote_alerts
-
-        # 同步 Splunk 后，继续执行原有本地告警目录扫描。
-        await sync_remote_alerts()
+        sync_warning = None
+        try:
+            from app.services.splunk_alert_service import sync_remote_alerts
+            await sync_remote_alerts()
+        except Exception as exc:
+            logger.warning("[SCHEDULER] Splunk sync failed before scan: %s", exc)
+            sync_warning = f"Splunk 同步失败：{exc}"
         await _scan_job()
-        return {"status": "ok", "message": "扫描已完成"}
+        result = {"status": "ok", "message": "扫描已完成"}
+        if sync_warning:
+            result["sync_warning"] = sync_warning
+        return result
     except Exception as e:
-        logger.error(f"[SCHEDULER] Manual scan failed: {e}")
+        logger.error(f"[SCHEDULER] Manual scan failed: {e}", exc_info=True)
         return {"status": "error", "message": str(e)}
 
 
+def _sync_scan_wrapper():
+    """
+    给APScheduler使用的同步包装函数
+    在独立线程新建事件循环运行异步扫描任务
+    """
+    asyncio.run(_scan_job())
+
+
 async def _scan_job():
-    """扫描任务：检查告警目录，处理新告警"""
+    """扫描任务：检查告警目录，处理新告警（保留原有async实现不变）"""
     global _last_scan_time
     _last_scan_time = datetime.now()
 

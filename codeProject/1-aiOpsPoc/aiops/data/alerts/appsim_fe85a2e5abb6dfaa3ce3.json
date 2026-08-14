@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_novocare_diabetes_Change_of_Role_Privileges",
+  "application_code": "NNRC Diabetes.com",
+  "trigger_time": "2026-08-13T10:59:38.857+08:00",
+  "trigger_time_utc": "2026-08-13T10:59:38.858204+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #12：app_alert_novocare_diabetes_Change_of_Role_Privileges",
+  "search_terms": "index=app_s_6month sourcetype=novocare_diabetes title=\"权限、菜单按钮绑定\"\n| stats count by _time,title,operator_user,operator_url",
+  "full_spl": "index=app_s_6month sourcetype=novocare_diabetes title=\"权限、菜单按钮绑定\"\n| stats count by _time,title,operator_user,operator_url",
+  "results": [
+    {
+      "id": "NNRC Diabetes.com-APP-SIM",
+      "properties_hostname": "nnrc-diabetes.com.simulated.local",
+      "properties_requestUri": "title=权限、菜单按钮绑定; operator_user=supervisor_wang; operator_url=/admin/role/bind_menu",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\novocare_diabetes\\app_alert_novocare_diabetes_Change_of_Role_Privileges.csv"
+}

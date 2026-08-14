@@ -1,0 +1,39 @@
+{
+  "source": "splunk_frontend_alert_list",
+  "synced_at": "2026-08-13T01:20:29.413555+00:00",
+  "alert": {
+    "id": "splunk_1af046769cfa131afa491c60",
+    "source": "splunk",
+    "alert_name": "test-waf",
+    "application_code": "",
+    "trigger_time": "2026-07-13T15:00:46.408+08:00",
+    "trigger_time_utc": "2026-07-13T07:00:46.408Z",
+    "event_count": 1,
+    "trigger_reason": "Saved Search [test-waf] always(1)",
+    "splunk_url": "http://vm-cdcshared-tst-spl9forwarder:8000/app/search/search?q=%7Cloadjob%20rt_scheduler__adminjhgz__search__RMD55e6c7c059c57a98f_at_1783564199_1802.37%20%7C%20head%201%20%7C%20tail%201&earliest=0&latest=now",
+    "search_terms": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+    "full_spl": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+    "risk_level": "高",
+    "results": [
+      {
+        "id": "AGW-DAP-PRD-N3-01",
+        "properties_hostname": "purview.novonordiskchina.com.cn",
+        "properties_requestUri": "/.env.production.local /.env_sample /admin/.env /api/.env /api/config/config.yml /awstats/.env /backend/.env /dev/.env /docker/.env /mail/.env /mailer/.env /main/.env /new/.env.staging /web/.env /website/.env /www/.env /xampp/.env",
+        "properties_action": "Blocked",
+        "count": "20",
+        "__mv_properties_requestUri": "$/.env.production.local$;$/.env_sample$;$/admin/.env$;$/api/.env$;$/api/config/config.yml$;$/awstats/.env$;$/backend/.env$;$/dev/.env$;$/docker/.env$;$/mail/.env$;$/mailer/.env$;$/main/.env$;$/new/.env.staging$;$/web/.env$;$/website/.env$;$/www/.env$;$/xampp/.env$"
+      }
+    ],
+    "risk_details": {
+      "environment_risk": "未知",
+      "environment": "Unknown",
+      "count_risk": "未知",
+      "count_value": 1,
+      "attack_type_risk": "未知",
+      "attack_types": [],
+      "overall_risk": "高",
+      "assessed_at": "2026-08-13T01:20:29.413555+00:00"
+    },
+    "processed_at": "2026-08-13T01:20:29.413555+00:00"
+  }
+}

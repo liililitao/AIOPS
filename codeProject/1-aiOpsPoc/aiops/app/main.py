@@ -142,6 +142,13 @@ async def lifespan(app: FastAPI):
             encoding="utf-8",
         )
 
+    # 所有已有报告和建议的历史告警自动进入分类库；仅访问本地文件，不会调用模型。
+    try:
+        from app.services.alert_service import sync_existing_alerts_to_classification
+        sync_existing_alerts_to_classification()
+    except Exception as exc:
+        logger.warning("[CLASSIFICATION] Historical sync failed: %s", exc)
+
     # Start scheduler
     if settings.SCAN_ENABLED:
         try:

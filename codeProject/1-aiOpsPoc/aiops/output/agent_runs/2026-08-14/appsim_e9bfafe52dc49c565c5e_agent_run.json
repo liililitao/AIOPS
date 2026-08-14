@@ -1,0 +1,92 @@
+{
+  "run_id": "agent_ebe68891c6d14830b021d73502d6d4e8",
+  "status": "completed",
+  "started_at": "2026-08-14T02:07:53.651040+00:00",
+  "completed_at": "2026-08-14T02:08:10.665675+00:00",
+  "alert": {
+    "alert_name": "app_alert_rared_Edit_Points",
+    "application_code": "RareD NovoCare"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "name": "historical_alert_search",
+      "status": "degraded",
+      "message": "检索历史相似告警",
+      "error_code": "history_search_unavailable"
+    },
+    {
+      "step": 2,
+      "name": "knowledge_base_search",
+      "status": "completed",
+      "message": "查询知识库与 CMDB",
+      "error_code": null
+    },
+    {
+      "step": 3,
+      "name": "splunk_log_investigation",
+      "status": "degraded",
+      "message": "调查受控 Splunk 日志证据",
+      "error_code": "alert_not_found"
+    },
+    {
+      "step": 4,
+      "name": "ai_evidence_analysis",
+      "status": "completed",
+      "message": "执行模型已基于三个 Tool 的返回证据完成研判",
+      "token_usage": {
+        "prompt_tokens": 572,
+        "completion_tokens": 197,
+        "total_tokens": 769
+      }
+    }
+  ],
+  "analysis_result": "1. 已确认事实：  \n告警由模拟环境触发，日志内容为“doctor_zhang 修改患者教育积分+3”，属模拟操作，非真实生产环境事件；应用为 RareD NovoCare-SIM，资源与域名为模拟环境标识（.simulated.local）。\n\n2. 不确定项/证据缺口：  \n历史告警检索不可用（historical_tool 失败）；资产与文档知识库未匹配到相关资产信息（knowledge_tool 结果为空）；Splunk 日志未找到对应告警ID（alert_not_found），无法验证原始日志上下文。\n\n3. 建议优先排查方向：  \n确认当前告警是否误从模拟环境误推送至生产告警系统；检查模拟环境与生产环境的日志隔离机制是否失效；若确需分析该模拟操作，应启用模拟环境专用日志通道，避免干扰真实告警研判。",
+  "evidence": {
+    "historical": {
+      "success": false,
+      "query": "告警名称: app_alert_rared_Edit_Points\n触发原因: 模拟应用日志命中规则 #10：app_alert_rared_Edit_Points\n应用: RareD NovoCare\n资源: RareD NovoCare-APP-SIM\n域名: rared-novocare.simulated.local\n请求: OperateWorkerName=doctor_zhang; OperateDescription=修改积分规则: 患者教育积分+3; OperateType=1059\n动作: 应用异常",
+      "error_code": "history_search_unavailable",
+      "message": "历史告警检索暂不可用，请稍后重试",
+      "results": []
+    },
+    "knowledge": {
+      "success": true,
+      "knowledge_type": "auto",
+      "query": "告警名称: app_alert_rared_Edit_Points\n触发原因: 模拟应用日志命中规则 #10：app_alert_rared_Edit_Points\n应用: RareD NovoCare\n资源: RareD NovoCare-APP-SIM\n域名: rared-novocare.simulated.local\n请求: OperateWorkerName=doctor_zhang; OperateDescription=修改积分规则: 患者教育积分+3; OperateType=1059\n动作: 应用异常",
+      "evidence": {
+        "assets": [
+          {
+            "found": false,
+            "match_type": "none",
+            "resource_name": "",
+            "resource_type": "",
+            "environment": "Unknown",
+            "subscription": "",
+            "source_sheet": "",
+            "source_row": 0,
+            "evidence_type": "asset"
+          }
+        ],
+        "documents": []
+      },
+      "warnings": [
+        "document_search_unavailable"
+      ]
+    },
+    "splunk": {
+      "success": false,
+      "alert_id": "appsim_e9bfafe52dc49c565c5e",
+      "evidence_type": "splunk_log",
+      "evidence": [],
+      "warnings": [],
+      "error_code": "alert_not_found",
+      "truncated": false
+    }
+  },
+  "token_usage": {
+    "prompt_tokens": 572,
+    "completion_tokens": 197,
+    "total_tokens": 769
+  }
+}

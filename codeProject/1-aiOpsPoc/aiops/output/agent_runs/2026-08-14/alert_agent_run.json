@@ -1,0 +1,76 @@
+{
+  "run_id": "agent_849758c3498b4f76b93cfdc18125499f",
+  "status": "completed",
+  "started_at": "2026-08-14T02:00:48.928042+00:00",
+  "completed_at": "2026-08-14T02:00:56.768745+00:00",
+  "alert": {
+    "alert_name": "WAF suspicious path scan",
+    "application_code": "Test Application"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "name": "historical_alert_search",
+      "status": "completed",
+      "message": "检索历史相似告警",
+      "error_code": null
+    },
+    {
+      "step": 2,
+      "name": "knowledge_base_search",
+      "status": "degraded",
+      "message": "查询知识库与 CMDB",
+      "error_code": "tool_unavailable"
+    },
+    {
+      "step": 3,
+      "name": "splunk_log_investigation",
+      "status": "degraded",
+      "message": "调查受控 Splunk 日志证据",
+      "error_code": "alert_not_found"
+    },
+    {
+      "step": 4,
+      "name": "ai_evidence_analysis",
+      "status": "completed",
+      "message": "执行模型已基于三个 Tool 的返回证据完成研判",
+      "token_usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0
+      }
+    }
+  ],
+  "analysis_result": "已完成受控证据调查：可用 Tool 为 historical；不可用或无结果的 Tool 为 knowledge、splunk。AI 证据汇总服务暂不可用，以下分析报告与处理建议会基于当前告警及可用证据生成。",
+  "evidence": {
+    "historical": {
+      "success": true,
+      "results": [
+        {
+          "case_id": "old/one",
+          "alert_summary": "old alert",
+          "analysis_summary": "old analysis",
+          "suggestion_summary": "old suggestion"
+        }
+      ]
+    },
+    "knowledge": {
+      "success": false,
+      "error_code": "tool_unavailable"
+    },
+    "splunk": {
+      "success": false,
+      "alert_id": "2026-08-14/alert",
+      "evidence_type": "splunk_log",
+      "evidence": [],
+      "warnings": [],
+      "error_code": "alert_not_found",
+      "truncated": false
+    }
+  },
+  "token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  }
+}

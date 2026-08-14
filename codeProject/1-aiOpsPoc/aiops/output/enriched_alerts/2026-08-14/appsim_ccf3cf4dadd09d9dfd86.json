@@ -1,0 +1,66 @@
+{
+  "alert_name": "app_alert_novocare_diabetes_Modify_User",
+  "application_code": "NNRC Diabetes.com",
+  "trigger_time": "2026-08-14T10:16:01.643+08:00",
+  "trigger_time_utc": "2026-08-14T10:16:01.644486+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #13：app_alert_novocare_diabetes_Modify_User",
+  "splunk_url": "",
+  "search_terms": "index=app_s_6month sourcetype=novocare_diabetes title=\"用户管理添加/编辑操作日志\"\n| stats count by _time,title,operator_user,operator_url",
+  "full_spl": "index=app_s_6month sourcetype=novocare_diabetes title=\"用户管理添加/编辑操作日志\"\n| stats count by _time,title,operator_user,operator_url",
+  "results": [
+    {
+      "id": "NNRC Diabetes.com-APP-SIM",
+      "properties_hostname": "nnrc-diabetes.com.simulated.local",
+      "properties_requestUri": "title=用户管理添加/编辑操作日志; operator_user=hr_admin_li; operator_url=/user/management/create",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\novocare_diabetes\\app_alert_novocare_diabetes_Modify_User.csv",
+  "risk_level": "低",
+  "risk_details": {
+    "environment_risk": "低",
+    "environment": "Non-Production",
+    "count_risk": "低",
+    "count_value": 10,
+    "attack_type_risk": "低",
+    "attack_types": [
+      "random_scan"
+    ],
+    "overall_risk": "低",
+    "assessed_at": "2026-08-14T10:17:10.261887"
+  },
+  "token_usage": {
+    "agent_planning": {
+      "prompt_tokens": 399,
+      "completion_tokens": 1049,
+      "total_tokens": 1448
+    },
+    "agent_analysis": {
+      "prompt_tokens": 1927,
+      "completion_tokens": 1378,
+      "total_tokens": 3305
+    },
+    "analysis_report": {
+      "prompt_tokens": 3454,
+      "completion_tokens": 2048,
+      "total_tokens": 5502
+    },
+    "suggestion": {
+      "prompt_tokens": 3350,
+      "completion_tokens": 1523,
+      "total_tokens": 4873
+    },
+    "total": {
+      "prompt_tokens": 9130,
+      "completion_tokens": 5998,
+      "total_tokens": 15128
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null,
+  "agent_run_id": "agent_5fc1b001d5f24476b3474ccbef3a0e93",
+  "agent_analysis": "## 研判结论\n当前告警为模拟环境（域名含 `.simulated.local`）中触发，未获取任何有效证据支持操作异常或权限越权。所有三个工具均返回“无可用证据”，且未发现历史同类告警、权限定义或日志响应码等关键字段。因此，**当前无足够证据支持任何根因假设，告警可能为规则误配置、日志采集缺失或环境模拟噪音。置信度低**。需人工介入确认规则逻辑与日志完整性。\n\n---\n\n## 证据台账\n| 工具类型       | 执行状态 | 关键发现/缺失项                                      | 证据可用性 |\n|----------------|----------|------------------------------------------------------|------------|\n| 历史告警工具   | 失败     | `history_search_unavailable`，无历史告警结果         | 无可用证据 |\n| 知识库/CMDB    | 成功但无资产匹配 | `assets.found=false`，未找到 `hr_admin_li` 权限或资源定义 | 无可用证据 |\n| Splunk 日志    | 失败     | `alert_not_found`，无匹配日志记录                    | 无可用证据 |\n\n---\n\n## 根因假设与置信度\n### 假设1：合法操作被错误标记为“应用异常”  \n- **支持证据**：无  \n- **反证/缺口**：无 Splunk 日志确认响应码、无 CMDB 权限定义支撑“合法”，无历史告警佐证规则误报。  \n- **置信度**：低  \n\n### 假设2：操作者权限不足或角色越权  \n- **支持证据**：无  \n- **反证/缺口**：CMDB 未定义 `hr_admin_li` 权限，无法确认越权；Splunk 日志缺失，无法确认操作实际结果。  \n- **置信度**：低  \n\n### 假设3：依赖服务异常或配置变更导致操作失败  \n- **支持证据**：无  \n- **反证/缺口**：无调用链日志、无服务健康监控数据、无配置变更记录。  \n- **置信度**：低  \n\n> 所有假设均因缺乏关键字段（状态码、权限定义、调用链）无法成立，当前证据不足以支撑任何根因推断。\n\n---\n\n## 影响范围与风险说明\n- **环境属性**：明确为非生产模拟环境（域名含 `.simulated.local`），不构成真实业务中断或数据泄露风险。\n- **当前影响**：仅触发告警日志，无用户影响、无服务降级、无财务或合规损失。\n- **潜在风险**：若规则持续误报，可能导致告警疲劳，掩盖真实异常；模拟环境若用于测试流程，可能误导测试结论。\n- **风险等级**：低（因环境非生产，且无证据支持故障或越权）。\n\n---\n\n## 优先处置路径\n1. **首要行动：确认日志采集完整性**  \n   - 通知日志平台负责人检查告警 ID `appsim_ccf3cf4dadd09d9dfd86` 是否存在、采集管道是否正常、字段是否被裁剪。  \n   - **验证完成条件**：Splunk 日志返回 `operator_user=hr_admin_li` + `/user/management/create` 的完整记录（含状态码、错误消息）。  \n   - **权限边界**：需平台运维或日志负责人授权查看原始日志流水。\n\n2. **次要行动：核查规则 #13 的匹配逻辑**  \n   - 调取规则文档，确认“应用异常”是否基于非2xx响应、无权限返回或其他字段。  \n   - **验证完成条件**：提供规则匹配条件说明（如正则、字段值列表）。  \n   - **权限边界**：需应用运维或安全规则管理员确认规则定义。\n\n3. **第三行动：人工确认操作意图**  \n   - 询问模拟环境负责人是否预期存在 `hr_admin_li` 执行 `/user/management/create` 的测试操作。  \n   - **验证完成条件**：确认该操作是否为自动化脚本、定时任务或人工测试触发。  \n   - **权限边界**：需测试负责人或环境管理员提供操作排期说明。\n\n---\n\n## 验证标准\n1. **Splunk 日志可查**：成功检索到目标请求日志，包含 `status_code`、`error_message`、`duration_ms` 等关键字段。  \n2. **规则逻辑清晰**：提供规则 #13 的完整匹配条件，明确“应用异常”触发阈值。  \n3. **权限定义明确**：CMDB 或用户目录中存在 `hr_admin_li` 在模拟环境中对 `/user/management/create` 的权限定义。  \n4. **操作意图确认**：明确该操作是否为预期测试行为，非误触或恶意脚本。  \n5. **环境标识无误**：确认当前资源 `NNRC Diabetes.com-APP-SIM` 与域名 `nnrc-diabetes.com.simulated.local` 均为模拟环境，无生产重叠。\n\n---\n\n## 证据缺口与人工确认项\n1. **日志缺失**：Splunk 未返回任何日志，需人工确认是否存在采集故障、告警 ID 错误或字段过滤丢失。  \n2. **权限未知**：CMDB 未定义 `hr_admin_li` 角色，需人工确认该账户在模拟环境中是否被授权执行用户管理操作。  \n3. **规则语义不明**：无规则 #13 的匹配逻辑文档，需人工提供“应用异常”判断依据（如是否包含403/500）。  \n4. **操作来源不明**：未确认该请求是否由人工、脚本或定时任务发起，需测试负责人提供操作排期或自动化日志。  \n5. **模拟环境边界**：需确认该资源 `NNRC Diabetes.com-APP-SIM` 是否存在生产同名资源，避免误判环境隔离性。  \n6. **历史告警不可用**：历史检索失败，需人工确认是否曾有同类告警，以判断是否规则误配置或常态化噪音。  \n\n> 以上缺口均需人工介入确认，不可由自动化Agent推断。处置前必须获得相关系统负责人授权。"
+}

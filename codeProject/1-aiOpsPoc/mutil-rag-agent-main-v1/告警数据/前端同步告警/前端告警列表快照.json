@@ -1,0 +1,79 @@
+{
+  "source": "aiops_frontend_alert_list",
+  "updated_at": "2026-08-14T10:18:29.298400",
+  "total": 8,
+  "alerts": [
+    {
+      "id": "appsim_ccf3cf4dadd09d9dfd86",
+      "alert_name": "app_alert_novocare_diabetes_Modify_User",
+      "hostname": "nnrc-diabetes.com.simulated.local",
+      "trigger_time": "2026-08-14T10:16:01.643+08:00",
+      "risk_level": "低",
+      "processed_at": "2026-08-14T10:16:01.644486+08:00",
+      "application_code": "NNRC Diabetes.com"
+    },
+    {
+      "id": "appsim_e9bfafe52dc49c565c5e",
+      "alert_name": "app_alert_rared_Edit_Points",
+      "hostname": "rared-novocare.simulated.local",
+      "trigger_time": "2026-08-14T10:07:53.594+08:00",
+      "risk_level": "低",
+      "processed_at": "2026-08-14T10:07:53.594774+08:00",
+      "application_code": "RareD NovoCare"
+    },
+    {
+      "id": "appsim_8169af605904e0f5d8ca",
+      "alert_name": "app_alert_budget_tool_Login_Failed",
+      "hostname": "nnrc-budget-tool.simulated.local",
+      "trigger_time": "2026-08-14T09:13:24.593+08:00",
+      "risk_level": "低",
+      "processed_at": "2026-08-14T09:13:24.595775+08:00",
+      "application_code": "NNRC Budget Tool"
+    },
+    {
+      "id": "appsim_d91e2d87500a079a1a2c",
+      "alert_name": "app_alert_iwe_Data_Docking_Failure",
+      "hostname": "iwe.simulated.local",
+      "trigger_time": "2026-08-13T16:59:05.371+08:00",
+      "risk_level": "中",
+      "processed_at": "2026-08-13T16:59:05.378675+08:00",
+      "application_code": "iWE"
+    },
+    {
+      "id": "appsim_e989e3069753b2d41f54",
+      "alert_name": "app_alert_pmt_Login_Failed",
+      "hostname": "pmt-for-s&d.simulated.local",
+      "trigger_time": "2026-08-13T16:44:21.945+08:00",
+      "risk_level": "低",
+      "processed_at": "2026-08-13T16:44:21.946743+08:00",
+      "application_code": "PMT for S&D"
+    },
+    {
+      "id": "appsim_52ebd854d781fc9e97e4",
+      "alert_name": "app_alert_pmt_Login_Failed",
+      "hostname": "pmt-for-s&d.simulated.local",
+      "trigger_time": "2026-08-13T16:39:24.134+08:00",
+      "risk_level": "中",
+      "processed_at": "2026-08-13T16:39:24.137065+08:00",
+      "application_code": "PMT for S&D"
+    },
+    {
+      "id": "appsim_cbaa3e8295b15ff6550e",
+      "alert_name": "app_alert_iwe_Data_Docking_Failure",
+      "hostname": "iwe.simulated.local",
+      "trigger_time": "2026-08-13T13:07:35.841+08:00",
+      "risk_level": "中",
+      "processed_at": "2026-08-13T13:07:35.842580+08:00",
+      "application_code": "iWE"
+    },
+    {
+      "id": "appsim_fe85a2e5abb6dfaa3ce3",
+      "alert_name": "app_alert_novocare_diabetes_Change_of_Role_Privileges",
+      "hostname": "nnrc-diabetes.com.simulated.local",
+      "trigger_time": "2026-08-13T10:59:38.857+08:00",
+      "risk_level": "高",
+      "processed_at": "2026-08-13T10:59:38.858204+08:00",
+      "application_code": "NNRC Diabetes.com"
+    }
+  ]
+}

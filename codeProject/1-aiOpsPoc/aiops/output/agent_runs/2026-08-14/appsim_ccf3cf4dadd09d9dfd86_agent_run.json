@@ -1,0 +1,116 @@
+{
+  "run_id": "agent_5fc1b001d5f24476b3474ccbef3a0e93",
+  "status": "completed",
+  "started_at": "2026-08-14T02:16:01.702885+00:00",
+  "completed_at": "2026-08-14T02:17:10.261185+00:00",
+  "alert": {
+    "alert_name": "app_alert_novocare_diabetes_Modify_User",
+    "application_code": "NNRC Diabetes.com"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "name": "ai_investigation_planning",
+      "status": "completed",
+      "message": "规划模型已生成调查假设、证据优先级与验证重点",
+      "token_usage": {
+        "prompt_tokens": 399,
+        "completion_tokens": 1049,
+        "total_tokens": 1448
+      }
+    },
+    {
+      "step": 2,
+      "name": "historical_alert_search",
+      "status": "degraded",
+      "message": "检索历史相似告警",
+      "error_code": "history_search_unavailable"
+    },
+    {
+      "step": 3,
+      "name": "knowledge_base_search",
+      "status": "completed",
+      "message": "查询知识库与 CMDB",
+      "error_code": null
+    },
+    {
+      "step": 4,
+      "name": "splunk_log_investigation",
+      "status": "degraded",
+      "message": "调查受控 Splunk 日志证据",
+      "error_code": "alert_not_found"
+    },
+    {
+      "step": 5,
+      "name": "ai_evidence_analysis",
+      "status": "completed",
+      "message": "执行模型已结合调查计划与三个 Tool 的返回证据完成结构化研判",
+      "token_usage": {
+        "prompt_tokens": 1927,
+        "completion_tokens": 1378,
+        "total_tokens": 3305
+      }
+    }
+  ],
+  "investigation_plan": "## 告警边界\n\n- 仅限于模拟环境（域名含 `.simulated.local`），不默认影响生产。\n- 告警由规则 #13 触发，该规则匹配的是“用户管理添加/编辑操作日志”类请求。\n- 操作者为 `hr_admin_li`，路径为 `/user/management/create`，动作标记为“应用异常”。\n- 未提供用户IP、响应码、耗时、错误堆栈、关联服务或配置变更时间戳。\n- 不得预设为权限越权、恶意编辑或系统故障，必须依赖后续工具验证。\n\n---\n\n## 初始风险假设（最多 3 条，含验证条件）\n\n1. **假设：合法操作被错误标记为“应用异常”**\n   - 验证条件：查看 Splunk 日志中该请求是否返回 2xx 状态码，无异常堆栈，且操作符合该角色权限。\n   - 依赖证据：日志响应码、审计字段（如操作结果 success/fail）、权限校验日志。\n\n2. **假设：操作者权限不足或角色越权**\n   - 验证条件：CMDB 或用户目录中 `hr_admin_li` 是否拥有 `/user/management/create` 的操作权限。\n   - 依赖证据：角色定义、权限组映射、历史同类操作是否被允许。\n\n3. **假设：依赖服务异常或配置变更导致操作失败**\n   - 验证条件：同一时间窗口内是否有数据库、缓存或用户服务（如 LDAP/SSO）异常日志。\n   - 依赖证据：关联服务健康监控、配置发布记录、调用链错误信息。\n\n---\n\n## 三个 Tool 的调查重点\n\n1. **历史告警工具**\n   - 重点：近7天内是否有相同规则 #13 触发的告警？是否集中于相同操作者或路径？\n   - 优先级：若存在高频同类告警，优先怀疑规则误报或流程常态化异常。\n   - 约束：仅限于“app_alert_novocare_diabetes_Modify_User”名称匹配，不扩展其他规则。\n\n2. **知识库/CMDB**\n   - 重点：确认 `hr_admin_li` 的角色是否应在模拟环境中执行 `/user/management/create`。\n   - 重点：确认 `NNRC Diabetes.com-APP-SIM` 资源的归属与配置是否支持用户管理功能。\n   - 约束：若无权限定义或角色说明，则标记为“权限未知”，不得推断。\n\n3. **Splunk 日志**\n   - 重点：提取 `operator_user=hr_admin_li` + `operator_url=/user/management/create` 的完整日志，关注：\n     - HTTP 状态码、响应时间、错误消息字段；\n     - 是否有调用依赖服务（如 db, auth, cache）失败的嵌套日志；\n     - 请求前后是否有其他异常操作（如并发高、IP频繁切换）；\n   - 约束：不构造 SPL，仅说明需提取字段；若日志缺失关键字段（如响应码），则列为“证据缺失”。\n\n---\n\n## 证据优先级与冲突处理\n\n1. **最高优先级：Splunk 日志中的响应状态与错误消息**\n   - 若日志显示 200 且无错误 → 支持“合法操作被误报”假设。\n   - 若显示 403/500 → 支持“权限或服务异常”假设。\n\n2. **次优先级：CMDB 权限定义**\n   - 若 CMDB 明确 `hr_admin_li` 无权限 → 支持权限越权。\n   - 若 CMDB 无记录或模糊 → 降级处理，不强行归因。\n\n3. **冲突处理原则：**\n   - 当 Splunk 显示成功但 CMDB 无权限 → 优先采信日志，标记“权限配置与执行不一致”。\n   - 当历史告警高频出现但日志无异常 → 优先怀疑规则阈值或误配置。\n   - 所有冲突项必须注明“需人工复核”。\n\n---\n\n## 需人工确认的缺口\n\n1. `hr_admin_li` 是否为模拟环境中的合法测试账户？是否授权用于用户管理操作？\n2. 告警规则 #13 的“应用异常”判断逻辑是否包含“非 2xx 响应”或“无权限返回”？请提供规则文档或匹配条件说明。\n3. 模拟环境中的日志采集是否完整？是否存在采样丢失或字段裁剪？\n4. 是否存在自动化脚本或定时任务在模拟环境中定期触发该路径？需确认操作是否人为发起。\n5. 若该路径涉及敏感操作（如创建管理员），是否需额外审计审批流程？当前无证据显示审批环节。",
+  "analysis_result": "## 研判结论\n当前告警为模拟环境（域名含 `.simulated.local`）中触发，未获取任何有效证据支持操作异常或权限越权。所有三个工具均返回“无可用证据”，且未发现历史同类告警、权限定义或日志响应码等关键字段。因此，**当前无足够证据支持任何根因假设，告警可能为规则误配置、日志采集缺失或环境模拟噪音。置信度低**。需人工介入确认规则逻辑与日志完整性。\n\n---\n\n## 证据台账\n| 工具类型       | 执行状态 | 关键发现/缺失项                                      | 证据可用性 |\n|----------------|----------|------------------------------------------------------|------------|\n| 历史告警工具   | 失败     | `history_search_unavailable`，无历史告警结果         | 无可用证据 |\n| 知识库/CMDB    | 成功但无资产匹配 | `assets.found=false`，未找到 `hr_admin_li` 权限或资源定义 | 无可用证据 |\n| Splunk 日志    | 失败     | `alert_not_found`，无匹配日志记录                    | 无可用证据 |\n\n---\n\n## 根因假设与置信度\n### 假设1：合法操作被错误标记为“应用异常”  \n- **支持证据**：无  \n- **反证/缺口**：无 Splunk 日志确认响应码、无 CMDB 权限定义支撑“合法”，无历史告警佐证规则误报。  \n- **置信度**：低  \n\n### 假设2：操作者权限不足或角色越权  \n- **支持证据**：无  \n- **反证/缺口**：CMDB 未定义 `hr_admin_li` 权限，无法确认越权；Splunk 日志缺失，无法确认操作实际结果。  \n- **置信度**：低  \n\n### 假设3：依赖服务异常或配置变更导致操作失败  \n- **支持证据**：无  \n- **反证/缺口**：无调用链日志、无服务健康监控数据、无配置变更记录。  \n- **置信度**：低  \n\n> 所有假设均因缺乏关键字段（状态码、权限定义、调用链）无法成立，当前证据不足以支撑任何根因推断。\n\n---\n\n## 影响范围与风险说明\n- **环境属性**：明确为非生产模拟环境（域名含 `.simulated.local`），不构成真实业务中断或数据泄露风险。\n- **当前影响**：仅触发告警日志，无用户影响、无服务降级、无财务或合规损失。\n- **潜在风险**：若规则持续误报，可能导致告警疲劳，掩盖真实异常；模拟环境若用于测试流程，可能误导测试结论。\n- **风险等级**：低（因环境非生产，且无证据支持故障或越权）。\n\n---\n\n## 优先处置路径\n1. **首要行动：确认日志采集完整性**  \n   - 通知日志平台负责人检查告警 ID `appsim_ccf3cf4dadd09d9dfd86` 是否存在、采集管道是否正常、字段是否被裁剪。  \n   - **验证完成条件**：Splunk 日志返回 `operator_user=hr_admin_li` + `/user/management/create` 的完整记录（含状态码、错误消息）。  \n   - **权限边界**：需平台运维或日志负责人授权查看原始日志流水。\n\n2. **次要行动：核查规则 #13 的匹配逻辑**  \n   - 调取规则文档，确认“应用异常”是否基于非2xx响应、无权限返回或其他字段。  \n   - **验证完成条件**：提供规则匹配条件说明（如正则、字段值列表）。  \n   - **权限边界**：需应用运维或安全规则管理员确认规则定义。\n\n3. **第三行动：人工确认操作意图**  \n   - 询问模拟环境负责人是否预期存在 `hr_admin_li` 执行 `/user/management/create` 的测试操作。  \n   - **验证完成条件**：确认该操作是否为自动化脚本、定时任务或人工测试触发。  \n   - **权限边界**：需测试负责人或环境管理员提供操作排期说明。\n\n---\n\n## 验证标准\n1. **Splunk 日志可查**：成功检索到目标请求日志，包含 `status_code`、`error_message`、`duration_ms` 等关键字段。  \n2. **规则逻辑清晰**：提供规则 #13 的完整匹配条件，明确“应用异常”触发阈值。  \n3. **权限定义明确**：CMDB 或用户目录中存在 `hr_admin_li` 在模拟环境中对 `/user/management/create` 的权限定义。  \n4. **操作意图确认**：明确该操作是否为预期测试行为，非误触或恶意脚本。  \n5. **环境标识无误**：确认当前资源 `NNRC Diabetes.com-APP-SIM` 与域名 `nnrc-diabetes.com.simulated.local` 均为模拟环境，无生产重叠。\n\n---\n\n## 证据缺口与人工确认项\n1. **日志缺失**：Splunk 未返回任何日志，需人工确认是否存在采集故障、告警 ID 错误或字段过滤丢失。  \n2. **权限未知**：CMDB 未定义 `hr_admin_li` 角色，需人工确认该账户在模拟环境中是否被授权执行用户管理操作。  \n3. **规则语义不明**：无规则 #13 的匹配逻辑文档，需人工提供“应用异常”判断依据（如是否包含403/500）。  \n4. **操作来源不明**：未确认该请求是否由人工、脚本或定时任务发起，需测试负责人提供操作排期或自动化日志。  \n5. **模拟环境边界**：需确认该资源 `NNRC Diabetes.com-APP-SIM` 是否存在生产同名资源，避免误判环境隔离性。  \n6. **历史告警不可用**：历史检索失败，需人工确认是否曾有同类告警，以判断是否规则误配置或常态化噪音。  \n\n> 以上缺口均需人工介入确认，不可由自动化Agent推断。处置前必须获得相关系统负责人授权。",
+  "evidence": {
+    "historical": {
+      "success": false,
+      "query": "告警名称: app_alert_novocare_diabetes_Modify_User\n触发原因: 模拟应用日志命中规则 #13：app_alert_novocare_diabetes_Modify_User\n应用: NNRC Diabetes.com\n资源: NNRC Diabetes.com-APP-SIM\n域名: nnrc-diabetes.com.simulated.local\n请求: title=用户管理添加/编辑操作日志; operator_user=hr_admin_li; operator_url=/user/management/create\n动作: 应用异常",
+      "error_code": "history_search_unavailable",
+      "message": "历史告警检索暂不可用，请稍后重试",
+      "results": []
+    },
+    "knowledge": {
+      "success": true,
+      "knowledge_type": "auto",
+      "query": "告警名称: app_alert_novocare_diabetes_Modify_User\n触发原因: 模拟应用日志命中规则 #13：app_alert_novocare_diabetes_Modify_User\n应用: NNRC Diabetes.com\n资源: NNRC Diabetes.com-APP-SIM\n域名: nnrc-diabetes.com.simulated.local\n请求: title=用户管理添加/编辑操作日志; operator_user=hr_admin_li; operator_url=/user/management/create\n动作: 应用异常",
+      "evidence": {
+        "assets": [
+          {
+            "found": false,
+            "match_type": "none",
+            "resource_name": "",
+            "resource_type": "",
+            "environment": "Unknown",
+            "subscription": "",
+            "source_sheet": "",
+            "source_row": 0,
+            "evidence_type": "asset"
+          }
+        ],
+        "documents": []
+      },
+      "warnings": [
+        "document_search_unavailable"
+      ]
+    },
+    "splunk": {
+      "success": false,
+      "alert_id": "appsim_ccf3cf4dadd09d9dfd86",
+      "evidence_type": "splunk_log",
+      "evidence": [],
+      "warnings": [],
+      "error_code": "alert_not_found",
+      "truncated": false
+    }
+  },
+  "token_usage": {
+    "agent_planning": {
+      "prompt_tokens": 399,
+      "completion_tokens": 1049,
+      "total_tokens": 1448
+    },
+    "agent_analysis": {
+      "prompt_tokens": 1927,
+      "completion_tokens": 1378,
+      "total_tokens": 3305
+    },
+    "total": {
+      "prompt_tokens": 2326,
+      "completion_tokens": 2427,
+      "total_tokens": 4753
+    }
+  }
+}

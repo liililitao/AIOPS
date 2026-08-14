@@ -217,7 +217,9 @@ def delete_document(source: str) -> dict:
     return {"source": source, "deleted_chunks": deleted}
 
 
-def search_documents(query: str, top_k: int = 5) -> list[dict]:
+def search_documents(
+    query: str, top_k: int = 5, raise_on_error: bool = False
+) -> list[dict]:
     """向量语义搜索知识库"""
     settings = get_settings()
     if not settings.MILVUS_ENABLED:
@@ -229,7 +231,7 @@ def search_documents(query: str, top_k: int = 5) -> list[dict]:
 
         connect()
         query_vec = embed_query(query)
-        results = search(query_vec, top_k=top_k)
+        results = search(query_vec, top_k=top_k, raise_on_error=raise_on_error)
 
         hits = []
         for r in results:
@@ -243,6 +245,8 @@ def search_documents(query: str, top_k: int = 5) -> list[dict]:
         return hits
     except Exception as e:
         logger.warning(f"[DOCS] Search failed: {e}")
+        if raise_on_error:
+            raise
         return []
 
 

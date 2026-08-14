@@ -1,0 +1,40 @@
+{
+  "failures": {
+    "2026-08-13/appsim_22030c5a8990db864e79": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_4b4edb11a57356dc5ded": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_fe85a2e5abb6dfaa3ce3": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_cbaa3e8295b15ff6550e": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_dfdd3c1abc70f5713c4d": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_2b75af3584a7aa990b5a": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_52ebd854d781fc9e97e4": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_e989e3069753b2d41f54": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-13/appsim_d91e2d87500a079a1a2c": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-14/appsim_8169af605904e0f5d8ca": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-14/appsim_e9bfafe52dc49c565c5e": {
+      "message": "milvus_unavailable"
+    },
+    "2026-08-14/appsim_ccf3cf4dadd09d9dfd86": {
+      "message": "milvus_unavailable"
+    }
+  }
+}

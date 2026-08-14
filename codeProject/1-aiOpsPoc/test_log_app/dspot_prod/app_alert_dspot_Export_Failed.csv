@@ -1,0 +1,11 @@
+_time,UserAccount,operations,Result,customField
+2026-08-13T10:43:14.221+08:00,doctor.wang@hospital.cn,export data,fail_timeout,导出超时: 数据量超过100万行
+2026-08-13T10:43:14.221+08:00,researcher.chen@university.edu,export data,fail_quota_exceeded,导出超时: 数据量超过100万行
+2026-08-13T10:43:14.221+08:00,user005@example.com,export data,fail_quota_exceeded,存储空间不足: 临时文件写入失败
+2026-08-13T10:43:14.221+08:00,researcher.chen@university.edu,export data,fail_data_too_large,导出超时: 数据量超过100万行
+2026-08-13T10:43:14.221+08:00,user005@example.com,export data,fail_data_too_large,权限不足: 用户无导出全量数据权限
+2026-08-13T10:43:14.221+08:00,user006@example.com,export data,fail,存储空间不足: 临时文件写入失败
+2026-08-13T10:43:14.221+08:00,researcher.chen@university.edu,export data,fail_quota_exceeded,导出超时: 数据量超过100万行
+2026-08-13T10:43:14.221+08:00,user005@example.com,export data,fail_data_too_large,格式转换失败: PDF生成异常
+2026-08-13T10:43:14.221+08:00,user006@example.com,export data,fail_permission_denied,权限不足: 用户无导出全量数据权限
+2026-08-13T10:43:14.221+08:00,researcher.chen@university.edu,export data,fail_timeout,导出超时: 数据量超过100万行

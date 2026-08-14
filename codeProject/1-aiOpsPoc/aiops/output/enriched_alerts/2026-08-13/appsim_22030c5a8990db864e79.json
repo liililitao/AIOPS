@@ -1,0 +1,54 @@
+{
+  "alert_name": "app_alert_iwe_Login_Failed",
+  "application_code": "iWE",
+  "trigger_time": "2026-08-13T10:36:03.574+08:00",
+  "trigger_time_utc": "2026-08-13T10:36:03.575628+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #1：app_alert_iwe_Login_Failed",
+  "splunk_url": "",
+  "search_terms": "index=app_s_6month sourcetype=iwe source=iwe_log_action result=\"failed\"\n|stats count by _time,initial,query,result",
+  "full_spl": "index=app_s_6month sourcetype=iwe source=iwe_log_action result=\"failed\"\n|stats count by _time,initial,query,result",
+  "results": [
+    {
+      "id": "iWE-APP-SIM",
+      "properties_hostname": "iwe.simulated.local",
+      "properties_requestUri": "initial=chenqi; query=INSERT INTO logs (user,action) VALUES (?,?); result=failed",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\iwe\\app_alert_iwe_Login_Failed.csv",
+  "risk_level": "未知",
+  "risk_details": {
+    "environment_risk": "未知",
+    "environment": "Unknown",
+    "count_risk": "低",
+    "count_value": 10,
+    "attack_type_risk": "低",
+    "attack_types": [
+      "random_scan"
+    ],
+    "overall_risk": "未知",
+    "assessed_at": "2026-08-13T10:36:10.573464"
+  },
+  "token_usage": {
+    "analysis_report": {
+      "prompt_tokens": 935,
+      "completion_tokens": 1415,
+      "total_tokens": 2350
+    },
+    "suggestion": {
+      "prompt_tokens": 928,
+      "completion_tokens": 1623,
+      "total_tokens": 2551
+    },
+    "total": {
+      "prompt_tokens": 1863,
+      "completion_tokens": 3038,
+      "total_tokens": 4901
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null
+}

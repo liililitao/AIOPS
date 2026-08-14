@@ -1,0 +1,39 @@
+{
+  "source": "splunk_frontend_alert_list",
+  "synced_at": "2026-08-13T01:20:29.413555+00:00",
+  "alert": {
+    "id": "splunk_26a6d14fa8d09d9cba7a1ee9",
+    "source": "splunk",
+    "alert_name": "test-waf",
+    "application_code": "",
+    "trigger_time": "2026-07-14T16:17:54.047+08:00",
+    "trigger_time_utc": "2026-07-14T08:17:54.047Z",
+    "event_count": 1,
+    "trigger_reason": "Saved Search [test-waf] always(1)",
+    "splunk_url": "http://vm-cdcshared-tst-spl9forwarder:8000/app/search/search?q=%7Cloadjob%20rt_scheduler__adminjhgz__search__RMD55e6c7c059c57a98f_at_1783564199_1802.328%20%7C%20head%201%20%7C%20tail%201&earliest=0&latest=now",
+    "search_terms": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+    "full_spl": "index=azure category=ApplicationGatewayFirewallLog properties_action=Blocked\nproperties_hostname!=\"novocareapp.novocare.com.cn\" AND\nproperties_hostname!=\"test-novocareapp.novocare.com.cn\"\n| rex field=resourceId \"\\/(?<id>[^\\/]+)$\"\n| stats values(properties_action) as properties_action values(properties_requestUri) as\nproperties_requestUri count by properties_hostname,id\n| table id,properties_hostname,properties_requestUri,properties_action,count\n| search count>=20",
+    "risk_level": "高",
+    "results": [
+      {
+        "id": "AGW-NOVOCAREOBESITY-PRD-01",
+        "properties_hostname": "api-obesity.novocare.com.cn",
+        "properties_requestUri": "/.git/config /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=0cb8c20282ace298ef6f18c02a910c7ca341eb17&timestamp=1783047207&nonce=1089772023&openid=oVmQa7Y0AxG5uEhx0Um_shz9r3-I&encrypt_type=aes&msg_signature=4bc268b7775d0a7f929910aca2cbef34f025f05d /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=33957ff5bed32ed55e9d0cc45515aa5fcbf2c9ef&timestamp=1783047052&nonce=1419243734&openid=oVmQa7ZRhzOjWpWEBizUvYt14N-I&encrypt_type=aes&msg_signature=0e8b1a9eec441cdc43ae889efc5609838498c4f4 /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=384d4d1c55a9db1f6f13028edc7ad04007c9657c&timestamp=1783047387&nonce=506767620&openid=oVmQa7RBIjEXyHQZ7gfnqNDghw5o&encrypt_type=aes&msg_signature=f1a90683bd0fb91cb27b93f810a8da00dbf62efa /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=5fcd25e911cd86c55893b851005577c51bdf5d26&timestamp=1783046191&nonce=603405742&openid=oVmQa7aN7S0hM2CAiBJZ1rFbfUyQ&encrypt_type=aes&msg_signature=c62f6b2ba3dfd8f748cdde5c5b4f71e68644287d /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=ab6a818d9d9061cf0838250adb1d7752de255ec1&timestamp=1783047206&nonce=257145291&openid=oVmQa7VEYyC6a1wWApszSh2xqSMU&encrypt_type=aes&msg_signature=f7f2de4c244359d1c7d2a28e1205fb169b41e2bf /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=b20ef512be37562044eebf92faa1d33810a8288d&timestamp=1783037859&nonce=1359840584&openid=oVmQa7eVNm09HKF5-tKB5ZvUZG4o&encrypt_type=aes&msg_signature=e0b22718b83bc16652c68065add637bc0e284ebd /external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=e6875cafc48b5f297329da1837b58f7746c93095&timestamp=1783043711&nonce=1422143956&openid=oVmQa7WCmEYGjIK5nPS8EEiKUwzc&encrypt_type=aes&msg_signature=5178f112475c563e604d4ccdb1a7976849ec4f5e /membership/api/membership/v1/tasks /user/api/user/v1/user/login",
+        "properties_action": "Blocked",
+        "count": "20",
+        "__mv_properties_requestUri": "$/.git/config$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=0cb8c20282ace298ef6f18c02a910c7ca341eb17&timestamp=1783047207&nonce=1089772023&openid=oVmQa7Y0AxG5uEhx0Um_shz9r3-I&encrypt_type=aes&msg_signature=4bc268b7775d0a7f929910aca2cbef34f025f05d$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=33957ff5bed32ed55e9d0cc45515aa5fcbf2c9ef&timestamp=1783047052&nonce=1419243734&openid=oVmQa7ZRhzOjWpWEBizUvYt14N-I&encrypt_type=aes&msg_signature=0e8b1a9eec441cdc43ae889efc5609838498c4f4$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=384d4d1c55a9db1f6f13028edc7ad04007c9657c&timestamp=1783047387&nonce=506767620&openid=oVmQa7RBIjEXyHQZ7gfnqNDghw5o&encrypt_type=aes&msg_signature=f1a90683bd0fb91cb27b93f810a8da00dbf62efa$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=5fcd25e911cd86c55893b851005577c51bdf5d26&timestamp=1783046191&nonce=603405742&openid=oVmQa7aN7S0hM2CAiBJZ1rFbfUyQ&encrypt_type=aes&msg_signature=c62f6b2ba3dfd8f748cdde5c5b4f71e68644287d$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=ab6a818d9d9061cf0838250adb1d7752de255ec1&timestamp=1783047206&nonce=257145291&openid=oVmQa7VEYyC6a1wWApszSh2xqSMU&encrypt_type=aes&msg_signature=f7f2de4c244359d1c7d2a28e1205fb169b41e2bf$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=b20ef512be37562044eebf92faa1d33810a8288d&timestamp=1783037859&nonce=1359840584&openid=oVmQa7eVNm09HKF5-tKB5ZvUZG4o&encrypt_type=aes&msg_signature=e0b22718b83bc16652c68065add637bc0e284ebd$;$/external/open-api/external/v1/wechatMini/message/wx98f3f60b481fdab7?signature=e6875cafc48b5f297329da1837b58f7746c93095&timestamp=1783043711&nonce=1422143956&openid=oVmQa7WCmEYGjIK5nPS8EEiKUwzc&encrypt_type=aes&msg_signature=5178f112475c563e604d4ccdb1a7976849ec4f5e$;$/membership/api/membership/v1/tasks$;$/user/api/user/v1/user/login$"
+      }
+    ],
+    "risk_details": {
+      "environment_risk": "未知",
+      "environment": "Unknown",
+      "count_risk": "未知",
+      "count_value": 1,
+      "attack_type_risk": "未知",
+      "attack_types": [],
+      "overall_risk": "高",
+      "assessed_at": "2026-08-13T01:20:29.413555+00:00"
+    },
+    "processed_at": "2026-08-13T01:20:29.413555+00:00"
+  }
+}

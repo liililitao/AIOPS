@@ -84,6 +84,18 @@ body {
 
 /* ===== 告警列表 ===== */
 .alert-list { flex: 1; overflow-y: auto; padding: 8px; }
+.simulation-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+    background: #f8f9ff;
+    font-size: 13px;
+}
+.simulation-bar .filter-select { max-width: 340px; }
+.simulation-count { width: 72px; }
 .alert-item {
     padding: 10px 12px; border: 1px solid var(--border);
     border-radius: var(--radius); margin-bottom: 8px;
@@ -94,6 +106,19 @@ body {
 .alert-item .alert-title { font-weight: 600; font-size: 14px; }
 .alert-item .alert-meta { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
 .alert-item .alert-risk { float: right; font-size: 12px; padding: 2px 8px; border-radius: 10px; }
+.alert-delete {
+    float: right;
+    margin: 0 0 0 6px;
+    border: 0;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    color: #c0392b;
+    background: #fff0ee;
+    font-size: 15px;
+}
+.alert-delete:hover { background: #ffd9d4; }
 .risk-high { background: #fde8e8; color: var(--danger); }
 .risk-medium { background: #fef3cd; color: var(--warning); }
 .risk-low { background: #d4edda; color: var(--success); }
@@ -141,6 +166,11 @@ body {
 .report-content pre {
     background: #1e1e2e; color: #cdd6f4; padding: 12px 16px;
     border-radius: var(--radius); overflow-x: auto; margin: 10px 0;
+}
+.report-content pre code {
+    color: inherit;
+    background: transparent;
+    padding: 0;
 }
 .report-content ul, .report-content ol { margin: 8px 0; padding-left: 20px; }
 .report-content table { border-collapse: collapse; width: 100%; margin: 10px 0; }

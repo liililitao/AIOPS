@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initDetailTabs();
     initKnowledgeBase();
-    loadAlerts({ sync: true });
+    initApplicationSimulator();
+    loadAlerts();
     loadConfig();
     pollSchedulerStatus();
 });
@@ -39,7 +40,7 @@ function initNavigation() {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.getElementById(`tab-${tabName}`).classList.add('active');
             // 加载数据
-            if (tabName === 'results') loadAlerts({ sync: true });
+            if (tabName === 'results') loadAlerts();
             if (tabName === 'kbchat') loadKBStats();
             if (tabName === 'knowledge') loadDocs();
             if (tabName === 'config') loadConfig();
@@ -53,6 +54,57 @@ function initNavigation() {
     // 筛选
     document.getElementById('filter-risk')?.addEventListener('change', renderAlertList);
     document.getElementById('filter-search')?.addEventListener('input', renderAlertList);
+}
+
+async function initApplicationSimulator() {
+    const select = document.getElementById('simulation-rule');
+    const button = document.getElementById('btn-generate-application-alert');
+    if (!select || !button) return;
+    try {
+        const res = await fetch('/api/v1/alerts/simulation/application-rules');
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
+        select.innerHTML = (data.rules || []).map(rule =>
+            `<option value="${rule.id}">${escHtml(rule.system)} · ${escHtml(rule.alert_name)}</option>`
+        ).join('') || '<option value="">没有可用规则</option>';
+    } catch (err) {
+        console.error('加载应用告警规则失败:', err);
+        select.innerHTML = '<option value="">规则加载失败</option>';
+        button.disabled = true;
+    }
+    button.addEventListener('click', generateApplicationAlert);
+}
+
+async function generateApplicationAlert() {
+    const select = document.getElementById('simulation-rule');
+    const countInput = document.getElementById('simulation-count');
+    const button = document.getElementById('btn-generate-application-alert');
+    const ruleId = Number(select?.value);
+    const count = Number(countInput?.value || 10);
+    if (!ruleId || !Number.isInteger(count) || count < 1 || count > 1000) {
+        alert('请选择应用规则，并填写 1 到 1000 的日志条数。');
+        return;
+    }
+    const original = button.textContent;
+    button.disabled = true;
+    button.textContent = '⏳ 生成中...';
+    try {
+        const res = await fetch('/api/v1/alerts/simulation/application-alert', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({rule_id: ruleId, count}),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
+        await loadAlerts({ sync: false });
+        state.selectedAlertId = data.alert_id;
+        renderAlertList();
+        await renderDetailPanel();
+    } catch (err) {
+        alert(`生成模拟应用告警失败：${err.message}`);
+    } finally {
+        button.disabled = false;
+        button.textContent = original;
+    }
 }
 
 // ==========================================
@@ -108,12 +160,9 @@ async function refreshAlerts() {
     if (!btn) return;
     const originalText = btn.textContent;
     btn.disabled = true;
-    btn.textContent = '⏳ 同步中...';
+    btn.textContent = '⏳ 刷新中...';
     try {
-        const result = await loadAlerts({ sync: true });
-        if (result?.syncError) {
-            alert(`Splunk 同步失败，已显示最近一次成功同步的数据：${result.syncError.message}`);
-        }
+        await loadAlerts();
     } finally {
         btn.disabled = false;
         btn.textContent = originalText;
@@ -147,6 +196,7 @@ function renderAlertList() {
         return `
             <div class="alert-item ${isActive}" data-id="${a.id}" onclick="selectAlert('${a.id}')">
                 <span class="alert-risk ${riskClass}">${a.risk_level || '?'}</span>
+                <button class="alert-delete" title="删除告警" onclick="deleteAlert(event, '${a.id}')">✕</button>
                 <div class="alert-title">${escHtml(a.alert_name || 'Unknown')}</div>
                 <div class="alert-meta">
                     ${escHtml(a.hostname || '-')} · ${escHtml(a.trigger_time || '-')}
@@ -154,6 +204,23 @@ function renderAlertList() {
             </div>
         `;
     }).join('');
+}
+
+async function deleteAlert(event, alertId) {
+    event.stopPropagation();
+    if (!confirm('确定删除这条模拟应用告警吗？其 AI 风险结果、分析报告和处理建议也会删除；原始 CSV 日志会保留。')) return;
+    try {
+        const res = await fetch(`/api/v1/alerts/${encodeURIComponent(alertId)}`, { method: 'DELETE' });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.detail || `HTTP ${res.status}`);
+        if (state.selectedAlertId === alertId) {
+            state.selectedAlertId = null;
+            document.getElementById('detail-content').innerHTML = '<div class="empty-state">请选择一条告警查看详情</div>';
+        }
+        await loadAlerts();
+    } catch (err) {
+        alert(`删除告警失败：${err.message}`);
+    }
 }
 
 // ==========================================
@@ -184,10 +251,10 @@ async function renderDetailPanel() {
                 renderAlertData(container, detail);
                 break;
             case 'analysis':
-                renderMarkdownContent(container, detail.analysis_report, '暂无分析报告');
+                renderMarkdownContent(container, detail.analysis_report, 'AI 分析尚未完成，请稍后刷新。');
                 break;
             case 'suggestion':
-                renderMarkdownContent(container, detail.suggestion, '暂无处理建议');
+                renderMarkdownContent(container, detail.suggestion, 'AI 分析尚未完成，请稍后刷新。');
                 break;
             case 'chat':
                 renderChatPanel(container, detail);
@@ -202,6 +269,9 @@ async function renderDetailPanel() {
 function renderAlertData(container, detail) {
     const alert = detail.alert || {};
     const risk = detail.risk_details || {};
+    const matchInfo = detail.from_sample
+        ? `<p>🧠 已复用告警分类：${escHtml(detail.match_sample_id || '-')}（匹配度 ${escHtml(String(detail.match_score ?? '-'))}%）</p>`
+        : '';
     container.innerHTML = `
         <div class="report-content">
             <h2>告警数据</h2>
@@ -214,13 +284,15 @@ function renderAlertData(container, detail) {
             </table>
 
             <h3>风险判定详情</h3>
-            <table>
-                <tr><th>维度</th><th>判定</th></tr>
-                <tr><td>环境风险</td><td>${escHtml(risk.environment_risk || '-')} (${escHtml(risk.environment || '-')})</td></tr>
-                <tr><td>数量风险</td><td>${escHtml(risk.count_risk || '-')} (count: ${risk.count_value || '-'})</td></tr>
-                <tr><td>攻击类型风险</td><td>${escHtml(risk.attack_type_risk || '-')}</td></tr>
-                <tr><td>攻击类型</td><td>${escHtml((risk.attack_types || []).join(', ') || '-')}</td></tr>
-            </table>
+            ${alert.risk_level === '待分析'
+                ? '<p>AI 正在自动分析该告警；完成后会自动生成风险判定、分析报告和处理建议。</p>'
+                : `<table>
+                    <tr><th>维度</th><th>判定</th></tr>
+                    <tr><td>环境风险</td><td>${escHtml(risk.environment_risk || '-')} (${escHtml(risk.environment || '-')})</td></tr>
+                    <tr><td>数量风险</td><td>${escHtml(risk.count_risk || '-')} (count: ${risk.count_value || '-'})</td></tr>
+                    <tr><td>攻击类型风险</td><td>${escHtml(risk.attack_type_risk || '-')}</td></tr>
+                    <tr><td>攻击类型</td><td>${escHtml((risk.attack_types || []).join(', ') || '-')}</td></tr>
+                </table>`}
 
             <h3>受影响资源</h3>
             ${(alert.results || []).map(r => `
@@ -235,9 +307,21 @@ function renderAlertData(container, detail) {
 
             ${alert.splunk_url ? `<p><a href="${escHtml(alert.splunk_url)}" target="_blank">🔗 在 Splunk 中查看</a></p>` : ''}
 
+            ${matchInfo}
+
             ${renderTokenUsage(detail.token_usage)}
         </div>
     `;
+}
+
+function isApplicationSimulationAlert() {
+    return (state.selectedAlertId || '').startsWith('appsim_');
+}
+
+function hasGeneratedAnalysis(detail) {
+    if (isApplicationSimulationAlert()) return Boolean(detail?.risk_details);
+    const report = detail?.analysis_report || '';
+    return Boolean(report) && !report.startsWith('此告警直接从 Splunk 同步；');
 }
 
 function renderMarkdownContent(container, content, emptyText) {
@@ -245,7 +329,15 @@ function renderMarkdownContent(container, content, emptyText) {
         container.innerHTML = `<div class="empty-state">${emptyText}</div>`;
         return;
     }
-    container.innerHTML = `<div class="report-content">${marked.parse(content)}</div>`;
+    // 兼容历史模型输出：整篇 Markdown 被 ```markdown 包裹时应显示为正文而非代码块。
+    const normalized = unwrapMarkdownFence(content);
+    container.innerHTML = `<div class="report-content">${marked.parse(normalized)}</div>`;
+}
+
+function unwrapMarkdownFence(content) {
+    const text = String(content || '').trim();
+    if (!/^```(?:markdown|md)\s*\n/i.test(text) || !/\n```\s*$/.test(text)) return text;
+    return text.replace(/^```(?:markdown|md)\s*\n/i, '').replace(/\n```\s*$/, '');
 }
 
 function renderChatPanel(container, detail) {
@@ -392,7 +484,10 @@ async function triggerScan() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         if (data.status !== 'ok') throw new Error(data.message || '扫描失败');
-        alert(data.message || '扫描已触发');
+        const message = data.sync_warning
+            ? `${data.message}\n\n${data.sync_warning}`
+            : (data.message || '扫描已触发');
+        alert(message);
         await loadAlerts();
     } catch (err) {
         alert('触发扫描失败: ' + err.message);
@@ -408,16 +503,42 @@ async function triggerScan() {
 async function loadConfig() {
     try {
         const res = await fetch('/api/v1/config');
-        if (!res.ok) return;
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const cfg = await res.json();
         document.getElementById('cfg-interval').value = cfg.scan_interval_minutes || 5;
         document.getElementById('cfg-count-high').value = cfg.risk_count_high || 200;
         document.getElementById('cfg-count-medium').value = cfg.risk_count_medium || 100;
         document.getElementById('cfg-cmdb-type').value = cfg.cmdb_type || 'xlsx';
-        document.getElementById('cfg-cmdb-path').value = cfg.cmdb_xlsx_path || '-';
+        document.getElementById('cfg-cmdb-path').value = cfg.cmdb_type === 'splunk_csv'
+            ? (cfg.cmdb_csv_path || '-')
+            : (cfg.cmdb_xlsx_path || '-');
+        const sync = cfg.cmdb_splunk_sync_status || {};
+        document.getElementById('cfg-cmdb-sync-status').textContent =
+            sync.status === 'ok'
+                ? `成功：${sync.rows || 0} 条，${sync.synced_at || ''}`
+                : (sync.message || '尚未同步');
     } catch (err) {
         console.error('加载配置失败:', err);
     }
+
+    const cmdbSyncButton = document.getElementById('btn-cmdb-sync');
+    if (cmdbSyncButton) cmdbSyncButton.onclick = async () => {
+        const btn = cmdbSyncButton;
+        btn.disabled = true;
+        btn.textContent = '同步中...';
+        try {
+            const res = await fetch('/api/v1/config/cmdb/sync', { method: 'POST' });
+            const data = await res.json();
+            if (!res.ok || data.status !== 'ok') throw new Error(data.message || `HTTP ${res.status}`);
+            alert(data.message);
+            await loadConfig();
+        } catch (err) {
+            alert('CMDB 同步失败：' + err.message);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '立即从 Splunk 同步 CMDB';
+        }
+    };
 
     // 配置保存按钮
     document.getElementById('btn-save-interval')?.addEventListener('click', async () => {

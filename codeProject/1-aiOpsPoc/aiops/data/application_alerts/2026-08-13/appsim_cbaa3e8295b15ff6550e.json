@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_iwe_Data_Docking_Failure",
+  "application_code": "iWE",
+  "trigger_time": "2026-08-13T13:07:35.841+08:00",
+  "trigger_time_utc": "2026-08-13T13:07:35.842580+08:00",
+  "event_count": 5,
+  "trigger_reason": "模拟应用日志命中规则 #2：app_alert_iwe_Data_Docking_Failure",
+  "search_terms": "index=app_s_6month sourcetype=iwe source=iwe_iwe2022service_log status=\"failed\"\n|stats count by _time,url,status",
+  "full_spl": "index=app_s_6month sourcetype=iwe source=iwe_iwe2022service_log status=\"failed\"\n|stats count by _time,url,status",
+  "results": [
+    {
+      "id": "iWE-APP-SIM",
+      "properties_hostname": "iwe.simulated.local",
+      "properties_requestUri": "url=/api/v2/integration/sap/material; status=failed",
+      "properties_action": "应用异常",
+      "count": "5"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\iwe\\app_alert_iwe_Data_Docking_Failure.csv"
+}

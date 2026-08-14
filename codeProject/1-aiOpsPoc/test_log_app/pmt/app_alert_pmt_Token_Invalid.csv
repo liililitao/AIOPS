@@ -1,0 +1,6 @@
+_time,vendor,param,msg
+2026-08-13T10:21:04.389+08:00,Veeva,"{""auth"":""Bearer invalid_token_789""}",token invalid: expired at 2026-07-01T00:00:00Z
+2026-08-13T10:21:04.389+08:00,IQVIA,"{""token"":""expired_token_abc123""}",token invalid: issuer mismatch
+2026-08-13T10:21:04.389+08:00,ZS_Associates,"{""token"":""invalid_signature_xyz""}",token invalid: audience not allowed
+2026-08-13T10:21:04.389+08:00,Oracle_Health,"{""access_token"":""revoked_key_456""}",token invalid: signature verification failed
+2026-08-13T10:21:04.389+08:00,ZS_Associates,"{""token"":""expired_token_abc123""}",token invalid: revoked by admin

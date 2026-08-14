@@ -7,15 +7,23 @@
 import hashlib
 import json
 import logging
+import os
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 import httpx
 
 from app.config import get_settings
+from app.services.splunk_investigation import SplunkSearchResponse
 
 logger = logging.getLogger("aiops.splunk_alert_service")
+
+# 这些文件是给前端“告警列表”做的可见数据归档，不参与本地告警目录扫描。
+# 将单条告警放在子目录中，可避免被 ``process_new_alerts`` 当作待分析输入。
+FRONTEND_ALERT_ARCHIVE_DIRNAME = "前端同步告警"
 
 
 class SplunkSyncError(RuntimeError):
@@ -24,6 +32,59 @@ class SplunkSyncError(RuntimeError):
 
 def _cache_path() -> Path:
     return get_settings().project_root / "data" / "splunk_alerts.json"
+
+
+def _frontend_alert_archive_path() -> Path:
+    """返回用户指定告警目录内的 Splunk 告警归档目录。"""
+    return get_settings().alert_input_path / FRONTEND_ALERT_ARCHIVE_DIRNAME
+
+
+def _atomic_write_json(path: Path, payload: Any) -> None:
+    """原子更新 JSON，避免前端刷新时看到写入到一半的文件。"""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary_path = path.with_name(f".{path.name}.{uuid4().hex}.tmp")
+    try:
+        temporary_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        os.replace(temporary_path, path)
+    finally:
+        if temporary_path.exists():
+            temporary_path.unlink(missing_ok=True)
+
+
+def persist_remote_alerts_for_frontend(
+    alerts: list[dict[str, Any]], *, synced_at: str
+) -> None:
+    """将每条前端同步到的 Splunk 告警保存到用户指定的告警数据目录。
+
+    每个稳定告警 ID 对应一个 JSON 文件；后续刷新相同告警会更新该文件，新增
+    告警会自动增加文件。此归档与 ``data/splunk_alerts.json`` 缓存互不替代：前者
+    便于用户直接查看和留存，后者用于应用快速读取当前同步结果。
+    """
+    archive_dir = _frontend_alert_archive_path()
+    for alert in alerts:
+        alert_id = str(alert.get("id") or "")
+        if not alert_id:
+            logger.warning("[SPLUNK] Skip persisting alert without an id")
+            continue
+        # 由本服务生成的 ID 只含 ASCII；仍做一次保守替换，保证文件名安全。
+        safe_id = "".join(
+            char if char.isalnum() or char in {"-", "_"} else "_"
+            for char in alert_id
+        )
+        _atomic_write_json(archive_dir / f"{safe_id}.json", {
+            "source": "splunk_frontend_alert_list",
+            "synced_at": synced_at,
+            "alert": alert,
+        })
+
+    _atomic_write_json(archive_dir / "当前同步列表.json", {
+        "source": "splunk_frontend_alert_list",
+        "synced_at": synced_at,
+        "total": len(alerts),
+        "alerts": alerts,
+    })
 
 
 def get_cached_remote_alerts() -> list[dict[str, Any]]:
@@ -71,6 +132,11 @@ async def sync_remote_alerts() -> dict[str, Any]:
     synced_at = datetime.now(timezone.utc).isoformat()
     alerts = [_normalise_alert(record, synced_at) for record in records]
     alerts.sort(key=lambda item: item.get("trigger_time", ""), reverse=True)
+    try:
+        persist_remote_alerts_for_frontend(alerts, synced_at=synced_at)
+    except OSError as exc:
+        # 外部 Splunk 同步成功时，不因本地归档失败而丢掉本次可展示数据。
+        logger.exception("[SPLUNK] Failed to persist frontend alert archive: %s", exc)
     _write_cache({
         "source": "splunk",
         "synced_at": synced_at,
@@ -113,8 +179,10 @@ async def _export_search_results(
     latest_time: str,
     timeout_seconds: int,
     verify_tls: bool,
+    endpoint_path: str = "/services/search/jobs/export",
+    max_results: int | None = None,
 ) -> list[dict[str, Any]]:
-    endpoint = base_url.rstrip("/") + "/services/search/jobs/export"
+    endpoint = base_url.rstrip("/") + endpoint_path
     request_data = {
         "search": query,
         "output_mode": "json",
@@ -149,10 +217,41 @@ async def _export_search_results(
                     result = payload.get("result")
                     if isinstance(result, dict):
                         records.append(result)
+                        if max_results is not None and len(records) >= max_results:
+                            break
     except httpx.HTTPError as exc:
         raise SplunkSyncError(f"无法连接 Splunk：{exc}") from exc
 
     return records
+
+
+class SplunkRestExecutor:
+    """为 Agent 的受控只读调查模板执行 Splunk 导出查询。"""
+
+    def __init__(self, *, base_url: str, token: str, timeout_seconds: int = 20,
+                 verify_tls: bool = True, exporter=None):
+        if not base_url or not token:
+            raise ValueError("splunk_not_configured")
+        self.base_url, self._token = base_url, token
+        self.timeout_seconds = max(1, min(int(timeout_seconds), 120))
+        self.verify_tls, self._exporter = bool(verify_tls), exporter or _export_search_results
+
+    async def search(self, request) -> SplunkSearchResponse:
+        started = time.perf_counter()
+        limit = max(1, min(int(request.max_results), 500))
+        rows = await self._exporter(
+            base_url=self.base_url, token=self._token, query=request.spl,
+            earliest_time=_splunk_time(request.earliest_time), latest_time=_splunk_time(request.latest_time),
+            timeout_seconds=self.timeout_seconds, verify_tls=self.verify_tls,
+            endpoint_path="/services/search/v2/jobs/export", max_results=limit,
+        )
+        return SplunkSearchResponse(rows=list(rows[:limit]), duration_ms=int((time.perf_counter() - started) * 1000))
+
+
+def _splunk_time(value: datetime) -> str:
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 def _normalise_alert(record: dict[str, Any], synced_at: str) -> dict[str, Any]:

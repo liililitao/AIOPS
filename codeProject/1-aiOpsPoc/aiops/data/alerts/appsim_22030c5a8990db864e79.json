@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_iwe_Login_Failed",
+  "application_code": "iWE",
+  "trigger_time": "2026-08-13T10:36:03.574+08:00",
+  "trigger_time_utc": "2026-08-13T10:36:03.575628+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #1：app_alert_iwe_Login_Failed",
+  "search_terms": "index=app_s_6month sourcetype=iwe source=iwe_log_action result=\"failed\"\n|stats count by _time,initial,query,result",
+  "full_spl": "index=app_s_6month sourcetype=iwe source=iwe_log_action result=\"failed\"\n|stats count by _time,initial,query,result",
+  "results": [
+    {
+      "id": "iWE-APP-SIM",
+      "properties_hostname": "iwe.simulated.local",
+      "properties_requestUri": "initial=chenqi; query=INSERT INTO logs (user,action) VALUES (?,?); result=failed",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\iwe\\app_alert_iwe_Login_Failed.csv"
+}

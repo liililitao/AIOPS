@@ -1,0 +1,54 @@
+{
+  "alert_name": "app_alert_dspot_Export_Failed",
+  "application_code": "RareD NovoCare",
+  "trigger_time": "2026-08-13T10:43:14.221+08:00",
+  "trigger_time_utc": "2026-08-13T10:43:14.221708+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #8：app_alert_dspot_Export_Failed",
+  "splunk_url": "",
+  "search_terms": "index=app_s_12month sourcetype=dspot* operations=\"export data\" fail\n| eval useraccount=coalesce(UserAccount,userAccount) \n| eval msg=coalesce(customField,content) \n| eval result=coalesce(result,Result)\n| stats count by _time,useraccount,msg,result",
+  "full_spl": "index=app_s_12month sourcetype=dspot* operations=\"export data\" fail\n| eval useraccount=coalesce(UserAccount,userAccount) \n| eval msg=coalesce(customField,content) \n| eval result=coalesce(result,Result)\n| stats count by _time,useraccount,msg,result",
+  "results": [
+    {
+      "id": "RareD NovoCare-APP-SIM",
+      "properties_hostname": "rared-novocare.simulated.local",
+      "properties_requestUri": "UserAccount=doctor.wang@hospital.cn; operations=export data; Result=fail_timeout; customField=导出超时: 数据量超过100万行",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\dspot_prod\\app_alert_dspot_Export_Failed.csv",
+  "risk_level": "未知",
+  "risk_details": {
+    "environment_risk": "未知",
+    "environment": "Unknown",
+    "count_risk": "低",
+    "count_value": 10,
+    "attack_type_risk": "低",
+    "attack_types": [
+      "random_scan"
+    ],
+    "overall_risk": "未知",
+    "assessed_at": "2026-08-13T10:43:21.155542"
+  },
+  "token_usage": {
+    "analysis_report": {
+      "prompt_tokens": 1001,
+      "completion_tokens": 1466,
+      "total_tokens": 2467
+    },
+    "suggestion": {
+      "prompt_tokens": 994,
+      "completion_tokens": 1699,
+      "total_tokens": 2693
+    },
+    "total": {
+      "prompt_tokens": 1995,
+      "completion_tokens": 3165,
+      "total_tokens": 5160
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null
+}

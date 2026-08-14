@@ -7,23 +7,33 @@ import logging
 from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Request, UploadFile, File
-from fastapi.responses import JSONResponse
 
 from app.config import get_settings
 from app.services.alert_service import (
     get_alert_list,
     get_alert_detail,
+    process_remote_alert,
     process_single_alert,
 )
-from app.services.splunk_alert_service import SplunkSyncError, sync_remote_alerts
+from app.services.splunk_alert_service import (
+    SplunkSyncError,
+    get_cached_remote_alert_detail,
+    sync_remote_alerts,
+)
 from app.services.alert_authorization_service import AlertAuthorizationStore
+from app.services.application_alert_simulator import (
+    analyze_application_alert,
+    delete_application_alert,
+    generate_application_alert,
+    list_application_alert_rules,
+)
 
 logger = logging.getLogger("aiops.api.alerts")
 router = APIRouter(prefix="/api/v1/alerts", tags=["alerts"])
 
 
 def _filter_for_user(request: Request, alerts):
-    """Apply server-side application filtering; auth-disabled remains dev-compatible."""
+    """按已认证用户过滤告警；开发环境未启用认证时保持兼容。"""
     settings = get_settings()
     if not settings.AIOPS_AUTH_ENABLED:
         return alerts
@@ -47,12 +57,45 @@ async def list_alerts(request: Request, risk: str = "all", search: str = ""):
 
 @router.post("/sync")
 async def sync_alerts_from_splunk():
-    """立即从配置的 Splunk 服务器同步告警到页面缓存。"""
+    """立即从 Splunk 同步告警到本地缓存。"""
     try:
         return await sync_remote_alerts()
     except SplunkSyncError as exc:
         logger.warning("[ALERTS] Splunk sync failed: %s", exc)
         raise HTTPException(status_code=502, detail=str(exc)) from exc
+
+
+@router.get("/simulation/application-rules")
+async def application_alert_rules():
+    """返回可生成模拟日志的应用告警规则。"""
+    try:
+        return {"rules": list_application_alert_rules()}
+    except Exception as exc:
+        logger.exception("[SIMULATION] Failed to load application rules: %s", exc)
+        raise HTTPException(status_code=500, detail="加载应用告警规则失败") from exc
+
+
+@router.post("/simulation/application-alert")
+async def create_application_alert_simulation(data: dict):
+    """生成模拟日志后自动完成 AI 风险判定、报告和处理建议。"""
+    try:
+        rule_id = int(data.get("rule_id"))
+        count = int(data.get("count", 10))
+        result = generate_application_alert(rule_id, count)
+        analyzed = await analyze_application_alert(result["alert_id"])
+        if not analyzed:
+            raise RuntimeError("模拟应用告警创建后无法进入 AI 分析流程")
+        return {
+            "status": "ok",
+            "message": f"已生成 {count} 条模拟应用日志，并完成 AI 风险判定、分析报告和处理建议",
+            "risk_level": analyzed["risk_level"],
+            **result,
+        }
+    except (TypeError, ValueError) as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:
+        logger.exception("[SIMULATION] Failed to generate application alert: %s", exc)
+        raise HTTPException(status_code=500, detail="生成模拟应用告警失败") from exc
 
 
 @router.get("/{alert_id}")
@@ -70,6 +113,63 @@ async def alert_detail(request: Request, alert_id: str):
         except RuntimeError as exc:
             raise HTTPException(status_code=503, detail=str(exc)) from exc
     return detail.model_dump()
+
+
+@router.post("/{alert_id}/analyze")
+async def analyze_alert(request: Request, alert_id: str):
+    """调用 AI 为模拟应用告警或已同步 Splunk 告警生成分析。"""
+    if alert_id.startswith("appsim_"):
+        try:
+            result = await analyze_application_alert(alert_id)
+            if not result:
+                raise HTTPException(status_code=404, detail="模拟应用告警未找到")
+            return {
+                "status": "ok", "message": "AI 风险判定、分析报告和处理建议已生成", "alert_id": alert_id,
+                "risk_level": result["risk_level"],
+            }
+        except HTTPException:
+            raise
+        except Exception as exc:
+            logger.error("[SIMULATION] AI risk analysis failed: %s", exc, exc_info=True)
+            raise HTTPException(status_code=500, detail="AI 风险判定失败，请检查模型配置后重试") from exc
+
+    remote_alert = get_cached_remote_alert_detail(alert_id)
+    if not remote_alert:
+        raise HTTPException(status_code=404, detail="仅支持对当前已同步的 Splunk 告警生成分析")
+
+    settings = get_settings()
+    if settings.AIOPS_AUTH_ENABLED:
+        username = getattr(request.state, "authenticated_user", None)
+        store = AlertAuthorizationStore(settings.authorization_db_path)
+        try:
+            if not username or not store.can_access_alert(username, remote_alert):
+                raise HTTPException(status_code=404, detail="告警未找到")
+        except RuntimeError as exc:
+            raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+    try:
+        result = await process_remote_alert(alert_id)
+        if not result:
+            raise HTTPException(status_code=500, detail="告警处理失败")
+        return {
+            "status": "ok",
+            "message": "AI 分析报告和处理建议已生成",
+            "alert_id": alert_id,
+            "risk_level": result.risk_level,
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logger.error("[ALERTS] Splunk alert analysis failed: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail="AI 分析生成失败，请稍后重试") from exc
+
+
+@router.delete("/{alert_id}")
+async def delete_alert(alert_id: str):
+    """删除一条模拟应用告警及其独立 AI 输出。"""
+    if not delete_application_alert(alert_id):
+        raise HTTPException(status_code=404, detail="模拟应用告警未找到或不支持删除")
+    return {"status": "ok", "message": "告警及其 AI 输出已删除"}
 
 
 @router.post("/process")
@@ -94,7 +194,6 @@ async def process_alert_json(data: dict):
     except Exception as e:
         logger.error(f"[ALERTS] Manual process failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
-
 
 @router.post("/upload")
 async def upload_alert(file: UploadFile = File(...)):
