@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_wecall_Password_Verification_Failed",
+  "application_code": "WeCall",
+  "trigger_time": "2026-08-14T15:46:46.227+08:00",
+  "trigger_time_utc": "2026-08-14T15:46:46.228155+08:00",
+  "event_count": 8,
+  "trigger_reason": "模拟应用日志命中规则 #3：app_alert_wecall_Password_Verification_Failed",
+  "search_terms": "index=app_s_12month sourcetype=wecall source=sys_log_action query=\"s=console/public/checkpwd.html\" status=0 \n| stats count by _time,createip,admin,action,query,status",
+  "full_spl": "index=app_s_12month sourcetype=wecall source=sys_log_action query=\"s=console/public/checkpwd.html\" status=0 \n| stats count by _time,createip,admin,action,query,status",
+  "results": [
+    {
+      "id": "WeCall-APP-SIM",
+      "properties_hostname": "wecall.simulated.local",
+      "properties_requestUri": "createip=172.16.3.25; admin=admin_li; action=check_pwd; query=s=console/public/checkpwd.html; status=0",
+      "properties_action": "应用异常",
+      "count": "8"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\wecall\\app_alert_wecall_Password_Verification_Failed.csv"
+}

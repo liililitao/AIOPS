@@ -30,33 +30,34 @@ def _start_milvus_lite(data_dir: str = "./milvus_data") -> str:
 
 
 def connect() -> bool:
-    """连接 Milvus — 优先 milvus-lite (免 Docker)，失败则试远程"""
+    """连接 Milvus — 优先使用配置的远程服务，失败时回退 milvus-lite。"""
     global _client
     settings = get_settings()
     if not settings.MILVUS_ENABLED:
         return False
 
-    # 优先 milvus-lite (本地无需 Docker)
+    # 生产/联调环境显式配置了 MILVUS_HOST、MILVUS_PORT 时，必须优先使用
+    # Docker/远程 Milvus。否则每个 Python 进程都可能悄悄创建自己的
+    # milvus-lite 数据库，导致历史告警写入与检索落在不同实例。
+    try:
+        from pymilvus import MilvusClient
+        _client = MilvusClient(
+            uri=f"http://{settings.MILVUS_HOST}:{settings.MILVUS_PORT}",
+            timeout=5,
+        )
+        _client.list_collections()
+        logger.info(f"Milvus 已连接: {settings.MILVUS_HOST}:{settings.MILVUS_PORT}")
+        return True
+    except Exception as e:
+        logger.debug(f"远程 Milvus 不可用: {e}")
+
+    # 回退: milvus-lite（本地开发环境无需 Docker）
     try:
         from pymilvus import MilvusClient
         uri = _start_milvus_lite("./milvus_data")
         _client = MilvusClient(uri=uri, timeout=10)
         _client.list_collections()
         logger.info(f"Milvus Lite 已就绪: {uri}")
-        return True
-    except Exception as e:
-        logger.debug(f"Milvus Lite 不可用: {e}")
-
-    # 回退: 远程 Milvus
-    try:
-        from pymilvus import MilvusClient
-        client = MilvusClient(
-            uri=f"http://{settings.MILVUS_HOST}:{settings.MILVUS_PORT}",
-            timeout=5,
-        )
-        client.list_collections()
-        _client = client
-        logger.info(f"Milvus 已连接: {settings.MILVUS_HOST}:{settings.MILVUS_PORT}")
         return True
     except Exception as e2:
         logger.warning(f"Milvus 不可用: {e2}")

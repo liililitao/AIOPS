@@ -117,7 +117,25 @@
       "analysis_status": "completed",
       "analyzed_at": "2026-08-14T02:18:29.274397+00:00",
       "enriched_dir": "2026-08-14"
+    },
+    "appsim_d17e81533a7cc313cc25.json": {
+      "processed_at": "2026-08-14T15:46:46.228155+08:00",
+      "risk_level": "低",
+      "raw_dir": "2026-08-14",
+      "source": "application_simulator",
+      "analysis_status": "completed",
+      "analyzed_at": "2026-08-14T07:48:28.300429+00:00",
+      "enriched_dir": "2026-08-14"
+    },
+    "appsim_185c9c920b3545476a65.json": {
+      "processed_at": "2026-08-17T15:36:08.596618+08:00",
+      "risk_level": "低",
+      "raw_dir": "2026-08-17",
+      "source": "application_simulator",
+      "analysis_status": "completed",
+      "analyzed_at": "2026-08-17T07:37:26.917802+00:00",
+      "enriched_dir": "2026-08-17"
     }
   },
-  "last_scan_time": "2026-08-14T10:30:38.251138"
+  "last_scan_time": "2026-08-18T15:46:23.913743"
 }

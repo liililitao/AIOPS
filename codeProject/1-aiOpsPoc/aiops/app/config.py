@@ -152,6 +152,9 @@ class Settings(BaseSettings):
     # ==========================================
     MAX_AGENT_STEPS: int = 7
     AGENT_TIMEOUT_SECONDS: int = 300
+    AGENT_OUTPUT_REPAIR_LIMIT: int = 1
+    AGENT_CHECKPOINT_ENABLED: bool = True
+    AGENT_CHECKPOINT_DB: str = "data/agent_checkpoints.sqlite3"
 
     # ==========================================
     # 告警分类库：结果仍按“告警类别 × 告警风险等级”有限存储。
@@ -190,6 +193,13 @@ class Settings(BaseSettings):
     @property
     def agent_runs_path(self) -> Path:
         path = Path(self.OUTPUT_AGENT_RUNS_DIR)
+        if not path.is_absolute():
+            path = self.project_root / path
+        return path.resolve()
+
+    @property
+    def agent_checkpoint_db_path(self) -> Path:
+        path = Path(self.AGENT_CHECKPOINT_DB)
         if not path.is_absolute():
             path = self.project_root / path
         return path.resolve()

@@ -3,3 +3,13 @@ _time,action_user,old_light,now_light
 2026-07-30T16:25:44.281+08:00,cld,yellow,red
 2026-08-13T09:31:35.580+08:00,cld,green,yellow
 2026-08-13T09:31:35.580+08:00,cld,yellow,off
+2026-08-17T15:36:08.594+08:00,cld,red,green
+2026-08-17T15:36:08.595+08:00,cld,green,off
+2026-08-17T15:36:08.595+08:00,cld,off,green
+2026-08-17T15:36:08.595+08:00,cld,off,yellow
+2026-08-17T15:36:08.595+08:00,cld,off,red
+2026-08-17T15:36:08.595+08:00,cld,off,yellow
+2026-08-17T15:36:08.595+08:00,cld,red,off
+2026-08-17T15:36:08.595+08:00,cld,red,yellow
+2026-08-17T15:36:08.595+08:00,cld,red,green
+2026-08-17T15:36:08.595+08:00,cld,off,red

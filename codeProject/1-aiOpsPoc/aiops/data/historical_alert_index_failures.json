@@ -35,6 +35,9 @@
     },
     "2026-08-14/appsim_ccf3cf4dadd09d9dfd86": {
       "message": "milvus_unavailable"
+    },
+    "2026-08-17/appsim_185c9c920b3545476a65": {
+      "message": "[WinError 10061] 由于目标计算机积极拒绝，无法连接。"
     }
   }
 }

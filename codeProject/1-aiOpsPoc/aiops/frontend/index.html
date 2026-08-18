@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIOps 智能告警分析系统</title>
+    <title>Splunk AI Alert Handling</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Markdown 渲染 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -12,12 +12,12 @@
     <div id="app">
         <!-- 导航 -->
         <nav class="nav">
-            <div class="nav-brand">🛡️ AIOps 智能告警分析</div>
+            <div class="nav-brand">🛡️ Splunk AI Alert Handling</div>
             <div class="nav-tabs">
                 <button class="nav-tab active" data-tab="results">📊 告警结果</button>
-                <button class="nav-tab" data-tab="kbchat">💬 AIOps知识库问答</button>
-                <button class="nav-tab" data-tab="knowledge">📚 知识库</button>
-                <button class="nav-tab" data-tab="config">⚙️ 系统配置</button>
+                <button class="nav-tab admin-only" data-tab="kbchat" hidden>💬 Splunk AI Alert Handling 知识库问答</button>
+                <button class="nav-tab admin-only" data-tab="knowledge" hidden>📚 知识库</button>
+                <button class="nav-tab admin-only" data-tab="config" hidden>⚙️ 系统配置</button>
             </div>
             <div class="nav-status" id="nav-status">● 运行中</div>
         </nav>
@@ -69,11 +69,11 @@
         </div>
 
         <!-- 页面2: AIOps知识库问答 -->
-        <div class="tab-content" id="tab-kbchat">
+        <div class="tab-content admin-only" id="tab-kbchat" hidden>
             <div class="kbchat-layout">
                 <div class="kbchat-main">
                     <div class="panel-header">
-                        <h3>💬 AIOps 知识库问答</h3>
+                        <h3>💬 Splunk AI Alert Handling 知识库问答</h3>
                         <span id="kb-stats-text" style="color:var(--text-secondary);font-size:0.85rem">
                             加载中...
                         </span>
@@ -82,7 +82,7 @@
                         <div class="chat-messages" id="kb-chat-messages">
                             <div class="chat-msg assistant">
                                 <span class="msg-bubble">
-                                    你好！我是 AIOps 知识库助手，基于已上传的运维文档回答问题。<br><br>
+                                    你好！我是 Splunk AI Alert Handling 知识库助手，基于已上传的运维文档回答问题。<br><br>
                                     💡 试试问我：<br>
                                     • WAF 告警高风险怎么处理？<br>
                                     • 服务器内存占用过高怎么办？<br>
@@ -101,7 +101,7 @@
         </div>
 
         <!-- 页面3: 知识库 -->
-        <div class="tab-content" id="tab-knowledge">
+        <div class="tab-content admin-only" id="tab-knowledge" hidden>
             <div class="kb-layout">
                 <div class="kb-card">
                     <div class="panel-header">
@@ -125,7 +125,7 @@
         </div>
 
         <!-- 页面4: 系统配置 -->
-        <div class="tab-content" id="tab-config">
+        <div class="tab-content admin-only" id="tab-config" hidden>
             <div class="config-layout">
                 <!-- 定时扫描配置 -->
                 <div class="config-card">
@@ -140,25 +140,12 @@
                         <span id="cfg-scheduler-status" class="status-badge">● 运行中</span>
                         <button id="btn-pause" class="btn">⏸️ 暂停</button>
                         <button id="btn-resume" class="btn">▶️ 恢复</button>
+                        <button id="btn-scan-now" class="btn btn-primary">⚡ 立即扫描</button>
                     </div>
                     <div class="config-info">
                         <p>上次扫描: <span id="cfg-last-scan">-</span></p>
                         <p>下次扫描: <span id="cfg-next-scan">-</span></p>
                     </div>
-                </div>
-
-                <!-- 风险判定参数 -->
-                <div class="config-card">
-                    <h3>📐 风险判定参数</h3>
-                    <div class="config-row">
-                        <label>数量阈值 - 高</label>
-                        <input type="number" id="cfg-count-high" class="config-input" min="10" value="200">
-                    </div>
-                    <div class="config-row">
-                        <label>数量阈值 - 中</label>
-                        <input type="number" id="cfg-count-medium" class="config-input" min="10" value="100">
-                    </div>
-                    <button id="btn-save-risk" class="btn btn-primary">保存风险参数</button>
                 </div>
 
                 <!-- CMDB 配置 -->

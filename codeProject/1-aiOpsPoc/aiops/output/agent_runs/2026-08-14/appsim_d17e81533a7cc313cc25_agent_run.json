@@ -1,0 +1,151 @@
+{
+  "run_id": "agent_64ec29d406764467b71a095512e714e8",
+  "status": "completed",
+  "started_at": "2026-08-14T07:46:46.361260+00:00",
+  "completed_at": "2026-08-14T07:47:35.005583+00:00",
+  "alert": {
+    "alert_name": "app_alert_wecall_Password_Verification_Failed",
+    "application_code": "WeCall"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "name": "ai_investigation_planning",
+      "status": "completed",
+      "message": "规划模型已生成调查假设、证据优先级与验证重点",
+      "token_usage": {
+        "prompt_tokens": 402,
+        "completion_tokens": 1090,
+        "total_tokens": 1492
+      }
+    },
+    {
+      "step": 2,
+      "name": "historical_alert_search",
+      "status": "completed",
+      "message": "检索历史相似告警",
+      "error_code": null
+    },
+    {
+      "step": 3,
+      "name": "knowledge_base_search",
+      "status": "completed",
+      "message": "查询知识库与 CMDB",
+      "error_code": null
+    },
+    {
+      "step": 4,
+      "name": "splunk_log_investigation",
+      "status": "degraded",
+      "message": "调查受控 Splunk 日志证据",
+      "error_code": "alert_not_found"
+    },
+    {
+      "step": 5,
+      "name": "ai_evidence_analysis",
+      "status": "completed",
+      "message": "执行模型已结合调查计划与三个 Tool 的返回证据完成结构化研判",
+      "token_usage": {
+        "prompt_tokens": 4585,
+        "completion_tokens": 1458,
+        "total_tokens": 6043
+      }
+    }
+  ],
+  "investigation_plan": "## 告警边界\n- 应用范围：仅限 WeCall 应用，资源标识为 WeCall-APP-SIM，域名 wecall.simulated.local。\n- 环境属性：明确为“模拟环境”，非生产环境；当前无用户影响声明。\n- 触发机制：基于模拟日志命中规则 #3，非真实用户行为或系统故障直接触发。\n- 动作定义：“应用异常”为告警动作，非系统自动处置或拦截行为。\n- 无默认假设：不预设攻击意图、权限越权、配置错误或服务不可用。\n\n## 初始风险假设（最多 3 条，含验证条件）\n\n1. **模拟测试行为触发告警**  \n   - 假设：测试脚本或自动化工具在模拟环境中执行密码验证请求，返回 status=0 被误标为“异常”。  \n   - 验证条件：日志中相同 IP/用户组合的请求是否高频出现？是否关联测试工具命名空间或调度系统？是否来自非生产 IP 段？\n\n2. **应用逻辑误判或状态码误解**  \n   - 假设：应用在处理 check_pwd 请求时，返回 status=0 为正常响应（如“验证失败”），但告警规则错误将其标记为“异常”。  \n   - 验证条件：查阅 WeCall 应用文档或接口规范，确认 status=0 是否为合法响应码；对比历史正常请求中的 status 码分布。\n\n3. **模拟环境配置漂移导致认证流程不一致**  \n   - 假设：模拟环境的 WeCall-APP-SIM 实例配置（如认证模块、会话管理）与基准版本不一致，导致密码验证行为异常。  \n   - 验证条件：比对 CMDB 中该资源当前配置与基准版本差异；检查最近是否有配置部署记录。\n\n## 三个 Tool 的调查重点\n\n1. **历史告警（Historical Alerts）**  \n   - 重点：查询同一规则 #3 在过去 7 天内是否触发过；是否集中在同一资源/IP/用户；是否伴随其他关联告警（如认证失败、接口超时）。  \n   - 目标：判断是否为偶发或重复模式；若无历史记录，需确认是否为新上线测试行为。\n\n2. **知识库/CMDB（Knowledge Base & Configuration Management）**  \n   - 重点：获取 WeCall 应用关于 check pwd 接口的文档说明；确认 WeCall-APP-SIM 的部署版本、认证模块配置、模拟环境标识；检查是否有“status=0 为失败”或“无需告警”的白名单规则。  \n   - 目标：验证接口语义与告警规则的匹配度；确认资源是否应触发此告警。\n\n3. **Splunk 日志（Splunk Logs）**  \n   - 重点：检索源 IP 172.16.3.25 在 24 小时内对 WeCall 的所有访问日志；过滤 action=check_pwd 和 status=0 的请求；分析请求频率、User-Agent、Referer、会话ID等上下文。  \n   - 目标：确认是否为自动化工具请求；是否存在异常参数（如 query 中含特殊字符）、多账号尝试、短时间高并发。\n\n## 证据优先级与冲突处理\n\n- **优先级顺序**：  \n  1. Splunk 日志 → 确认请求来源与行为模式（直接证据）  \n  2. 知识库/CMDB → 确认规则与配置的合规性（语义证据）  \n  3. 历史告警 → 确认是否为重复或已知模式（模式证据）  \n\n- **冲突处理**：  \n  - 若 Splunk 日志显示为测试工具请求，但 CMDB 无相关说明 → 以日志为优先，标记“模拟环境测试行为”，建议补充配置文档。  \n  - 若 CMDB 明确 status=0 为正常响应，但 Splunk 中高频出现 → 优先怀疑规则误报，建议调整告警规则阈值或添加白名单。  \n  - 若三者均无明确矛盾 → 保持“待确认”状态，由人工补充上下文。\n\n## 需人工确认的缺口\n\n1. 172.16.3.25 的归属：是自动化测试服务器、开发机，还是未登记的模拟节点？需确认网络资产登记记录。\n2. “admin=admin_li” 是否为合法测试账号？是否存在于模拟环境账号白名单中？\n3. 模拟环境中是否允许触发“应用异常”级别的告警？还是应降级为“信息”或“调试”级别？\n4. 是否有近期变更（如规则发布、应用部署）导致此告警首次出现？需确认变更管理记录。\n5. 告警规则 #3 的设计意图是否包含模拟环境？需与规则维护人确认适用范围。",
+  "analysis_result": "## 研判结论\n当前告警 `app_alert_wecall_Password_Verification_Failed` 为模拟环境触发的非生产告警，无真实业务影响。证据显示：**日志来源为模拟环境（wecall.simulated.local），无真实用户行为或系统故障证据，未命中历史相似告警，CMDB 无资产记录，Splunk 无原始日志支持**。初步判断为自动化测试或脚本行为触发，非真实异常或安全事件。建议归档为“模拟环境测试误报”并降级告警级别或配置白名单过滤。\n\n---\n\n## 证据台账\n| 证据来源         | 内容摘要                                                                 | 是否可用 | 证据等级 | 备注 |\n|------------------|--------------------------------------------------------------------------|----------|----------|------|\n| 原始告警字段     | 应用：WeCall；资源：WeCall-APP-SIM；域名：wecall.simulated.local；status=0；action=check_pwd；IP：172.16.3.25；用户：admin_li | ✅ 是     | 高       | 明确标记“模拟环境” |\n| 历史告警         | 过去7天无匹配告警；仅有其他应用（iWE, PMT）在模拟环境触发的相似“应用异常”告警，无 WeCall 相关记录 | ✅ 是     | 中       | 无重复模式，无关联性 |\n| 知识库/CMDB      | 无匹配 WeCall-APP-SIM 资产记录；无接口文档说明；status=0 语义无定义；无白名单规则 | ✅ 是     | 中       | 无法确认接口合规性，文档缺失 |\n| Splunk 日志      | 未找到告警 ID `appsim_d17e81533a7cc313cc25` 对应日志；error_code: `alert_not_found` | ❌ 否     | 低       | 无可验证请求上下文，无法分析行为模式 |\n\n---\n\n## 根因假设与置信度\n### 1. 模拟测试行为触发告警\n- **支持证据**：告警明确标记为“模拟环境”；历史案例中类似告警（如 PMT、iWE）均为测试脚本触发；IP 172.16.3.25 未在 CMDB 登记，属非生产 IP 段。\n- **反证/缺口**：无 Splunk 日志证明请求频次、User-Agent 或 Referer；未确认 `admin_li` 是否为合法测试账号。\n- **置信度**：中\n\n### 2. 应用逻辑误判或状态码误解\n- **支持证据**：告警规则将 status=0 标记为“异常”，但未在 CMDB/文档中确认该码为非法响应；类比历史案例（如 PMT 登录失败告警），status=0 可能为正常业务失败。\n- **反证/缺口**：无接口规范证明 status=0 合法性；无历史正常请求数据对比。\n- **置信度**：低\n\n### 3. 模拟环境配置漂移导致认证流程不一致\n- **支持证据**：CMDB 无 WeCall-APP-SIM 资产记录，无法比对配置基线；无法确认当前认证模块是否与基准一致。\n- **反证/缺口**：无配置部署记录；无变更管理关联证据。\n- **置信度**：低\n\n---\n\n## 影响范围与风险说明\n- **影响范围**：仅限 WeCall 应用模拟环境（wecall.simulated.local），无生产资源、无真实用户、无业务服务中断。\n- **风险等级**：低（非生产环境，无真实攻击或故障证据）\n- **风险说明**：当前告警不构成安全威胁或业务中断风险，但可能干扰监控告警有效性。建议优化规则以避免模拟环境误报。\n\n---\n\n## 优先处置路径\n1. **立即行动 — 标记为模拟告警**（5分钟内完成）\n   - 在告警系统中添加标签：`simulated`, `test-log`, `non-prod`\n   - 设置规则忽略来自 `wecall.simulated.local` 的 `app_alert_wecall_Password_Verification_Failed` 告警。\n   - **验证完成条件**：告警系统不再推送该告警，且标签可见。\n\n2. **中止操作 — 确认测试来源**（1小时内完成）\n   - 联系测试团队确认 IP 172.16.3.25 是否为自动化测试服务器。\n   - 确认账号 `admin_li` 是否在模拟环境白名单内。\n   - **验证完成条件**：测试团队书面确认来源为自动化脚本或测试工具。\n\n3. **长期优化 — 修复规则语义冲突**（24小时内评估）\n   - 检查告警规则 #3 是否应包含模拟环境；如不应包含，调整规则适用范围。\n   - 若确认 status=0 为合法响应，建议修改规则匹配条件（如仅监控 status ≠ 0）。\n   - **验证完成条件**：规则维护人确认并更新规则文档，测试验证不再误报。\n\n---\n\n## 验证标准\n- **立即行动验证**：告警系统中该告警新增标签 `simulated`，且后续无重复推送。\n- **中止操作验证**：测试团队提供书面确认（邮件或工单）说明 IP 172.16.3.25 为测试用途，或提供日志路径证明脚本来源。\n- **长期优化验证**：规则更新后，在模拟环境注入相同请求，验证是否不再触发告警。\n\n---\n\n## 证据缺口与人工确认项\n1. **IP 172.16.3.25 的归属** — 需确认是否为自动化测试服务器或开发机，是否已登记在网络资产库。\n2. **账号 admin_li 的合法性** — 需确认是否存在于模拟环境测试账号白名单中，或是否为默认测试账号。\n3. **模拟环境告警级别设置** — 需确认是否应降级为“信息”或“调试”级别，而非“应用异常”。\n4. **变更管理记录** — 需检查近7天是否有告警规则或应用部署变更，导致该告警首次出现。\n5. **规则 #3 设计意图** — 需与规则维护人确认该规则是否适用于模拟环境，或是否应排除非生产域名。",
+  "evidence": {
+    "historical": {
+      "success": true,
+      "query": "告警名称: app_alert_wecall_Password_Verification_Failed\n触发原因: 模拟应用日志命中规则 #3：app_alert_wecall_Password_Verification_Failed\n应用: WeCall\n资源: WeCall-APP-SIM\n域名: wecall.simulated.local\n请求: createip=172.16.3.25; admin=admin_li; action=check_pwd; query=s=console/public/checkpwd.html; status=0\n动作: 应用异常",
+      "results": [
+        {
+          "case_id": "2026-08-13/appsim_d91e2d87500a079a1a2c",
+          "alert_name": "app_alert_iwe_Data_Docking_Failure",
+          "trigger_time": "2026-08-13T16:59:05.371+08:00",
+          "hostname": "iwe.simulated.local",
+          "resource_id": "iWE-APP-SIM",
+          "risk_level": "中",
+          "alert_summary": "app_alert_iwe_Data_Docking_Failure；资源 iWE-APP-SIM；域名 iwe.simulated.local；请求 url=/api/v2/integration/sap/material; status=failed；动作 应用异常；次数 5；风险 中",
+          "analysis_summary": "应用告警分析报告：appalertiweDataDockingFailure --- 告警概要 - 告警名称：appalertiweDataDockingFailure - 触发时间：2026-08-13T13:07:35.841+08:00 - 风险等级：中（综合风险判定） - 触发原因：模拟应用日志命中规则 #2，检测到 /api/v2/integration/sap/material 接口连续失败 5 次。 - 告警来源：模拟环境 iWE 应用系统（applicationcode: iWE） 🔗 Splunk 原始告警链接(https://splunk.example.com/app/search/search?q=search%20index%3Dapps6month%20sourcetype%3Diwe%20source%3Diweiwe2022servicelog%20status%3D%22failed%22%20%7Cstats%20count%20by%20time%2Curl%2Cstatus&dispatch.sampleratio=1) --- 告警数据详情 - 受影响资源： - resourceid: iWE-APP-SIM - hostname: iwe.simulated.local - 请求路径: url=/api/v2/integration/s…",
+          "suggestion_summary": "告警处理建议：appalertiweDataDockingFailure 告警时间：2026-08-13T13:07:35.841+08:00 应用代码：iWE 触发告警规则：模拟应用日志命中规则 #2 整体风险等级：中（环境为非生产，但存在API漏洞探测行为） 环境类型：非生产环境（模拟环境） 攻击类型：API漏洞探测（中风险）、随机扫描（低风险） 告警来源：模拟日志，非真实生产流量 --- ✅ 立即行动（立即执行，5分钟内完成） 1. 确认日志来源真实性 - 登录模拟服务器 iwe.simulated.local - 检查日志路径 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\testlogapp\\iwe\\appalertiweDataDockingFailure.csv - 确认日志是由测试脚本或自动化工具写入，非真实攻击行为 2. 隔离告警日志记录来源 - 若确认为测试脚本生成日志，通知相关测试团队： “请在测试脚本中关闭或过滤此类失败日志的写入，避免触发生产级告警。” 3. 在监控平台标记为“模拟告警” - 在告警系统中添加标签：simulated、test-log、non-prod - 设置规则忽略来自 iwe.simulated.local 的该类告警 4. 检查是否误配监控规则 - 查看告警规则 appale…",
+          "similarity": 0.7414104342460632
+        },
+        {
+          "case_id": "2026-08-13/appsim_cbaa3e8295b15ff6550e",
+          "alert_name": "app_alert_iwe_Data_Docking_Failure",
+          "trigger_time": "2026-08-13T13:07:35.841+08:00",
+          "hostname": "iwe.simulated.local",
+          "resource_id": "iWE-APP-SIM",
+          "risk_level": "中",
+          "alert_summary": "app_alert_iwe_Data_Docking_Failure；资源 iWE-APP-SIM；域名 iwe.simulated.local；请求 url=/api/v2/integration/sap/material; status=failed；动作 应用异常；次数 5；风险 中",
+          "analysis_summary": "应用告警分析报告：appalertiweDataDockingFailure --- 告警概要 - 告警名称：appalertiweDataDockingFailure - 触发时间：2026-08-13T13:07:35.841+08:00 - 风险等级：中（综合风险判定） - 触发原因：模拟应用日志命中规则 #2，检测到 /api/v2/integration/sap/material 接口连续失败 5 次。 - 告警来源：模拟环境 iWE 应用系统（applicationcode: iWE） 🔗 Splunk 原始告警链接(https://splunk.example.com/app/search/search?q=search%20index%3Dapps6month%20sourcetype%3Diwe%20source%3Diweiwe2022servicelog%20status%3D%22failed%22%20%7Cstats%20count%20by%20time%2Curl%2Cstatus&dispatch.sampleratio=1) --- 告警数据详情 - 受影响资源： - resourceid: iWE-APP-SIM - hostname: iwe.simulated.local - 请求路径: url=/api/v2/integration/s…",
+          "suggestion_summary": "告警处理建议：appalertiweDataDockingFailure 告警时间：2026-08-13T13:07:35.841+08:00 应用代码：iWE 触发告警规则：模拟应用日志命中规则 #2 整体风险等级：中（环境为非生产，但存在API漏洞探测行为） 环境类型：非生产环境（模拟环境） 攻击类型：API漏洞探测（中风险）、随机扫描（低风险） 告警来源：模拟日志，非真实生产流量 --- ✅ 立即行动（立即执行，5分钟内完成） 1. 确认日志来源真实性 - 登录模拟服务器 iwe.simulated.local - 检查日志路径 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\testlogapp\\iwe\\appalertiweDataDockingFailure.csv - 确认日志是由测试脚本或自动化工具写入，非真实攻击行为 2. 隔离告警日志记录来源 - 若确认为测试脚本生成日志，通知相关测试团队： “请在测试脚本中关闭或过滤此类失败日志的写入，避免触发生产级告警。” 3. 在监控平台标记为“模拟告警” - 在告警系统中添加标签：simulated、test-log、non-prod - 设置规则忽略来自 iwe.simulated.local 的该类告警 4. 检查是否误配监控规则 - 查看告警规则 appale…",
+          "similarity": 0.7414104342460632
+        },
+        {
+          "case_id": "2026-08-13/appsim_e989e3069753b2d41f54",
+          "alert_name": "app_alert_pmt_Login_Failed",
+          "trigger_time": "2026-08-13T16:44:21.945+08:00",
+          "hostname": "pmt-for-s&d.simulated.local",
+          "resource_id": "PMT for S&D-APP-SIM",
+          "risk_level": "低",
+          "alert_summary": "app_alert_pmt_Login_Failed；资源 PMT for S&D-APP-SIM；域名 pmt-for-s&d.simulated.local；请求 module=SD_CUSTOMER; action=VERIFY; query=/pmt/sd/authenticate; detail=登录失败；动作 应用异常；次数 10；风险 低",
+          "analysis_summary": "应用告警分析报告：appalertpmtLoginFailed --- 一、告警概要 - 告警名称：appalertpmtLoginFailed - 触发时间：2026-08-13 16:44:21（+08:00） - 告警来源应用：PMT for S&D - 事件数量：10 次 - 触发原因：日志命中模拟规则 #5 —— “appalertpmtLoginFailed” - 环境标识：非生产环境（Non-Production） - 整体风险等级：低 - 告警性质：模拟应用日志触发，非真实生产攻击或故障 📌 备注：该告警为模拟应用行为生成，用于测试 AIOPs 告警分析能力，日志已保存至本地路径：C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\testlogapp\\pmt\\appalertpmtLoginFailed.csv --- 二、应用与日志详情 应用访问路径与异常特征 - 资源标识：PMT for S&D-APP-SIM - 主机名：pmt-for-s&d.simulated.local - 访问模块：SDCUSTOMER - 操作行为：VERIFY（验证/登录尝试） - 请求路径：/pmt/sd/authenticate - 异常详情：登录失败（共10次） - WAF 动作：标记为“应用异常”，无实际 WAF 阻断行…",
+          "suggestion_summary": "应用告警处理建议：appalertpmtLoginFailed ⚠️ 立即核查 1. 确认环境真实性 当前告警源为 Non-Production 环境，且 CMDB 无匹配资产记录，判定为模拟/测试环境告警。请确认是否为功能测试、自动化脚本或压测触发，非真实生产异常。 2. 验证日志来源 根据 operatornotes，日志已导出至本地路径： C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\testlogapp\\pmt\\appalertpmtLoginFailed.csv → 建议立即读取该文件，验证登录失败记录是否为脚本/测试用户触发。 3. 检查请求路径合理性 请求路径为 /pmt/sd/authenticate，模块为 SDCUSTOMER，动作 VERIFY —— 需确认该接口是否允许外部/非生产流量调用，或是否配置了测试账号白名单。 --- 🔍 排查步骤 1. 应用日志深度核查 - 从原始日志中提取： - 客户端 IP、User-Agent、来源 referer - 请求时间戳分布（是否存在高频/集中失败） - 请求参数内容（如用户名、验证码、设备指纹等） - 使用 Splunk 或 ELK 工具执行完整查询，补全 table time, action, query, detail, module, raw 字段，…",
+          "similarity": 0.7404769062995911
+        }
+      ]
+    },
+    "knowledge": {
+      "success": true,
+      "knowledge_type": "auto",
+      "query": "告警名称: app_alert_wecall_Password_Verification_Failed\n触发原因: 模拟应用日志命中规则 #3：app_alert_wecall_Password_Verification_Failed\n应用: WeCall\n资源: WeCall-APP-SIM\n域名: wecall.simulated.local\n请求: createip=172.16.3.25; admin=admin_li; action=check_pwd; query=s=console/public/checkpwd.html; status=0\n动作: 应用异常",
+      "evidence": {
+        "assets": [
+          {
+            "found": false,
+            "match_type": "none",
+            "resource_name": "",
+            "resource_type": "",
+            "environment": "Unknown",
+            "subscription": "",
+            "source_sheet": "",
+            "source_row": 0,
+            "evidence_type": "asset"
+          }
+        ],
+        "documents": []
+      },
+      "warnings": [
+        "document_search_unavailable"
+      ]
+    },
+    "splunk": {
+      "success": false,
+      "alert_id": "appsim_d17e81533a7cc313cc25",
+      "evidence_type": "splunk_log",
+      "evidence": [],
+      "warnings": [],
+      "error_code": "alert_not_found",
+      "truncated": false
+    }
+  },
+  "token_usage": {
+    "agent_planning": {
+      "prompt_tokens": 402,
+      "completion_tokens": 1090,
+      "total_tokens": 1492
+    },
+    "agent_analysis": {
+      "prompt_tokens": 4585,
+      "completion_tokens": 1458,
+      "total_tokens": 6043
+    },
+    "total": {
+      "prompt_tokens": 4987,
+      "completion_tokens": 2548,
+      "total_tokens": 7535
+    }
+  }
+}

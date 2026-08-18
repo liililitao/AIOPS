@@ -8,9 +8,10 @@ import logging
 from functools import lru_cache
 from typing import Literal
 
-from langchain.tools import tool
+from langchain.tools import ToolRuntime, tool
 from pydantic import ValidationError
 
+from app.core.alert_tool_runtime import AlertToolContext
 from app.services.splunk_investigation import FileAlertContextRepository, InvestigationRequest, SplunkInvestigationService
 
 logger = logging.getLogger("aiops.splunk_log_tool")
@@ -46,9 +47,22 @@ def run_splunk_investigation(alert_id: str, investigations: list[InvestigationAr
 
 
 @tool
-def investigate_splunk_logs(alert_id: str, investigations: list[InvestigationArgument], window_minutes: int = 30) -> str:
+def investigate_splunk_logs(
+    investigations: list[InvestigationArgument],
+    runtime: ToolRuntime[AlertToolContext],
+    window_minutes: int = 30,
+) -> str:
     """获取当前告警的受控 Splunk 日志证据；不接受 SPL、索引或自定义过滤条件。"""
-    return json.dumps(run_splunk_investigation(alert_id, investigations, window_minutes), ensure_ascii=False)
+    context = runtime.context
+    return json.dumps(
+        run_splunk_investigation(
+            context.alert_id,
+            investigations,
+            window_minutes,
+            service=context.splunk_service,
+        ),
+        ensure_ascii=False,
+    )
 
 
 def _error(alert_id: str, code: str) -> dict:

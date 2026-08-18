@@ -53,9 +53,14 @@ async def test_ai_analysis_writes_separate_enriched_alert_report_and_suggestion(
     monkeypatch.setattr(simulator, "_load_log_generator", lambda: generator)
 
     created = simulator.generate_application_alert(rule_id=1, count=3)
-    async def fake_standard_pipeline(raw_path, classification_alert_id=None):
+    async def fake_standard_pipeline(
+        raw_path,
+        classification_alert_id=None,
+        force_new_agent_run=False,
+    ):
         assert raw_path.name == f"{created['alert_id']}.json"
         assert classification_alert_id == created["alert_id"]
+        assert force_new_agent_run is False
         raw = __import__("json").loads(raw_path.read_text(encoding="utf-8"))
         assert "risk_level" not in raw
         assert "risk_details" not in raw

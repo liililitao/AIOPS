@@ -204,13 +204,13 @@
         <a href="$aiops_handoff_url$"
            target="_blank"
            style="display:inline-block; padding:8px 20px; background-color:#1e93c6; color:white; text-decoration:none; border-radius:4px;">
-          进入 AIOps 诊断平台
+          进入 Splunk AI Alert Handling
         </a>
       </html>
     </panel>
     <panel rejects="$aiops_handoff_url$">
       <html>
-        <p>正在生成 AIOps 安全入口，请稍候…</p>
+        <p>正在生成 Splunk AI Alert Handling 安全入口，请稍候…</p>
       </html>
     </panel>
   </row>

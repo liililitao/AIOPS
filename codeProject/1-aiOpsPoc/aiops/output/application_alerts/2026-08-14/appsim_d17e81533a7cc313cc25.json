@@ -1,0 +1,66 @@
+{
+  "alert_name": "app_alert_wecall_Password_Verification_Failed",
+  "application_code": "WeCall",
+  "trigger_time": "2026-08-14T15:46:46.227+08:00",
+  "trigger_time_utc": "2026-08-14T15:46:46.228155+08:00",
+  "event_count": 8,
+  "trigger_reason": "模拟应用日志命中规则 #3：app_alert_wecall_Password_Verification_Failed",
+  "splunk_url": "",
+  "search_terms": "index=app_s_12month sourcetype=wecall source=sys_log_action query=\"s=console/public/checkpwd.html\" status=0 \n| stats count by _time,createip,admin,action,query,status",
+  "full_spl": "index=app_s_12month sourcetype=wecall source=sys_log_action query=\"s=console/public/checkpwd.html\" status=0 \n| stats count by _time,createip,admin,action,query,status",
+  "results": [
+    {
+      "id": "WeCall-APP-SIM",
+      "properties_hostname": "wecall.simulated.local",
+      "properties_requestUri": "createip=172.16.3.25; admin=admin_li; action=check_pwd; query=s=console/public/checkpwd.html; status=0",
+      "properties_action": "应用异常",
+      "count": "8"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\wecall\\app_alert_wecall_Password_Verification_Failed.csv",
+  "risk_level": "低",
+  "risk_details": {
+    "environment_risk": "低",
+    "environment": "Non-Production",
+    "count_risk": "低",
+    "count_value": 8,
+    "attack_type_risk": "低",
+    "attack_types": [
+      "random_scan"
+    ],
+    "overall_risk": "低",
+    "assessed_at": "2026-08-14T15:47:35.006613"
+  },
+  "token_usage": {
+    "agent_planning": {
+      "prompt_tokens": 402,
+      "completion_tokens": 1090,
+      "total_tokens": 1492
+    },
+    "agent_analysis": {
+      "prompt_tokens": 4585,
+      "completion_tokens": 1458,
+      "total_tokens": 6043
+    },
+    "analysis_report": {
+      "prompt_tokens": 4743,
+      "completion_tokens": 2048,
+      "total_tokens": 6791
+    },
+    "suggestion": {
+      "prompt_tokens": 4639,
+      "completion_tokens": 1519,
+      "total_tokens": 6158
+    },
+    "total": {
+      "prompt_tokens": 14369,
+      "completion_tokens": 6115,
+      "total_tokens": 20484
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null,
+  "agent_run_id": "agent_64ec29d406764467b71a095512e714e8",
+  "agent_analysis": "## 研判结论\n当前告警 `app_alert_wecall_Password_Verification_Failed` 为模拟环境触发的非生产告警，无真实业务影响。证据显示：**日志来源为模拟环境（wecall.simulated.local），无真实用户行为或系统故障证据，未命中历史相似告警，CMDB 无资产记录，Splunk 无原始日志支持**。初步判断为自动化测试或脚本行为触发，非真实异常或安全事件。建议归档为“模拟环境测试误报”并降级告警级别或配置白名单过滤。\n\n---\n\n## 证据台账\n| 证据来源         | 内容摘要                                                                 | 是否可用 | 证据等级 | 备注 |\n|------------------|--------------------------------------------------------------------------|----------|----------|------|\n| 原始告警字段     | 应用：WeCall；资源：WeCall-APP-SIM；域名：wecall.simulated.local；status=0；action=check_pwd；IP：172.16.3.25；用户：admin_li | ✅ 是     | 高       | 明确标记“模拟环境” |\n| 历史告警         | 过去7天无匹配告警；仅有其他应用（iWE, PMT）在模拟环境触发的相似“应用异常”告警，无 WeCall 相关记录 | ✅ 是     | 中       | 无重复模式，无关联性 |\n| 知识库/CMDB      | 无匹配 WeCall-APP-SIM 资产记录；无接口文档说明；status=0 语义无定义；无白名单规则 | ✅ 是     | 中       | 无法确认接口合规性，文档缺失 |\n| Splunk 日志      | 未找到告警 ID `appsim_d17e81533a7cc313cc25` 对应日志；error_code: `alert_not_found` | ❌ 否     | 低       | 无可验证请求上下文，无法分析行为模式 |\n\n---\n\n## 根因假设与置信度\n### 1. 模拟测试行为触发告警\n- **支持证据**：告警明确标记为“模拟环境”；历史案例中类似告警（如 PMT、iWE）均为测试脚本触发；IP 172.16.3.25 未在 CMDB 登记，属非生产 IP 段。\n- **反证/缺口**：无 Splunk 日志证明请求频次、User-Agent 或 Referer；未确认 `admin_li` 是否为合法测试账号。\n- **置信度**：中\n\n### 2. 应用逻辑误判或状态码误解\n- **支持证据**：告警规则将 status=0 标记为“异常”，但未在 CMDB/文档中确认该码为非法响应；类比历史案例（如 PMT 登录失败告警），status=0 可能为正常业务失败。\n- **反证/缺口**：无接口规范证明 status=0 合法性；无历史正常请求数据对比。\n- **置信度**：低\n\n### 3. 模拟环境配置漂移导致认证流程不一致\n- **支持证据**：CMDB 无 WeCall-APP-SIM 资产记录，无法比对配置基线；无法确认当前认证模块是否与基准一致。\n- **反证/缺口**：无配置部署记录；无变更管理关联证据。\n- **置信度**：低\n\n---\n\n## 影响范围与风险说明\n- **影响范围**：仅限 WeCall 应用模拟环境（wecall.simulated.local），无生产资源、无真实用户、无业务服务中断。\n- **风险等级**：低（非生产环境，无真实攻击或故障证据）\n- **风险说明**：当前告警不构成安全威胁或业务中断风险，但可能干扰监控告警有效性。建议优化规则以避免模拟环境误报。\n\n---\n\n## 优先处置路径\n1. **立即行动 — 标记为模拟告警**（5分钟内完成）\n   - 在告警系统中添加标签：`simulated`, `test-log`, `non-prod`\n   - 设置规则忽略来自 `wecall.simulated.local` 的 `app_alert_wecall_Password_Verification_Failed` 告警。\n   - **验证完成条件**：告警系统不再推送该告警，且标签可见。\n\n2. **中止操作 — 确认测试来源**（1小时内完成）\n   - 联系测试团队确认 IP 172.16.3.25 是否为自动化测试服务器。\n   - 确认账号 `admin_li` 是否在模拟环境白名单内。\n   - **验证完成条件**：测试团队书面确认来源为自动化脚本或测试工具。\n\n3. **长期优化 — 修复规则语义冲突**（24小时内评估）\n   - 检查告警规则 #3 是否应包含模拟环境；如不应包含，调整规则适用范围。\n   - 若确认 status=0 为合法响应，建议修改规则匹配条件（如仅监控 status ≠ 0）。\n   - **验证完成条件**：规则维护人确认并更新规则文档，测试验证不再误报。\n\n---\n\n## 验证标准\n- **立即行动验证**：告警系统中该告警新增标签 `simulated`，且后续无重复推送。\n- **中止操作验证**：测试团队提供书面确认（邮件或工单）说明 IP 172.16.3.25 为测试用途，或提供日志路径证明脚本来源。\n- **长期优化验证**：规则更新后，在模拟环境注入相同请求，验证是否不再触发告警。\n\n---\n\n## 证据缺口与人工确认项\n1. **IP 172.16.3.25 的归属** — 需确认是否为自动化测试服务器或开发机，是否已登记在网络资产库。\n2. **账号 admin_li 的合法性** — 需确认是否存在于模拟环境测试账号白名单中，或是否为默认测试账号。\n3. **模拟环境告警级别设置** — 需确认是否应降级为“信息”或“调试”级别，而非“应用异常”。\n4. **变更管理记录** — 需检查近7天是否有告警规则或应用部署变更，导致该告警首次出现。\n5. **规则 #3 设计意图** — 需与规则维护人确认该规则是否适用于模拟环境，或是否应排除非生产域名。"
+}

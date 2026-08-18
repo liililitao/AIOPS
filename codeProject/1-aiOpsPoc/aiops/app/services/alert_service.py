@@ -1,8 +1,8 @@
 """告警处理服务。
 
-固定流程：先由 Router 模型比对有限告警分类库；语义命中后复用报告与建议，
-并重新计算本次风险；未命中才交给三 Tool AI Agent 依次获取历史告警、知识库/
-CMDB 与受控 Splunk 日志证据，再生成报告与建议并保存完整 Agent 运行记录。
+确定性顶层 Graph 先比对有限告警分类库；语义命中后复用报告与建议并重新计算
+本次风险；未命中才进入 Tool-calling Agent 子图，由模型按需选择历史告警、
+知识库/CMDB 与受控 Splunk 日志能力，再生成报告与建议并保存 Agent 运行记录。
 """
 
 from __future__ import annotations
@@ -17,6 +17,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+from app.agents.alert_processing_graph import create_alert_processing_graph
 from app.config import get_settings
 from app.core.llm import call_llm_with_retry, get_router_llm
 from app.core.risk_assessor import assess_risk
@@ -171,12 +172,15 @@ async def process_new_alerts() -> dict:
 
 
 async def process_single_alert(
-    file_path: Path, classification_alert_id: Optional[str] = None,
+    file_path: Path,
+    classification_alert_id: Optional[str] = None,
+    *,
+    force_new_agent_run: bool = False,
 ) -> Optional[EnrichedAlert]:
     """处理一条告警。
 
     首先由 Router 模型进行语义匹配；模型评分达到阈值时复用结果，且不会
-    调用 Agent Tool 或报告/建议模型。否则才进入三个 Tool 与 Agent 流程。
+    调用 Agent Tool 或报告/建议模型。否则才进入 Tool-calling Agent 子图。
     """
     settings = get_settings()
     file_path = Path(file_path)
@@ -188,6 +192,10 @@ async def process_single_alert(
 
     today = datetime.now().strftime("%Y-%m-%d")
     base_name = file_path.stem
+    business_alert_id = classification_alert_id or f"{today}/{base_name}"
+    formal_output_exists = force_new_agent_run or (
+        settings.alert_output_path / today / file_path.name
+    ).is_file()
     # 应用模拟资源的环境可本地确定；先计算本次风险，用它限制分类库候选，
     # 避免高风险模板被用于本次低风险告警，反之亦然。
     first = alert.results[0]
@@ -196,11 +204,26 @@ async def process_single_alert(
         count=first.count_int,
         request_uri=first.properties_requestUri,
     )
-    semantic_candidate, semantic_score, match_usage = await _llm_semantic_match(
-        alert, _load_semantic_candidates(alert, preliminary_risk.overall_risk),
-    )
-    if semantic_candidate:
-        # 命中时不调用两个 Tool。风险判定仍按当前告警重算，但只使用本地可判断
+    async def classify_node(state):
+        candidate, score, usage = await _llm_semantic_match(
+            alert,
+            _load_semantic_candidates(
+                alert,
+                preliminary_risk.overall_risk,
+            ),
+        )
+        return {
+            "classification_status": "hit" if candidate else "miss",
+            "classification_result": candidate,
+            "classification_score": score,
+            "match_usage": usage,
+        }
+
+    async def reuse_node(state):
+        semantic_candidate = state["classification_result"]
+        semantic_score = state.get("classification_score")
+        match_usage = state.get("match_usage") or TokenUsage()
+        # 命中时不调用 Agent Tool。风险判定仍按当前告警重算，但只使用本地可判断
         # 的环境规则，避免在“分类已可用”分支额外触发 Agent/CMDB 查询。
         enriched = _build_semantic_reused_alert(
             raw_data, semantic_candidate, int(semantic_score or 0), preliminary_risk, match_usage,
@@ -208,65 +231,113 @@ async def process_single_alert(
         _write_report_and_suggestion(today, base_name, semantic_candidate["report"], semantic_candidate["suggestion"])
         _write_enriched_alert(today, file_path.name, enriched)
         _archive_and_index_history(file_path, today, base_name)
-        return enriched
+        return {"result": enriched}
 
-    # 分类未命中后，才进入真实的三 Tool Agent。Tool 顺序固定为历史实例、
-    # 知识库/CMDB、Splunk 受控日志调查，调用状态将写入 output/agent_runs。
-    logger.info("[CLASSIFICATION MISS] Enter Agent for %s", alert.alert_name)
-    from app.agents import AlertAnalysisAgent
-    agent_result = await AlertAnalysisAgent().analyze(
-        alert, alert_id=classification_alert_id or f"{today}/{base_name}",
+    async def analyze_node(state):
+        # 分类未命中后才进入 Agent；模型按告警内容选择已注册 Tool。
+        logger.info("[CLASSIFICATION MISS] Enter Agent for %s", alert.alert_name)
+        from app.agents import AlertAnalysisAgent
+        from app.agents.alert_analysis_agent import resolve_agent_run_id
+        from app.services.agent_run_registry import AgentRunRegistry
+
+        run_registry = None
+        if settings.AGENT_CHECKPOINT_ENABLED:
+            run_registry = AgentRunRegistry(settings.agent_checkpoint_db_path)
+            agent_run_id = await run_registry.acquire(
+                alert,
+                alert_id=business_alert_id,
+                formal_output_exists=formal_output_exists,
+            )
+        else:
+            agent_run_id = resolve_agent_run_id(
+                alert,
+                alert_id=business_alert_id,
+                formal_output_exists=formal_output_exists,
+            )
+
+        agent_result = await AlertAnalysisAgent().analyze(
+            alert,
+            alert_id=business_alert_id,
+            run_id=agent_run_id,
+        )
+        evidence = agent_result.evidence
+        cmdb = _cmdb_from_agent_evidence(evidence, alert)
+        first = alert.results[0]
+        risk = assess_risk(
+            environment=cmdb.environment,
+            count=first.count_int,
+            request_uri=first.properties_requestUri,
+        )
+        enriched = EnrichedAlert(
+            **raw_data,
+            risk_level=risk.overall_risk,
+            risk_details=RiskDetails(
+                environment_risk=risk.environment_risk,
+                environment=risk.environment,
+                count_risk=risk.count_risk,
+                count_value=risk.count_value,
+                attack_type_risk=risk.attack_type_risk,
+                attack_types=risk.attack_types,
+                overall_risk=risk.overall_risk,
+                assessed_at=risk.assessed_at,
+            ),
+            from_sample=False,
+            agent_run_id=agent_result.run_id,
+            agent_analysis=agent_result.analysis_result,
+        )
+        evidence_context = _format_agent_evidence(
+            evidence,
+            investigation_plan=agent_result.investigation_plan,
+            agent_analysis=agent_result.analysis_result,
+        )
+        report, suggestion = await _generate_report_and_suggestion(
+            enriched,
+            cmdb,
+            risk,
+            today,
+            base_name,
+            evidence_context,
+        )
+        AlertClassificationRepository().upsert(
+            enriched,
+            report=report,
+            suggestion=suggestion,
+            risk_level=risk.overall_risk,
+            risk_details=(
+                enriched.risk_details.model_dump()
+                if enriched.risk_details
+                else {}
+            ),
+            evidence=evidence,
+        )
+        match_usage = state.get("match_usage") or TokenUsage()
+        _add_token_usage(enriched, match_usage)
+        _add_token_usage(enriched, agent_result.token_usage)
+        if enriched.token_usage:
+            enriched.token_usage.agent_planning = (
+                agent_result.planning_token_usage
+            )
+            enriched.token_usage.agent_analysis = (
+                agent_result.execution_token_usage
+            )
+        _write_enriched_alert(today, file_path.name, enriched)
+        _write_agent_run(today, base_name, alert, agent_result)
+        _archive_and_index_history(file_path, today, base_name)
+        if run_registry is not None:
+            await run_registry.mark_completed(business_alert_id, agent_run_id)
+        return {"result": enriched}
+
+    graph = create_alert_processing_graph(
+        classify=classify_node,
+        reuse=reuse_node,
+        analyze=analyze_node,
     )
-    evidence = agent_result.evidence
-    cmdb = _cmdb_from_agent_evidence(evidence, alert)
-    first = alert.results[0]
-    risk = assess_risk(
-        environment=cmdb.environment,
-        count=first.count_int,
-        request_uri=first.properties_requestUri,
-    )
-    enriched = EnrichedAlert(
-        **raw_data,
-        risk_level=risk.overall_risk,
-        risk_details=RiskDetails(
-            environment_risk=risk.environment_risk,
-            environment=risk.environment,
-            count_risk=risk.count_risk,
-            count_value=risk.count_value,
-            attack_type_risk=risk.attack_type_risk,
-            attack_types=risk.attack_types,
-            overall_risk=risk.overall_risk,
-            assessed_at=risk.assessed_at,
-        ),
-        from_sample=False,
-        agent_run_id=agent_result.run_id,
-        agent_analysis=agent_result.analysis_result,
-    )
-    evidence_context = _format_agent_evidence(
-        evidence,
-        investigation_plan=agent_result.investigation_plan,
-        agent_analysis=agent_result.analysis_result,
-    )
-    report, suggestion = await _generate_report_and_suggestion(
-        enriched, cmdb, risk, today, base_name, evidence_context
-    )
-    AlertClassificationRepository().upsert(
-        enriched,
-        report=report,
-        suggestion=suggestion,
-        risk_level=risk.overall_risk,
-        risk_details=enriched.risk_details.model_dump() if enriched.risk_details else {},
-        evidence=evidence,
-    )
-    _add_token_usage(enriched, match_usage)
-    _add_token_usage(enriched, agent_result.token_usage)
-    if enriched.token_usage:
-        enriched.token_usage.agent_planning = agent_result.planning_token_usage
-        enriched.token_usage.agent_analysis = agent_result.execution_token_usage
-    _write_enriched_alert(today, file_path.name, enriched)
-    _write_agent_run(today, base_name, alert, agent_result)
-    _archive_and_index_history(file_path, today, base_name)
-    return enriched
+    graph_result = await graph.ainvoke({
+        "alert_id": classification_alert_id or f"{today}/{base_name}",
+        "alert": alert.model_dump(),
+        "classification_status": "pending",
+    })
+    return graph_result["result"]
 
 
 def _build_semantic_reused_alert(
@@ -326,7 +397,7 @@ def _cmdb_from_agent_evidence(evidence: dict, alert: RawAlert) -> CmdbLookupResu
 def _format_agent_evidence(
     evidence: dict, *, investigation_plan: str = "", agent_analysis: str = "",
 ) -> str:
-    """把三个 Tool 的压缩证据整理为报告模型可消费、有限长度的上下文。"""
+    """把 Agent 已取得的压缩证据整理为报告模型可消费的有限上下文。"""
     history = evidence.get("historical", {})
     knowledge = evidence.get("knowledge", {})
     splunk = evidence.get("splunk", {})
@@ -421,13 +492,21 @@ def _write_agent_run(date_str: str, base_name: str, alert: RawAlert, result) -> 
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "run_id": result.run_id,
-        "status": "completed",
+        "thread_id": result.thread_id,
+        "status": result.status,
         "started_at": result.started_at,
         "completed_at": result.completed_at,
         "alert": {"alert_name": alert.alert_name, "application_code": alert.application_code},
         "steps": result.steps,
         "investigation_plan": result.investigation_plan,
         "analysis_result": result.analysis_result,
+        "analysis": (
+            result.analysis.model_dump(mode="json")
+            if result.analysis is not None
+            else None
+        ),
+        "degraded_reasons": result.degraded_reasons,
+        "validation_repair_count": result.validation_repair_count,
         "evidence": result.evidence,
         "token_usage": {
             "agent_planning": result.planning_token_usage.model_dump(),
@@ -510,7 +589,16 @@ async def process_remote_alert(alert_id: str) -> Optional[EnrichedAlert]:
     input_path = settings.alert_input_path / filename
     input_path.parent.mkdir(parents=True, exist_ok=True)
     input_path.write_text(json.dumps(raw_data, ensure_ascii=False, indent=2), encoding="utf-8")
-    result = await process_single_alert(input_path, classification_alert_id=alert_id)
+    index = _load_index(settings.processed_index_path)
+    formal_output_exists = any(
+        info.get("source_alert_id") == alert_id
+        for info in index.get("processed_files", {}).values()
+    )
+    result = await process_single_alert(
+        input_path,
+        classification_alert_id=alert_id,
+        force_new_agent_run=formal_output_exists,
+    )
     if result:
         index = _load_index(settings.processed_index_path)
         index.setdefault("processed_files", {})[filename] = {

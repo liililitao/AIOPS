@@ -273,7 +273,7 @@ def check_auth():
         if not _roles_allowed(verified.roles):
             return jsonify({
                 "success": False,
-                "msg": "当前 Splunk 用户没有访问 AIOps 的权限",
+                "msg": "当前 Splunk 用户没有访问 Splunk AI Alert Handling 的权限",
                 "code": "forbidden_role",
             }), 403
         return _auth_redirect(verified.user, verified.roles)
@@ -317,7 +317,7 @@ def check_auth():
             if not _roles_allowed(g.current_roles):
                 return jsonify({
                     "success": False,
-                    "msg": "当前用户没有访问 AIOps 的权限",
+                    "msg": "当前用户没有访问 Splunk AI Alert Handling 的权限",
                     "code": "forbidden_role",
                 }), 403
             return  # 放行

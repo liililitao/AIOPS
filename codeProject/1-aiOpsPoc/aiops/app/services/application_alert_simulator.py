@@ -123,7 +123,11 @@ async def analyze_application_alert(alert_id: str) -> dict[str, Any] | None:
     # 知识库/CMDB Tool；生成报告/建议；类别×风险等级 upsert；归档历史案例。
     from app.services.alert_service import process_single_alert
 
-    result = await process_single_alert(raw_path, classification_alert_id=alert_id)
+    result = await process_single_alert(
+        raw_path,
+        classification_alert_id=alert_id,
+        force_new_agent_run=info.get("analysis_status") == "completed",
+    )
     if not result:
         raise RuntimeError("标准告警处理未生成增强结果")
     enriched = result.model_dump()

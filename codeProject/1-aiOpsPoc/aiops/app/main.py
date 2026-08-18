@@ -20,6 +20,7 @@ from app.core.session_auth import (
     read_session_token,
     verify_handoff,
 )
+from app.services.alert_authorization_service import AlertAuthorizationStore
 
 # Configure logging - use ASCII-safe format for Windows console
 settings = get_settings()
@@ -57,9 +58,9 @@ async def authenticate_request(request: Request, call_next):
         if missing:
             return _auth_failure("安全跳转链接参数不完整", "missing")
         if len(settings.AIOPS_HANDOFF_SECRET.encode("utf-8")) < 32:
-            return _auth_failure("AIOps 跳转密钥未配置", "configuration", 503)
+            return _auth_failure("Splunk AI Alert Handling 跳转密钥未配置", "configuration", 503)
         if len(settings.AIOPS_SESSION_SECRET.encode("utf-8")) < 32:
-            return _auth_failure("AioPs 会话密钥未配置", "configuration", 503)
+            return _auth_failure("Splunk AI Alert Handling 会话密钥未配置", "configuration", 503)
         try:
             identity = verify_handoff(
                 secret=settings.AIOPS_HANDOFF_SECRET,
@@ -81,7 +82,7 @@ async def authenticate_request(request: Request, call_next):
         except HandoffVerificationError as exc:
             return _auth_failure("安全跳转链接校验失败", exc.code)
         except ValueError:
-            return _auth_failure("Aiops 会话密钥未配置", "configuration", 503)
+            return _auth_failure("Splunk AI Alert Handling 会话密钥未配置", "configuration", 503)
 
         response = RedirectResponse(url="/", status_code=303)
         response.set_cookie(
@@ -105,8 +106,8 @@ async def authenticate_request(request: Request, call_next):
         identity = None
     if identity is None:
         if request.url.path.startswith("/api/"):
-            return _auth_failure("请从 Splunk Dashboard 重新进入 AIOps", "unauthorized")
-        return _auth_failure("请从 Splunk Dashboard 重新进入 AIOps", "unauthorized")
+            return _auth_failure("请从 Splunk Dashboard 重新进入 Splunk AI Alert Handling", "unauthorized")
+        return _auth_failure("请从 Splunk Dashboard 重新进入 Splunk AI Alert Handling", "unauthorized")
     request.state.authenticated_user = identity.username
     request.state.authenticated_roles = identity.roles
     return await call_next(request)
@@ -211,6 +212,29 @@ async def health_check():
         "status": "ok",
         "app": settings.APP_NAME,
         "version": settings.APP_VERSION,
+    }
+
+
+@app.get("/api/v1/session")
+async def current_session(request: Request):
+    """Return only the current user's UI permission level."""
+    if not settings.AIOPS_AUTH_ENABLED:
+        # 保持未启用认证时的本地开发体验：完整功能默认可用。
+        return {"authenticated": False, "is_admin": True}
+
+    username = getattr(request.state, "authenticated_user", None)
+    if not username:
+        return _auth_failure("请从 Splunk Dashboard 重新进入 Splunk AI Alert Handling", "unauthorized")
+
+    try:
+        access = AlertAuthorizationStore(settings.authorization_db_path).user_access(username)
+    except RuntimeError as exc:
+        return _auth_failure(str(exc), "authorization_unavailable", 503)
+
+    return {
+        "authenticated": True,
+        "username": access.username,
+        "is_admin": access.is_admin,
     }
 
 

@@ -11,20 +11,46 @@ const state = {
     selectedAlertId: null,
     activeDetailTab: 'alert-data',
     schedulerRunning: true,
+    isAdmin: false,
 };
 
 // ==========================================
 // 初始化
 // ==========================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await applyNavigationPermissions();
     initNavigation();
     initDetailTabs();
-    initKnowledgeBase();
     initApplicationSimulator();
     loadAlerts();
-    loadConfig();
-    pollSchedulerStatus();
+    if (state.isAdmin) {
+        initKnowledgeBase();
+        loadConfig();
+        pollSchedulerStatus();
+    }
 });
+
+async function applyNavigationPermissions() {
+    try {
+        const res = await fetch('/api/v1/session');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const session = await res.json();
+        state.isAdmin = session.is_admin === true;
+    } catch (err) {
+        // 权限接口不可用时保持最小权限展示，避免普通用户看到管理入口。
+        console.error('加载页面权限失败:', err);
+        state.isAdmin = false;
+    }
+
+    if (state.isAdmin) {
+        document.querySelectorAll('.admin-only').forEach(element => {
+            element.hidden = false;
+        });
+    } else {
+        const resultsTab = document.querySelector('.nav-tab[data-tab="results"]');
+        if (resultsTab) resultsTab.textContent = '📊 告警分析';
+    }
+}
 
 // ==========================================
 // 导航切换
@@ -345,7 +371,7 @@ function renderChatPanel(container, detail) {
         <div class="chat-container">
             <div class="chat-messages" id="chat-messages">
                 <div class="chat-msg assistant">
-                    <span class="msg-bubble">你好！我是 AIOps 助手，你可以就当前告警向我提问。例如：<br>
+                    <span class="msg-bubble">你好！我是 Splunk AI Alert Handling 助手，你可以就当前告警向我提问。例如：<br>
                     • 这个告警严重吗？<br>
                     • 我应该怎么做？<br>
                     • 攻击路径有什么特征？</span>
@@ -489,6 +515,7 @@ async function triggerScan() {
             : (data.message || '扫描已触发');
         alert(message);
         await loadAlerts();
+        await refreshSchedulerStatus();
     } catch (err) {
         alert('触发扫描失败: ' + err.message);
     } finally {
@@ -506,8 +533,6 @@ async function loadConfig() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const cfg = await res.json();
         document.getElementById('cfg-interval').value = cfg.scan_interval_minutes || 5;
-        document.getElementById('cfg-count-high').value = cfg.risk_count_high || 200;
-        document.getElementById('cfg-count-medium').value = cfg.risk_count_medium || 100;
         document.getElementById('cfg-cmdb-type').value = cfg.cmdb_type || 'xlsx';
         document.getElementById('cfg-cmdb-path').value = cfg.cmdb_type === 'splunk_csv'
             ? (cfg.cmdb_csv_path || '-')
@@ -555,21 +580,6 @@ async function loadConfig() {
         }
     });
 
-    document.getElementById('btn-save-risk')?.addEventListener('click', async () => {
-        const high = parseInt(document.getElementById('cfg-count-high').value);
-        const medium = parseInt(document.getElementById('cfg-count-medium').value);
-        try {
-            await fetch('/api/v1/config', {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ risk_count_high: high, risk_count_medium: medium }),
-            });
-            alert('风险参数已更新');
-        } catch (err) {
-            alert('保存失败: ' + err.message);
-        }
-    });
-
     document.getElementById('btn-pause')?.addEventListener('click', async () => {
         await fetch('/api/v1/scheduler/pause', { method: 'POST' });
         document.getElementById('cfg-scheduler-status').textContent = '⏸️ 已暂停';
@@ -580,15 +590,20 @@ async function loadConfig() {
     });
 }
 
-async function pollSchedulerStatus() {
+async function refreshSchedulerStatus() {
     try {
         const res = await fetch('/api/v1/config/scheduler/status');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         document.getElementById('nav-status').textContent = data.running ? '● 运行中' : '⏸️ 已暂停';
         document.getElementById('cfg-scheduler-status').textContent = data.running ? '● 运行中' : '⏸️ 已暂停';
         document.getElementById('cfg-last-scan').textContent = data.last_scan || '-';
         document.getElementById('cfg-next-scan').textContent = data.next_scan || '-';
     } catch (err) { /* ignore */ }
+}
+
+async function pollSchedulerStatus() {
+    await refreshSchedulerStatus();
     setTimeout(pollSchedulerStatus, 30000);
 }
 

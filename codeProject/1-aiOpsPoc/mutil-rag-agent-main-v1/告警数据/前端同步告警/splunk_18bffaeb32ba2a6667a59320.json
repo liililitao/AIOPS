@@ -1,6 +1,6 @@
 {
   "source": "splunk_frontend_alert_list",
-  "synced_at": "2026-08-13T01:20:29.413555+00:00",
+  "synced_at": "2026-08-17T08:46:48.691721+00:00",
   "alert": {
     "id": "splunk_18bffaeb32ba2a6667a59320",
     "source": "splunk",
@@ -32,8 +32,8 @@
       "attack_type_risk": "未知",
       "attack_types": [],
       "overall_risk": "中",
-      "assessed_at": "2026-08-13T01:20:29.413555+00:00"
+      "assessed_at": "2026-08-17T08:46:48.691721+00:00"
     },
-    "processed_at": "2026-08-13T01:20:29.413555+00:00"
+    "processed_at": "2026-08-17T08:46:48.691721+00:00"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "alert_name": "app_alert_pmt_Dif_Light",
+  "application_code": "PMT for S&D",
+  "trigger_time": "2026-08-17T15:36:08.594+08:00",
+  "trigger_time_utc": "2026-08-17T15:36:08.596618+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #4：app_alert_pmt_Dif_Light",
+  "search_terms": "index=app_s_12month sourcetype=pmt source=sd_validation_log action_user=cld \n|eval res=if(old_light==now_light,1,0)\n|search res=0\n|stats count by _time,action_user,old_light,now_light",
+  "full_spl": "index=app_s_12month sourcetype=pmt source=sd_validation_log action_user=cld \n|eval res=if(old_light==now_light,1,0)\n|search res=0\n|stats count by _time,action_user,old_light,now_light",
+  "results": [
+    {
+      "id": "PMT for S&D-APP-SIM",
+      "properties_hostname": "pmt-for-s&d.simulated.local",
+      "properties_requestUri": "action_user=cld; old_light=red; now_light=green",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\pmt\\app_alert_pmt_Dif_Light.csv"
+}

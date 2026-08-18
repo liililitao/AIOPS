@@ -1,0 +1,66 @@
+{
+  "alert_name": "app_alert_pmt_Dif_Light",
+  "application_code": "PMT for S&D",
+  "trigger_time": "2026-08-17T15:36:08.594+08:00",
+  "trigger_time_utc": "2026-08-17T15:36:08.596618+08:00",
+  "event_count": 10,
+  "trigger_reason": "模拟应用日志命中规则 #4：app_alert_pmt_Dif_Light",
+  "splunk_url": "",
+  "search_terms": "index=app_s_12month sourcetype=pmt source=sd_validation_log action_user=cld \n|eval res=if(old_light==now_light,1,0)\n|search res=0\n|stats count by _time,action_user,old_light,now_light",
+  "full_spl": "index=app_s_12month sourcetype=pmt source=sd_validation_log action_user=cld \n|eval res=if(old_light==now_light,1,0)\n|search res=0\n|stats count by _time,action_user,old_light,now_light",
+  "results": [
+    {
+      "id": "PMT for S&D-APP-SIM",
+      "properties_hostname": "pmt-for-s&d.simulated.local",
+      "properties_requestUri": "action_user=cld; old_light=red; now_light=green",
+      "properties_action": "应用异常",
+      "count": "10"
+    }
+  ],
+  "operator_notes": "模拟应用告警；日志已写入 C:\\Users\\BOLL\\Desktop\\aiops\\codeProject\\1-aiOpsPoc\\test_log_app\\pmt\\app_alert_pmt_Dif_Light.csv",
+  "risk_level": "低",
+  "risk_details": {
+    "environment_risk": "低",
+    "environment": "Non-Production",
+    "count_risk": "低",
+    "count_value": 10,
+    "attack_type_risk": "低",
+    "attack_types": [
+      "random_scan"
+    ],
+    "overall_risk": "低",
+    "assessed_at": "2026-08-17T15:36:29.765012"
+  },
+  "token_usage": {
+    "agent_planning": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "agent_analysis": {
+      "prompt_tokens": 1630,
+      "completion_tokens": 383,
+      "total_tokens": 2013
+    },
+    "analysis_report": {
+      "prompt_tokens": 1142,
+      "completion_tokens": 1577,
+      "total_tokens": 2719
+    },
+    "suggestion": {
+      "prompt_tokens": 1038,
+      "completion_tokens": 1301,
+      "total_tokens": 2339
+    },
+    "total": {
+      "prompt_tokens": 3810,
+      "completion_tokens": 3261,
+      "total_tokens": 7071
+    }
+  },
+  "from_sample": false,
+  "match_sample_id": null,
+  "match_score": null,
+  "agent_run_id": "agent_b9e8f403d02ab351f3ebff749cc25de0",
+  "agent_analysis": "## 分析结论\n\n当前证据不足，无法形成通过结构化校验的完整结论。\n\n## 根因假设\n\n- 暂无可验证的根因假设\n\n## 影响评估\n\n影响范围暂无法可靠确认。\n\n## 处理建议\n\n- [中] 补齐缺失证据后重新分析或转交人工复核。：避免将格式错误或不存在的证据引用作为告警事实。\n\n## 验证步骤\n\n- 恢复不可用的数据源\n- 使用新的分析运行重新校验\n\n## 证据缺口\n\n- 结构化输出校验失败：structured_output_unavailable:BadRequestError\n\n**总体置信度：低**"
+}

@@ -7,6 +7,7 @@ import pytest
 
 from app.config import get_settings
 from app.agents.alert_analysis_agent import AgentAnalysisResult, AlertAnalysisAgent
+from app.agents.alert_processing_graph import create_alert_processing_graph
 from app.schemas.alert import AlertResult, EnrichedAlert, RawAlert, TokenUsage
 from app.schemas.cmdb import CmdbLookupResult
 from app.schemas.risk import RiskAssessment
@@ -41,6 +42,7 @@ def isolated_settings(monkeypatch, tmp_path: Path):
     monkeypatch.setattr(type(settings), "reports_path", property(lambda _: tmp_path / "reports"))
     monkeypatch.setattr(type(settings), "suggestions_path", property(lambda _: tmp_path / "suggestions"))
     monkeypatch.setattr(type(settings), "agent_runs_path", property(lambda _: tmp_path / "agent-runs"))
+    monkeypatch.setattr(type(settings), "agent_checkpoint_db_path", property(lambda _: tmp_path / "agent-checkpoints.sqlite3"))
     return settings
 
 
@@ -51,8 +53,78 @@ def _write_input(tmp_path: Path, alert: RawAlert, name: str = "alert.json") -> P
 
 
 @pytest.mark.asyncio
+async def test_processing_graph_routes_classification_hit_without_agent():
+    calls = []
+
+    async def classify(state):
+        calls.append("classify")
+        return {
+            "classification_status": "hit",
+            "classification_result": {"sample_id": "sample-1"},
+            "classification_score": 96,
+        }
+
+    async def reuse(state):
+        calls.append("reuse")
+        return {"result": "reused"}
+
+    async def analyze(state):
+        raise AssertionError("classification hit must not enter Agent")
+
+    graph = create_alert_processing_graph(
+        classify=classify,
+        reuse=reuse,
+        analyze=analyze,
+    )
+    result = await graph.ainvoke({"alert_id": "a-1", "alert": {}})
+
+    assert calls == ["classify", "reuse"]
+    assert result["route"] == "reuse"
+    assert result["result"] == "reused"
+
+
+@pytest.mark.asyncio
+async def test_processing_graph_routes_miss_to_agent():
+    calls = []
+
+    async def classify(state):
+        calls.append("classify")
+        return {"classification_status": "miss"}
+
+    async def reuse(state):
+        raise AssertionError("classification miss must not reuse")
+
+    async def analyze(state):
+        calls.append("analyze")
+        return {"result": "analyzed"}
+
+    graph = create_alert_processing_graph(
+        classify=classify,
+        reuse=reuse,
+        analyze=analyze,
+    )
+    result = await graph.ainvoke({"alert_id": "a-2", "alert": {}})
+
+    assert calls == ["classify", "analyze"]
+    assert result["route"] == "analyze"
+    assert result["result"] == "analyzed"
+
+
+@pytest.mark.asyncio
 async def test_router_llm_hit_reuses_without_agent_tools_or_report_llm(monkeypatch, tmp_path):
     raw = _raw_alert()
+    graph_calls = []
+
+    def graph_factory(**kwargs):
+        graph_calls.append("created")
+        return create_alert_processing_graph(**kwargs)
+
+    monkeypatch.setattr(
+        alert_service,
+        "create_alert_processing_graph",
+        graph_factory,
+        raising=False,
+    )
     repo = AlertClassificationRepository()
     record = repo.upsert(
         raw, report="# reused analysis", suggestion="# reused suggestion", risk_level="高",
@@ -70,8 +142,10 @@ async def test_router_llm_hit_reuses_without_agent_tools_or_report_llm(monkeypat
         usage_metadata = {"input_tokens": 12, "output_tokens": 3}
     async def router_match(*args, **kwargs):
         return f"sample_id:{record['key']},score:92", Message()
+    monkeypatch.setattr(alert_service, "get_router_llm", lambda: object())
     monkeypatch.setattr(alert_service, "call_llm_with_retry", router_match)
     result = await alert_service.process_single_alert(_write_input(tmp_path, similar))
+    assert graph_calls == ["created"]
 
     assert result.from_sample is True
     assert result.match_sample_id == raw.alert_name
@@ -91,6 +165,7 @@ async def test_router_score_below_85_enters_tools_and_agent(monkeypatch, tmp_pat
         usage_metadata = {"input_tokens": 9, "output_tokens": 2}
     async def router_no_match(*args, **kwargs):
         return f"sample_id:{record['key']},score:84", Message()
+    monkeypatch.setattr(alert_service, "get_router_llm", lambda: object())
     monkeypatch.setattr(alert_service, "call_llm_with_retry", router_no_match)
     async def fake_agent(*args, **kwargs):
         return AgentAnalysisResult("test-agent", "", "", {"historical": {}, "knowledge": {"evidence": {"assets": []}}, "splunk": {}}, token_usage=TokenUsage())
@@ -133,22 +208,73 @@ def test_semantic_candidates_require_same_application_name_and_risk(monkeypatch)
 
 
 @pytest.mark.asyncio
-async def test_classification_miss_calls_both_tools_then_generates_and_upserts(monkeypatch, tmp_path):
+async def test_classification_miss_uses_agent_evidence_then_generates_and_upserts(monkeypatch, tmp_path):
     raw = _raw_alert()
     calls = []
+    graph_calls = []
 
-    def fake_history(query, top_k):
-        calls.append(("history", query, top_k))
-        return {"success": True, "results": [{"case_id": "old/one", "alert_summary": "old alert",
-                "analysis_summary": "old analysis", "suggestion_summary": "old suggestion"}]}
+    def graph_factory(**kwargs):
+        graph_calls.append("created")
+        return create_alert_processing_graph(**kwargs)
 
-    class FakeKnowledgeService:
-        def search(self, **kwargs):
-            calls.append(("knowledge", kwargs))
-            return {"success": True, "evidence": {"assets": [{"found": True, "match_type": "exact",
-                    "resource_name": "AGW-PRD-01", "resource_type": "gateway", "environment": "Production",
-                    "subscription": "prd", "source_sheet": "CMDB", "source_row": 1}],
-                "documents": [{"source": "waf-sop.md", "text": "isolate source", "score": 0.9}]}, "warnings": []}
+    monkeypatch.setattr(
+        alert_service,
+        "create_alert_processing_graph",
+        graph_factory,
+        raising=False,
+    )
+
+    async def fake_agent(self, alert, *, alert_id, run_id):
+        calls.append(("agent", alert_id, run_id))
+        evidence = {
+            "historical": {
+                "success": True,
+                "results": [{
+                    "case_id": "old/one",
+                    "alert_summary": "old alert",
+                    "analysis_summary": "old analysis",
+                    "suggestion_summary": "old suggestion",
+                }],
+            },
+            "knowledge": {
+                "success": True,
+                "evidence": {
+                    "assets": [{
+                        "found": True,
+                        "match_type": "exact",
+                        "resource_name": "AGW-PRD-01",
+                        "resource_type": "gateway",
+                        "environment": "Production",
+                        "subscription": "prd",
+                        "source_sheet": "CMDB",
+                        "source_row": 1,
+                    }],
+                    "documents": [{
+                        "source": "waf-sop.md",
+                        "text": "isolate source",
+                        "score": 0.9,
+                    }],
+                },
+                "warnings": [],
+            },
+            "splunk": {
+                "success": False,
+                "error_code": "splunk_not_configured",
+            },
+        }
+        return AgentAnalysisResult(
+            "test-agent",
+            "",
+            "",
+            evidence,
+            steps=[
+                {"step": 1, "name": "tool:search_historical_alerts"},
+                {"step": 2, "name": "tool:search_knowledge_base"},
+                {"step": 3, "name": "tool:investigate_splunk_logs"},
+            ],
+            analysis_result="证据研判",
+            token_usage=TokenUsage(),
+        )
 
     async def fake_report(alert, cmdb, risk, rag_context=""):
         calls.append(("report", cmdb.environment, rag_context))
@@ -158,70 +284,29 @@ async def test_classification_miss_calls_both_tools_then_generates_and_upserts(m
         calls.append(("suggestion", cmdb.environment, rag_context))
         return "# generated suggestion", TokenUsage(prompt_tokens=5, completion_tokens=6, total_tokens=11)
 
-    monkeypatch.setattr("app.tools.historical_alert_tool.run_historical_alert_search", fake_history)
-    monkeypatch.setattr("app.tools.knowledge_base_tool._get_default_service", lambda: FakeKnowledgeService())
-    monkeypatch.setattr("app.tools.splunk_log_tool.run_splunk_investigation", lambda *args, **kwargs: {"success": False, "error_code": "splunk_not_configured"})
-    async def fake_agent_plan(self, alert, context):
-        return "测试调查计划", TokenUsage()
-    async def fake_agent_summary(self, alert, plan, evidence):
-        return "证据研判", TokenUsage()
-    monkeypatch.setattr("app.agents.AlertAnalysisAgent._plan", fake_agent_plan)
-    monkeypatch.setattr("app.agents.AlertAnalysisAgent._summarize", fake_agent_summary)
+    monkeypatch.setattr("app.agents.AlertAnalysisAgent.analyze", fake_agent)
     monkeypatch.setattr("app.services.report_service.generate_analysis_report", fake_report)
     monkeypatch.setattr("app.services.report_service.generate_suggestion", fake_suggestion)
 
     result = await alert_service.process_single_alert(_write_input(tmp_path, raw))
 
+    assert graph_calls == ["created"]
     assert result.from_sample is False
-    assert [call[0] for call in calls] == ["history", "knowledge", "report", "suggestion"]
-    assert "历史相似告警" in calls[2][2]
-    assert "SOP/知识库：waf-sop.md" in calls[2][2]
+    assert [call[0] for call in calls] == ["agent", "report", "suggestion"]
+    assert calls[0][2].startswith("agent_")
+    assert "历史相似告警" in calls[1][2]
+    assert "SOP/知识库：waf-sop.md" in calls[1][2]
     assert result.token_usage.total.total_tokens == 18
     assert AlertClassificationRepository().find(raw)["report"] == "# generated report"
     assert (get_settings().raw_alert_path / "alert.json").exists()
     assert len(list(get_settings().historical_enriched_alert_path.glob("*/*.json"))) == 1
     runs = list(get_settings().agent_runs_path.glob("*/*_agent_run.json"))
     assert len(runs) == 1
-    assert [step["name"] for step in json.loads(runs[0].read_text(encoding="utf-8"))["steps"][1:4]] == [
-        "historical_alert_search", "knowledge_base_search", "splunk_log_investigation",
+    assert [step["name"] for step in json.loads(runs[0].read_text(encoding="utf-8"))["steps"]] == [
+        "tool:search_historical_alerts",
+        "tool:search_knowledge_base",
+        "tool:investigate_splunk_logs",
     ]
-
-
-@pytest.mark.asyncio
-async def test_agent_always_calls_three_controlled_tools_before_evidence_analysis(monkeypatch):
-    calls = []
-
-    def history(query, top_k):
-        calls.append("history")
-        return {"success": True, "results": []}
-
-    def knowledge(query, resource_id, hostname, top_k):
-        calls.append("knowledge")
-        return {"success": True, "evidence": {"assets": [], "documents": []}, "warnings": []}
-
-    def splunk(alert_id):
-        calls.append("splunk")
-        return {"success": False, "error_code": "splunk_not_configured", "evidence": []}
-
-    async def plan(self, alert, context):
-        calls.append("plan")
-        return "测试计划", TokenUsage(prompt_tokens=1, completion_tokens=1, total_tokens=2)
-
-    async def summary(self, alert, plan, evidence):
-        calls.append("analysis")
-        return "基于三个 Tool 的研判", TokenUsage(prompt_tokens=2, completion_tokens=1, total_tokens=3)
-
-    monkeypatch.setattr(AlertAnalysisAgent, "_historical", staticmethod(history))
-    monkeypatch.setattr(AlertAnalysisAgent, "_knowledge", staticmethod(knowledge))
-    monkeypatch.setattr(AlertAnalysisAgent, "_splunk", staticmethod(splunk))
-    monkeypatch.setattr(AlertAnalysisAgent, "_plan", plan)
-    monkeypatch.setattr(AlertAnalysisAgent, "_summarize", summary)
-
-    result = await AlertAnalysisAgent().analyze(_raw_alert(), alert_id="2026-08-14/agent-test")
-
-    assert calls == ["plan", "history", "knowledge", "splunk", "analysis"]
-    assert result.analysis_result == "基于三个 Tool 的研判"
-    assert result.token_usage.total_tokens == 5
 
 
 def test_classification_library_upserts_same_key_and_enforces_capacity(tmp_path):

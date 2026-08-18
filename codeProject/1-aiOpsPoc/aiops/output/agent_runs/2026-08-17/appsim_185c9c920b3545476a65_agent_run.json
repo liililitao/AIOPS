@@ -1,0 +1,119 @@
+{
+  "run_id": "agent_b9e8f403d02ab351f3ebff749cc25de0",
+  "thread_id": "appsim_185c9c920b3545476a65:agent_b9e8f403d02ab351f3ebff749cc25de0",
+  "status": "degraded",
+  "started_at": "2026-08-17T07:36:08.950753+00:00",
+  "completed_at": "2026-08-17T07:36:29.763313+00:00",
+  "alert": {
+    "alert_name": "app_alert_pmt_Dif_Light",
+    "application_code": "PMT for S&D"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "name": "tool:search_historical_alerts",
+      "status": "degraded",
+      "error_code": "history_search_unavailable",
+      "tool_call_id": "tooluse_j20C9hsTBOB4Kl4K5kLpOZ"
+    },
+    {
+      "step": 2,
+      "name": "tool:search_knowledge_base",
+      "status": "completed",
+      "error_code": null,
+      "tool_call_id": "tooluse_P4UtGcZ5uAiUQMySrgezlo"
+    },
+    {
+      "step": 3,
+      "name": "tool:investigate_splunk_logs",
+      "status": "degraded",
+      "error_code": "alert_not_found",
+      "tool_call_id": "tooluse_lqUDlTp51W2VvmoP6LkvHa"
+    }
+  ],
+  "investigation_plan": "",
+  "analysis_result": "## 分析结论\n\n当前证据不足，无法形成通过结构化校验的完整结论。\n\n## 根因假设\n\n- 暂无可验证的根因假设\n\n## 影响评估\n\n影响范围暂无法可靠确认。\n\n## 处理建议\n\n- [中] 补齐缺失证据后重新分析或转交人工复核。：避免将格式错误或不存在的证据引用作为告警事实。\n\n## 验证步骤\n\n- 恢复不可用的数据源\n- 使用新的分析运行重新校验\n\n## 证据缺口\n\n- 结构化输出校验失败：structured_output_unavailable:BadRequestError\n\n**总体置信度：低**",
+  "analysis": {
+    "conclusion": "当前证据不足，无法形成通过结构化校验的完整结论。",
+    "hypotheses": [],
+    "impact": "影响范围暂无法可靠确认。",
+    "actions": [
+      {
+        "priority": "中",
+        "action": "补齐缺失证据后重新分析或转交人工复核。",
+        "rationale": "避免将格式错误或不存在的证据引用作为告警事实。",
+        "requires_approval": false
+      }
+    ],
+    "validation_steps": [
+      "恢复不可用的数据源",
+      "使用新的分析运行重新校验"
+    ],
+    "evidence_refs": [],
+    "evidence_gaps": [
+      "结构化输出校验失败：structured_output_unavailable:BadRequestError"
+    ],
+    "confidence": "低"
+  },
+  "degraded_reasons": [
+    "structured_output_unavailable:BadRequestError"
+  ],
+  "validation_repair_count": 1,
+  "evidence": {
+    "historical": {
+      "success": false,
+      "query": "app_alert_pmt_Dif_Light",
+      "error_code": "history_search_unavailable",
+      "message": "历史告警检索暂不可用，请稍后重试",
+      "results": []
+    },
+    "knowledge": {
+      "success": true,
+      "knowledge_type": "asset",
+      "query": "PMT for S&D-APP-SIM",
+      "evidence": {
+        "assets": [
+          {
+            "found": false,
+            "match_type": "none",
+            "resource_name": "",
+            "resource_type": "",
+            "environment": "Unknown",
+            "subscription": "",
+            "source_sheet": "",
+            "source_row": 0,
+            "evidence_type": "asset"
+          }
+        ],
+        "documents": []
+      },
+      "warnings": []
+    },
+    "splunk": {
+      "success": false,
+      "alert_id": "appsim_185c9c920b3545476a65",
+      "evidence_type": "splunk_log",
+      "evidence": [],
+      "warnings": [],
+      "error_code": "alert_not_found",
+      "truncated": false
+    }
+  },
+  "token_usage": {
+    "agent_planning": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "agent_analysis": {
+      "prompt_tokens": 1630,
+      "completion_tokens": 383,
+      "total_tokens": 2013
+    },
+    "total": {
+      "prompt_tokens": 1630,
+      "completion_tokens": 383,
+      "total_tokens": 2013
+    }
+  }
+}
